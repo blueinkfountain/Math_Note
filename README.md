@@ -1,7 +1,7 @@
 ## 📄 PDF
 
 - **View (GitHub Pages, 최신본)**  
-  [Spaces.pdf](https://blueinkfountain.github.io/Math_Note/Spaces.pdf?v=now)
+[Spaces.pdf (GitHub Pages)](https://blueinkfountain.github.io/Math_Note/Spaces.pdf?v=now#page)
 
 - **Mirror (Repo 뷰어)**  
   [Spaces.pdf @ main](https://github.com/blueinkfountain/Math_Note/blob/main/Spaces.pdf)
