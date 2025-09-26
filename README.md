@@ -3,7 +3,7 @@
 - **View (GitHub Pages)**  
   https://blueinkfountain.github.io/Math_Note/Spaces.pdf
 
-- **Mirror
+- **Mirror**
   https://github.com/blueinkfountain/Math_Note/blob/main/Spaces.pdf
 
 - **Direct download**  
