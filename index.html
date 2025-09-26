@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Math Notes – Spaces</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{--h:56px}
+    html,body{margin:0;height:100%}
+    body{font:500 16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    header{height:var(--h);display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid #e5e7eb}
+    h1{margin:0;font-size:18px}
+    .viewer{height:calc(100vh - var(--h))}
+    .viewer iframe{border:0;width:100%;height:100%}
+    nav a{margin-right:12px;color:#111;text-decoration:none}
+    nav a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Spaces.pdf</h1>
+    <nav>
+      <a href="Spaces.pdf" target="_blank" rel="noopener">Open Raw</a>
+      <a href="Spaces.pdf#view=FitH&zoom=page-width" target="_blank" rel="noopener">Fit width</a>
+    </nav>
+  </header>
+  <div class="viewer">
+    <iframe src="Spaces.pdf#view=FitH&zoom=page-width"></iframe>
+  </div>
+</body>
+</html>
