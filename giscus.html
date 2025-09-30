@@ -1,0 +1,26 @@
+
+<!-- Comment dialog containing the Giscus widget -->
+<dialog id="comment-dialog">
+  <div id="comment-target" data-thread=""></div>
+  <button id="comment-close">닫기</button>
+
+  <!-- Giscus widget (GitHub Discussions). Replace placeholders below. -->
+  <script src="https://giscus.app/client.js"
+          data-repo="YOUR_GITHUB_USERNAME/YOUR_REPO_NAME"
+          data-repo-id="YOUR_REPO_ID"
+          data-category="General"
+          data-category-id="YOUR_CATEGORY_ID"
+          data-mapping="specific"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="ko"
+          crossorigin="anonymous"
+          async>
+  </script>
+</dialog>
+
+<!-- Ensure the comment button injector runs -->
+<script src="comment.js"></script>

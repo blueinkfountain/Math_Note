@@ -1,0 +1,4131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Jong Won" />
+  <title>Spaces</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Spaces</h1>
+<p class="author">Jong Won</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#set-theory" id="toc-set-theory">Set Theory</a>
+<ul>
+<li><a href="#map" id="toc-map">Map</a></li>
+</ul></li>
+<li><a href="#group-theory" id="toc-group-theory">Group Theory</a>
+<ul>
+<li><a href="#isomorphism-theorems"
+id="toc-isomorphism-theorems">Isomorphism Theorems</a></li>
+<li><a href="#group-action" id="toc-group-action">Group Action</a>
+<ul>
+<li><a href="#lagranges-theorem" id="toc-lagranges-theorem">Lagrange’s
+Theorem</a></li>
+</ul></li>
+<li><a href="#generating-subset-of-a-group"
+id="toc-generating-subset-of-a-group">Generating subset of a
+Group</a></li>
+<li><a href="#commutator-subgroup"
+id="toc-commutator-subgroup">Commutator Subgroup</a></li>
+</ul></li>
+<li><a href="#finite-group-theory" id="toc-finite-group-theory">Finite
+Group Theory</a>
+<ul>
+<li><a href="#the-class-equation" id="toc-the-class-equation">The Class
+Equation</a></li>
+<li><a href="#cauchys-theorem" id="toc-cauchys-theorem">Cauchy’s
+Theorem</a></li>
+<li><a href="#sylows-theorem" id="toc-sylows-theorem">Sylow’s
+Theorem</a></li>
+</ul></li>
+<li><a href="#ring-theory" id="toc-ring-theory">Ring Theory</a>
+<ul>
+<li><a href="#ring-of-fractions" id="toc-ring-of-fractions">Ring of
+Fractions</a></li>
+</ul></li>
+<li><a href="#polynomial-ring" id="toc-polynomial-ring">Polynomial
+Ring</a></li>
+<li><a href="#field-theory" id="toc-field-theory">Field Theory</a></li>
+<li><a href="#galois-theory" id="toc-galois-theory">Galois
+Theory</a></li>
+<li><a href="#category" id="toc-category">Category</a></li>
+<li><a href="#general-topology" id="toc-general-topology">General
+Topology</a>
+<ul>
+<li><a href="#coproduct-space" id="toc-coproduct-space">Coproduct
+Space</a></li>
+<li><a href="#compact-space" id="toc-compact-space">Compact Space</a>
+<ul>
+<li><a href="#locally-compact" id="toc-locally-compact">Locally
+Compact</a></li>
+<li><a href="#one-point-compactification"
+id="toc-one-point-compactification">One-point Compactification</a></li>
+</ul></li>
+<li><a href="#complete-metric-space"
+id="toc-complete-metric-space">Complete Metric Space</a>
+<ul>
+<li><a href="#baire-category" id="toc-baire-category">Baire
+Category</a></li>
+<li><a href="#nowhere-differentiable-function"
+id="toc-nowhere-differentiable-function">Nowhere Differentiable
+function</a></li>
+<li><a href="#banach-fixed-point-theorem"
+id="toc-banach-fixed-point-theorem">Banach Fixed Point Theorem</a></li>
+</ul></li>
+<li><a href="#urysohn-metrization-theorem"
+id="toc-urysohn-metrization-theorem">Urysohn Metrization Theorem</a>
+<ul>
+<li><a href="#urysohn-lemma" id="toc-urysohn-lemma">Urysohn
+Lemma</a></li>
+<li><a href="#tietze-extension-theorem"
+id="toc-tietze-extension-theorem">Tietze Extension Theorem</a></li>
+<li><a href="#urysohn-metrization-theorem-1"
+id="toc-urysohn-metrization-theorem-1">Urysohn Metrization
+Theorem</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#algebraic-topology" id="toc-algebraic-topology">Algebraic
+Topology</a></li>
+<li><a href="#basic-analysis" id="toc-basic-analysis">Basic Analysis</a>
+<ul>
+<li><a href="#tests-for-series" id="toc-tests-for-series">Tests for
+Series</a>
+<ul>
+<li><a href="#integral-test" id="toc-integral-test">Integral
+Test</a></li>
+<li><a href="#ratio-test" id="toc-ratio-test">Ratio Test</a></li>
+<li><a href="#root-test" id="toc-root-test">Root Test</a></li>
+</ul></li>
+<li><a href="#arithmetic-means" id="toc-arithmetic-means">Arithmetic
+means</a></li>
+<li><a href="#taylors-theorem" id="toc-taylors-theorem">Taylor’s
+Theorem</a></li>
+<li><a href="#convexity" id="toc-convexity">Convexity</a>
+<ul>
+<li><a href="#definition" id="toc-definition">Definition</a></li>
+<li><a href="#properties" id="toc-properties">Properties</a></li>
+</ul></li>
+<li><a href="#lipschitz-condition"
+id="toc-lipschitz-condition">Lipschitz Condition</a>
+<ul>
+<li><a href="#definition-1" id="toc-definition-1">Definition</a></li>
+<li><a href="#properties-1" id="toc-properties-1">Properties</a></li>
+<li><a href="#newton-raphson-method"
+id="toc-newton-raphson-method">Newton-Raphson Method</a></li>
+<li><a href="#gradient-descent" id="toc-gradient-descent">Gradient
+Descent</a></li>
+</ul></li>
+<li><a href="#integral" id="toc-integral">Integral</a>
+<ul>
+<li><a href="#inequality-of-riemann-stieltjes-integral"
+id="toc-inequality-of-riemann-stieltjes-integral">Inequality of
+Riemann-Stieltjes Integral</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#measure" id="toc-measure">Measure</a></li>
+<li><a href="#complex-analysis" id="toc-complex-analysis">Complex
+Analysis</a></li>
+<li><a href="#differential-geometry"
+id="toc-differential-geometry">Differential Geometry</a></li>
+<li><a href="#differential-equation"
+id="toc-differential-equation">Differential Equation</a></li>
+<li><a href="#spaces" id="toc-spaces">Spaces</a>
+<ul>
+<li><a href="#mathbbrn" id="toc-mathbbrn"><span
+class="math inline">\mathbb{R}^n</span></a>
+<ul>
+<li><a href="#inner-product-in-mathbbr"
+id="toc-inner-product-in-mathbbr">Inner Product in <span
+class="math inline">\mathbb{R}</span></a></li>
+<li><a href="#p-norm-in-mathbbrn" id="toc-p-norm-in-mathbbrn"><span
+class="math inline">p</span>-norm in <span
+class="math inline">\mathbb{R}^n</span></a></li>
+<li><a href="#open-and-closed-set-in-mathbbrn"
+id="toc-open-and-closed-set-in-mathbbrn">Open and Closed set in <span
+class="math inline">\mathbb{R}^n</span></a></li>
+</ul></li>
+<li><a href="#topological-vector-space"
+id="toc-topological-vector-space">Topological Vector Space</a></li>
+<li><a href="#hilbert-space" id="toc-hilbert-space">Hilbert Space</a>
+<ul>
+<li><a href="#hilbert-space-in-mathbbromega"
+id="toc-hilbert-space-in-mathbbromega">Hilbert Space in <span
+class="math inline">\mathbb{R}^\omega</span></a></li>
+</ul></li>
+<li><a href="#banach-space" id="toc-banach-space">Banach Space</a></li>
+<li><a href="#l_p-space" id="toc-l_p-space"><span
+class="math inline">L_p</span> Space</a></li>
+<li><a href="#l_p-space-1" id="toc-l_p-space-1"><span
+class="math inline">l_p</span> Space</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>This paper covers several topics in undergraduate mathematics.<br />
+Patch Note:<br />
+<span class="math inline">\sim</span> 2025/9/28 - Drafted the initial
+framework of the paper.<br />
+</p>
+<p>2025/9/29 -</p>
+<div class="minipage">
+<ol>
+<li><p>Completed proof of Ring of Fractions.</p></li>
+<li><p>Transcribed Integral, Ratio, and Root Test.</p></li>
+<li><p>Transcribed Tube Lemma, Lindelöf and Countably Compact product
+Compact.</p></li>
+<li><p>Transcribed Coproduct with Continuous, open, closed map.</p></li>
+</ol>
+</div>
+<p>2025/9/30 -</p>
+<div class="minipage">
+<ol>
+<li></li>
+</ol>
+</div>
+<h1 id="set-theory">Set Theory</h1>
+<h2 id="map">Map</h2>
+<div class="definition">
+<p>Let <span class="math inline">X, Y</span> are sets. Define a
+<em>function</em> <span class="math inline">X</span> to <span
+class="math inline">Y</span> is a relation <span
+class="math display">\begin{align*}
+        f \subset X \times Y
+    
+\end{align*}</span> such that</p>
+<ol>
+<li><p>For any <span class="math inline">x \in X</span>, there exists
+<span class="math inline">y \in Y</span> such that <span
+class="math inline">(x,y) \in f</span>.</p></li>
+<li><p>If <span class="math inline">(x,y) \in f</span> and <span
+class="math inline">(x,z) \in f</span>, then <span
+class="math inline">y=z</span>.</p></li>
+</ol>
+<p>Denote <span class="math inline">f</span> as: <span
+class="math display">\begin{align*}
+        f:X \to Y:x \mapsto f(x)
+    
+\end{align*}</span> Define <em>Image</em> of <span
+class="math inline">f</span> by <span class="math inline">A \subset
+X</span>: <span class="math display">\begin{align*}
+        f[A] \overset{\textnormal{def}}{=}\{f(a) \mid a \in A\} \subset
+Y
+    
+\end{align*}</span> And, <em>Preimage</em> of <span
+class="math inline">f</span> by <span class="math inline">B \subset
+Y</span>: <span class="math display">\begin{align*}
+        f^{-1}[B] \overset{\textnormal{def}}{=}\{x \in X \mid f(x) \in
+B\} \subset X
+    
+\end{align*}</span> <span class="math inline">f:X \to Y</span> is
+<em>Injective</em> if: <span class="math inline">f(x_1) = f(x_2)
+\implies x_1 = x_2</span>.<br />
+<span class="math inline">f:X \to Y</span> is <em>Surjective</em> if:
+<span class="math inline">\forall y \in Y,\ \exists x \in X \text{ s.t.
+}f(x) = y</span>.<br />
+If <span class="math inline">f</span> is injective and surjective,
+called <em>bijective</em>.<br />
+If <span class="math inline">f</span> is bijective, then define
+<em>inverse</em> of <span class="math inline">f</span> as: <span
+class="math display">\begin{align*}
+        f^{-1}:Y \to X: y \to x
+    
+\end{align*}</span> where <span class="math inline">x \in X</span> is
+the unique elements of <span class="math inline">X</span> such that
+<span class="math inline">f(x) = y</span>.</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">f:X \to Y</span> be a function.
+Then,</p>
+<ol>
+<li><p>There exists <span class="math inline">g:Y \to X</span> such that
+<span class="math inline">g \circ f:X \to X</span> be an identity
+function <em>if and only if</em> <span class="math inline">f</span> is
+injective.</p></li>
+<li><p>There exists <span class="math inline">h:Y \to X</span> such that
+<span class="math inline">f \circ h:Y \to Y</span> be an identity
+function <em>if and only if</em> <span class="math inline">f</span> is
+surjective.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em>  <br />
+<em>1.</em> <span class="math inline">\implies</span>)<br />
+Assume that <span class="math inline">f(x_1) = f(x_2)</span>. Then,
+existence of left inverse, <span class="math inline">g(f(x_1)) =
+g(f(x_2)) \implies x_1 = x_2</span>. Thus <span
+class="math inline">f</span> injective.<br />
+<em>1.</em> <span class="math inline">\impliedby</span>)<br />
+Since <span class="math inline">f</span> is injection, for any <span
+class="math inline">y \in f[X]</span>, there exists a unique element
+<span class="math inline">x_y \in X</span> such that <span
+class="math inline">f(x) = y</span>. Now, define <span
+class="math display">\begin{align*}
+        g:Y \to X:y \mapsto \begin{cases}
+            x_y \quad &amp;y \in f[X] \\
+            \text{any element in $X$} \quad &amp; y \notin f[X]
+        \end{cases}
+    
+\end{align*}</span> Then, for any <span class="math inline">x \in
+X</span>, <span class="math inline">g(f(x)) = g(y) = x</span>.<br />
+<em>2.</em> <span class="math inline">\implies</span>)<br />
+Let <span class="math inline">y \in Y</span> be given. Since existence
+of right inverse, <span class="math inline">f(h(y)) = y</span> where
+<span class="math inline">h(y) \in X</span>. Thus, <span
+class="math inline">f</span> is surjective.<br />
+<em>2.</em> <span class="math inline">\impliedby</span>)<br />
+For any <span class="math inline">y \in Y</span>, there exists a <span
+class="math inline">x_y \in X</span> such that <span
+class="math inline">f(x_y) = y</span>. Now, define <span
+class="math display">\begin{align*}
+        h:Y \to X: y \mapsto x_y
+    
+\end{align*}</span> Then, for any <span class="math inline">y \in
+Y</span>, <span class="math inline">f \circ h(y) = f(x_y) = y</span>.
+Thus, <span class="math inline">f \circ h</span> is identity. ◻</p>
+</div>
+<div class="corollary">
+<p>Let <span class="math inline">f: X \to Y</span> be a function, <span
+class="math inline">\text{id}_X:X \to X: x \mapsto x</span>, and <span
+class="math inline">\text{id}_Y:Y \to Y: y \mapsto y</span>.</p>
+<div class="center">
+<p>There exists a <span class="math inline">f^{-1}:Y \to X</span> such
+that <span class="math inline">f^{-1} \circ f = \text{id}_X</span> and
+<span class="math inline">f \circ f^{-1} = \text{id}_Y</span> <em>if and
+only if</em> <span class="math inline">f</span> is bijection.</p>
+</div>
+</div>
+<div class="proof">
+<p><em>Proof.</em> If <span class="math inline">f</span> is bijection,
+then there exists left inverse <span class="math inline">g</span> and
+right inverse <span class="math inline">h</span>.<br />
+Enough To Show that: <span class="math inline">g = h</span>. Since <span
+class="math inline">g \circ f = \text{id}_X</span> and <span
+class="math inline">f \circ h = \text{id}_Y</span>,<br />
+<span class="math inline">g \circ f \circ h = g \circ
+\text{id}_Y</span>, thus <span class="math inline">h = g</span>. ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X, Y, Z</span> are sets, <span
+class="math inline">f:X \to Y</span>, <span class="math inline">g:Y \to
+Z</span> and <span class="math inline">A \subset X, B \subset Y, C
+\subset Z</span>. Then followings are hold:</p>
+<ol>
+<li><p><span class="math inline">g[f[A]] = (g \circ
+f)[A]</span>.</p></li>
+<li><p><span class="math inline">f^{-1}[g^{-1}[C]] = (g \circ
+f)^{-1}[C]</span>.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em>  <br />
+1. It is clear by definition of image: <span
+class="math display">\begin{align*}
+        g[f[A]] &amp;\overset{\textnormal{def}}{=}g[ \{f(a) \mid a \in
+A\} ] = \{g(b) \mid b \in \{f(a) \mid a \in A\}\}\\
+        &amp;= \{g(b) \mid b = f(a) \text{ for some $a \in A$}\}
+        = \{g(f(a)) \mid \text{for some $a \in A$}\}
+        = \{g(f(a)) \mid a \in A\}
+    
+\end{align*}</span> 2. It is not clear, <span
+class="math display">\begin{align*}
+        f^{-1}[g^{-1}[C]] \overset{\textnormal{def}}{=}
+        f^{-1}[\{b \in Y \mid g(b) \in C\}]
+        = \{a \in X \mid f(a) \in \{b \in Y \mid g(b) \in C\}\}
+        = \{a \in X \mid g(f(a)) \in C\}
+        = (g \circ f)^{-1}[C]
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="proposition">
+<p>Let <span class="math inline">f: X \to Y</span> be a function, <span
+class="math inline">A, B \subset X</span> and <span
+class="math inline">C, D \subset Y</span>.</p>
+<ol>
+<li><p>If <span class="math inline">A \subset B</span>, then <span
+class="math inline">f[A] \subset f[B]</span>.</p></li>
+<li><p>If <span class="math inline">C \subset D</span>, then <span
+class="math inline">f^{-1}[C] \subset f^{-1}[D]</span></p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math display">\begin{align*}
+        &amp;y \in f[A] \implies y = f(a) \text{ for some }a \in A
+\overset{A \subset B}{\implies} y = f(a) \text{ for some }a \in B
+\implies y \in f[B] \\
+        &amp;x \in f^{-1}[C] \implies f(x) \in C \overset{C \subset
+D}{\implies} f(x) \in D \implies x \in f^{-1}[D]
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="lemma">
+<p>Let two set <span class="math inline">X, Y</span> be given, and <span
+class="math inline">A \subset X</span>, <span class="math inline">B
+\subset Y</span>, <span class="math inline">f:X \to Y</span>. Then
+followings are holds:</p>
+<ol>
+<li><p><span class="math inline">f^{-1} [ f [ A ] ] \supseteq A</span>,
+and equality holds if <span class="math inline">f</span>
+one-to-one.</p></li>
+<li><p><span class="math inline">f [ f^{-1} [B] ] \subseteq B</span>,
+and equality holds if <span class="math inline">f</span> onto.</p></li>
+<li><p><span class="math inline">f^{-1}[Y \setminus B] = X \setminus
+f^{-1}[B]</span></p></li>
+<li><p><span class="math inline">f[X] \setminus f[A] \subseteq f[X
+\setminus A]</span>, and equality holds if <span
+class="math inline">f</span> one-to-one.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Proof of 4. <span class="math display">\begin{align*}
+        y \in f[X] \setminus f[A]
+        &amp;\iff y \in f[X] _{\text{ and }}y \notin f[A] \\
+        &amp;\iff \exists x \in X \text{ s.t. }y = f(x) _{\text{ and
+}}\forall x \in A,\ y \neq f(x) \\
+        &amp;\overset{(*)}{\implies} \exists x \in X \setminus A \text{
+s.t. }y = f(x) \\
+        &amp;\iff y \in f[X \setminus A]
+    
+\end{align*}</span> If <span class="math inline">f</span> is injection,
+then Left Direction of <span class="math inline">(*)</span> be true:
+<span class="math inline">\exists!x \in X \setminus A \text{ s.t. }y =
+f(x)</span>. ◻</p>
+</div>
+<h1 id="group-theory">Group Theory</h1>
+<h2 id="isomorphism-theorems">Isomorphism Theorems</h2>
+<div class="theorem">
+<p><em>The First Isomorphism Theorem</em><br />
+Let <span class="math inline">\varphi:G \to H</span> be a
+Group-Homomorphism. Then, <span class="math display">\begin{align*}
+        G / \ker \varphi \cong \varphi[G]
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\pi:G \to G/\ker
+\varphi:x \mapsto x + \ker \varphi</span>. Then, the map <span
+class="math inline">\phi:G/\ker \varphi \to \varphi[G]: a + \ker \varphi
+\mapsto \varphi(a)</span> is isomorphism.<br />
+Well-defined and Injective: <span class="math display">\begin{align*}
+        a + \ker \varphi = b + \ker \varphi
+        \iff
+        a - b \in \ker \varphi
+        \iff
+        \varphi(a-b) = \varphi(a) - \varphi(b) = 0
+    
+\end{align*}</span> Surjective is clear. ◻</p>
+</div>
+<div class="theorem">
+<p><em>The Second Isomorphism Theorem</em><br />
+Let <span class="math inline">G</span> be a Group, and <span
+class="math inline">H \leq G</span>, <span class="math inline">N \unlhd
+G</span>. Then, <span class="math display">\begin{align*}
+        HN / N \cong H / (H \cap N)
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">HK</span> be a subgroup of
+<span class="math inline">G</span>, being <span
+class="math display">\begin{align*}
+        HN = \bigcup_{h \in H} hN \overset{N \unlhd G}{=} \bigcup_{h \in
+H} Nh = NH
+    
+\end{align*}</span> And, <span class="math inline">N \leq HN</span> is
+clear, thus <span class="math inline">N \unlhd HN</span>.<br />
+Meanwhile, <span class="math inline">H \cap N</span> be a Normal
+Subgroup of <span class="math inline">H</span>: for any <span
+class="math inline">h \in H, n \in H \cap N</span>, <span
+class="math inline">hnh^{-1} \in N</span> because <span
+class="math inline">N</span> is normal, and <span
+class="math inline">hnh^{-1} \in H</span> since <span
+class="math inline">h, n</span> contained in <span
+class="math inline">H</span>. Thus, <span class="math inline">hnh^{-1}
+\in H \cap N</span>, this implies <span class="math inline">H \cap
+N</span> be a Normal of <span class="math inline">H</span>.<br />
+Now, Define a Map: <span class="math display">\begin{align*}
+        \varphi:H \to HN / N: h \mapsto hN
+    
+\end{align*}</span> Clearly, this map is Well-Defined and Homomorphism.
+And, <span class="math display">\begin{align*}
+        \ker \varphi = \varphi^{-1}[1]
+        = \{h \in H \mid hN = N\}
+        = \{h \in H \mid h \in N\}
+        = H \cap N
+    
+\end{align*}</span> Thus, since The 1st Isomorphism Theorem, <span
+class="math display">\begin{align*}
+        HN / N \cong H / (H \cap N)
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><em>The Third Isomorphism Theorem</em><br />
+Let <span class="math inline">G</span> be a Group, and <span
+class="math inline">H, K \unlhd G</span> with <span
+class="math inline">H \leq K</span>. Then, <span class="math inline">K/H
+\unlhd G/H</span> and <span class="math display">\begin{align*}
+        (G/H) / (K/H) \cong (G/ K)
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> First, show that <span class="math inline">K/H \unlhd
+G/H</span>. Let <span class="math inline">kH \in K/H</span> and <span
+class="math inline">gH \in G/H</span>. Then, <span
+class="math display">\begin{align*}
+        (gH) (kH) (gH)^{-1} = (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H
+    
+\end{align*}</span> since <span class="math inline">gkg^{-1} \in
+K</span>, being <span class="math inline">K \unlhd G</span>. Now, Define
+a map: <span class="math display">\begin{align*}
+        \varphi:G/H \to G/K:gH \mapsto gK
+    
+\end{align*}</span> 1. Well-Defined. <span
+class="math display">\begin{align*}
+        g_1H = g_2H \iff g_1^{-1} g_2 \in H \overset{H \leq K}{\implies}
+g_1^{-1} g_2 \in K \iff g_1K = g_2K
+    
+\end{align*}</span> 2. Homomorphism.<br />
+Clearly, for any <span class="math inline">g_1H, g_2 \in G/H</span>,
+<span class="math display">\begin{align*}
+        \varphi(g_1H g_2H) = \phi(g_1g_2 H) = g_1g_2 K = g_1K g_2K =
+\varphi(g_1H) \varphi(g_2H)
+    
+\end{align*}</span> 3. Surjection. Let <span class="math inline">gK \in
+G/K</span> be given. Then, clearly, <span
+class="math inline">\varphi(gH) = gK</span>.<br />
+4. Kernel. <span class="math display">\begin{align*}
+        \ker \varphi
+        = \{gH \in G/H \mid gK = 1\}
+        = \{gH \in G/H \mid g \in K\}
+        = K / H
+    
+\end{align*}</span> Consequently, The 1st Isomorphism Theorem gives
+<span class="math display">\begin{align*}
+        (G/ K) \cong (G/H) / \ker \varphi = (G/H) / (K/H)
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><em>The Forth Isomorphism Theorem</em><br />
+Let <span class="math inline">G</span> be a Group, and <span
+class="math inline">N \unlhd G</span> be a Normal Subgroup. Then, there
+is a bijection between <span class="math display">\begin{align*}
+        D \overset{\textnormal{def}}{=}\{H \leq G \mid N \leq H\},\
+        C \overset{\textnormal{def}}{=}\{\overline{H} \leq G/N\}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\pi:G \to G/N:g \mapsto
+gN</span> be a natural projection. And, Define <span
+class="math display">\begin{align*}
+        \Phi:D \to C:H \mapsto \pi[H]
+    
+\end{align*}</span> This function is well-defined: For any <span
+class="math inline">H \in D</span>, let <span class="math inline">aN,bN
+\in \pi[H]</span>. Then, <span class="math inline">aN \cdot b^{-1}N =
+ab^{-1} N \in \pi[H]</span>, thus <span class="math inline">\pi[H] \leq
+G/N</span>.<br />
+To show that one-to-one: Let <span class="math inline">\Phi(A) =
+\Phi(B)</span>. Thus means, <span class="math inline">\pi[A] =
+\pi[B]</span>. Let <span class="math inline">a \in A</span>. Then, <span
+class="math inline">\pi(a) \in \pi[A] = \pi[B]</span>, thus <span
+class="math inline">\pi(a) = \pi(b)</span> for some <span
+class="math inline">b \in B</span>. That is, <span
+class="math inline">aN = bN \iff a \in bN</span>. Meanwhile, <span
+class="math inline">N \leq B</span>, thus <span class="math inline">a
+\in bN \subset B</span>, <span class="math inline">A \subset B</span>.
+Similarly, <span class="math inline">B \subset A</span>, that is <span
+class="math inline">A = B</span>.<br />
+To show that onto: Let <span class="math inline">K \in C</span>. Then,
+<span class="math inline">N \leq \pi^{-1}[K] \leq G</span>, thus
+clear. ◻</p>
+</div>
+<h2 id="group-action">Group Action</h2>
+<h3 id="lagranges-theorem">Lagrange’s Theorem</h3>
+<h2 id="generating-subset-of-a-group">Generating subset of a Group</h2>
+<h2 id="commutator-subgroup">Commutator Subgroup</h2>
+<h1 id="finite-group-theory">Finite Group Theory</h1>
+<h2 id="the-class-equation">The Class Equation</h2>
+<h2 id="cauchys-theorem">Cauchy’s Theorem</h2>
+<div class="lemma">
+<p><em>Cauchy’s Theorem</em><br />
+Let <span class="math inline">G</span> be a finite group, and <span
+class="math inline">p</span> be a prime dividing <span
+class="math inline">|G|</span>. Then, <span class="math inline">G</span>
+has order <span class="math inline">p</span> element.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Define a set: <span
+class="math display">\begin{align*}
+        S \overset{\textnormal{def}}{=}\{(x_1, x_2, \dots, x_p) \mid x_i
+\in G,\ x_1 x_2 \cdots x_p = 1\}
+    
+\end{align*}</span> Then, <span class="math inline">S</span> has exactly
+<span class="math inline">|G|^{p-1}</span> elements because there are
+<span class="math inline">|G|</span> possible choices for each of the
+first <span class="math inline">p-1</span> elements in <span
+class="math inline">G</span>.<br />
+Once <span class="math inline">x_1, \cdots, x_{p-1}</span> are chosen,
+then <span class="math inline">x_p</span> is uniquely determined by the
+uniqueness of inverses.<br />
+Then, let <span class="math inline">\sigma = (1,2, \dots, p)</span> be a
+permutation. Then, for any <span class="math inline">\alpha \in
+S</span>, <span class="math inline">\sigma^n(\alpha) \in S</span> for
+all <span class="math inline">n \in \mathbb{Z}</span>, being <span
+class="math inline">ab = 1 \iff ba = 1</span>.<br />
+More precisely, let <span class="math inline">n \in \mathbb{Z}</span> be
+given, <span class="math inline">\alpha = (x_1, \cdots, x_n)</span>.
+Then, <span class="math display">\begin{align*}
+        \sigma^n(\alpha) = (x_{n+1},x_{n+2}, \dots, x_p, x_1, x_2, \dots
+x_{n})
+    
+\end{align*}</span> By <span class="math inline">x_1 \cdots x_n x_{n+1}
+\cdots x_p = 1</span>, <span class="math inline">x_{n+1} \cdots x_p x_1
+\cdots x_n = 1</span>. Thus <span class="math inline">\sigma^n(\alpha)
+\in S</span>. Now, define a relation on <span
+class="math inline">S</span> as:</p>
+<div class="center">
+<p><span class="math inline">\alpha \sim \beta</span> if and only if
+<span class="math inline">\beta = \sigma^n(\alpha)</span> for some <span
+class="math inline">n \in \mathbb{Z}</span></p>
+</div>
+<p>Then, this relation be equivalent relation, thus construct a
+partition on <span class="math inline">S</span>. Claim:</p>
+<div class="center">
+<p><span class="math inline">[\alpha] = \{\beta \in S \mid \beta \sim
+\alpha\}</span> is sinlgeton if and only if <span
+class="math inline">\alpha = (x, \ldots, x)</span> for some <span
+class="math inline">x \in G</span>.</p>
+</div>
+<p>Left direction is clear, and for show that Right direction,<br />
+Suppose that <span class="math inline">\alpha = (x_1, \dots, x_n)</span>
+has different cordinate elements, let <span class="math inline">x_i \neq
+x_j</span>, for some <span class="math inline">i &lt; j</span>. Then
+clearly <span class="math display">\begin{align*}
+        (x_1, \dots, x_i, \dots, x_p) \neq \sigma^{i-j}(x_1, \dots, x_i,
+\dots, x_j,\dots, x_p) = (\dots, \underset{\text{i&#39;th
+element}}{\underline{x_j}}, \dots)
+    
+\end{align*}</span> Meanwhile, if <span
+class="math inline">[\alpha]</span> has elements more than 1, <span
+class="math inline">[\alpha]</span> has exactly number of <span
+class="math inline">p</span> elements. Because suppose that <span
+class="math inline">\alpha = (x_1, \dots, x_p)</span> has at least one
+different coordinate. Then, <span class="math display">\begin{align*}
+        \sigma^1(\alpha), \sigma^2(\alpha), \cdots, \sigma^{p-1}(\alpha)
+    
+\end{align*}</span> are mutually different: If there exist <span
+class="math inline">1 \leq i &lt; j &lt; p</span> such that <span
+class="math inline">\sigma^i(\alpha) = \sigma^j(\alpha)</span>, that is,
+<span class="math inline">\sigma^{j-i}(\alpha) = \alpha</span>.<br />
+Now, <span class="math inline">j - i \mid p</span>, this is
+contradiction with <span class="math inline">p</span> is prime.
+Therefore, every equivalent class has order 1 or <span
+class="math inline">p</span>. Consequently, <span
+class="math display">\begin{align*}
+        |G|^{p-1} = k + pd
+    
+\end{align*}</span> where <span class="math inline">k</span> is a number
+of classes of size 1, and <span class="math inline">d</span> is a number
+of classes of size <span class="math inline">p</span>. And <span
+class="math inline">(1,1,\dots, 1) \in S</span>, <span
+class="math inline">k</span> is at least <span
+class="math inline">1</span>.<br />
+Since <span class="math inline">p</span> divides <span
+class="math inline">|G|^{p-1} = k + pd</span>, thus <span
+class="math inline">k</span> must be bigger than <span
+class="math inline">1</span>, thus there exists elements such that <span
+class="math inline">x^p = 1</span>. ◻</p>
+</div>
+<h2 id="sylows-theorem">Sylow’s Theorem</h2>
+<div class="theorem">
+<p><em>Sylow’s Theorem</em><br />
+Let <span class="math inline">G</span> be a group of order <span
+class="math inline">p^\alpha m</span>, where <span
+class="math inline">p</span> is a prime such that <span
+class="math inline">p \nmid m</span>.<br />
+A group of order <span class="math inline">p^r,\ (r \geq 1)</span> is
+called a <span class="math inline">p</span>-group, Subgroups of <span
+class="math inline">G</span> which are <span
+class="math inline">p</span>-groups are called <span
+class="math inline">p</span>-subgroup.<br />
+In particular, subgroups of order <span
+class="math inline">p^\alpha</span> is called <em>Sylow <span
+class="math inline">p</span>-subgroup</em> of <span
+class="math inline">G</span>. And, define a collection <span
+class="math display">\begin{align*}
+        \text{Syl}_p(G) \overset{\textnormal{def}}{=}\{P \leq G \mid |P|
+= p^\alpha\},\ n_p(G)
+\overset{\textnormal{def}}{=}\text{Card}(\text{Syl}_p(G))
+    
+\end{align*}</span></p>
+<ol>
+<li><p><em>The First Sylow Theorem</em><br />
+There exists a Sylow <span class="math inline">p</span>-subgroup of
+<span class="math inline">G</span>. i.e., <span
+class="math inline">\text{Syl}_p(G) \neq \emptyset</span>.</p></li>
+<li><p><em>The Second Sylow Theorem</em><br />
+If <span class="math inline">P \in \text{Syl}_p(G)</span> and <span
+class="math inline">Q \leq G</span> be a <span
+class="math inline">p</span>-subgroup. Then, there exists <span
+class="math inline">g \in G</span> such that <span class="math inline">Q
+\leq g P g^{-1}</span>.</p></li>
+<li><p><em>The Third Sylow Theorem</em><br />
+<span class="math inline">n_p \equiv 1 (\bmod p)</span>, <span
+class="math inline">n_p = |G : N_G(P)|</span> for any <span
+class="math inline">P \in \text{Syl}_p(G)</span>, and <span
+class="math inline">n_p \mid m</span>.</p></li>
+</ol>
+</div>
+<p>Before prove above statments, we show that:</p>
+<div class="lemma">
+<p>Let <span class="math inline">P \in \text{Syl}_p(G)</span>. If <span
+class="math inline">Q</span> is <span
+class="math inline">p</span>-subgroup of <span
+class="math inline">G</span>, then <span class="math inline">Q \cap
+N_G(P) = Q \cap P</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Put <span class="math inline">H = Q \cap
+N_G(P)</span>. Since <span class="math inline">P \leq G</span>, for any
+<span class="math inline">p \in P</span>, <span
+class="math inline">pPp^{-1} = P</span>, thus <span
+class="math inline">p \in N_G(P)</span>. i.e., <span
+class="math inline">P \leq N_G(P)</span>.<br />
+Thus, Enough to Show that <span class="math inline">H \leq Q \cap
+P</span>. Since <span class="math inline">H \leq N_G(P)</span>, <span
+class="math display">\begin{align*}
+        PH = \bigcup_{h \in H} Ph = \bigcup_{h \in H} hP =  HP
+    
+\end{align*}</span> Thus, <span class="math inline">PH \leq G</span>.
+And, <span class="math display">\begin{align*}
+        |PH| = \frac{|P||H|}{|P \cap H|}
+    
+\end{align*}</span> By Lagrange’s Theorem, <span class="math inline">H
+\leq P</span> and <span class="math inline">P \cap H \leq P</span> must
+have order of powers of <span class="math inline">p</span>, so <span
+class="math inline">PH</span> be a <span
+class="math inline">p</span>-group. Clearly, <span class="math inline">P
+\leq PH</span> and <span class="math inline">P</span> is the largest
+<span class="math inline">p</span>-group of <span
+class="math inline">G</span>, thus, <span class="math inline">PH =
+P</span>. This means, <span class="math inline">H \leq P</span>. ◻</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> The First Theorem: The existence of Sylow <span
+class="math inline">p</span>-subgroup. Proof by Induction:<br />
+If <span class="math inline">|G| = 1</span>, there is nothing to
+prove.<br />
+Assume inductively the existence of Sylow <span
+class="math inline">p</span>-subgroups for all groups of order less than
+<span class="math inline">|G|</span>.<br />
+<em>In case of</em> <span class="math inline">p | |Z(G)|</span>, then by
+Cauchy’s Theorem, <span class="math inline">Z(G)</span> has a subgroup
+<span class="math inline">N</span> which has order of <span
+class="math inline">p</span>.<br />
+Clearly <span class="math inline">N</span> is Normal, and <span
+class="math inline">G / N = |G| / |N| = p^{a-1}m</span>. By assumption,
+<span class="math inline">G/N</span> has a subgroup <span
+class="math inline">P&#39;</span> of order <span
+class="math inline">p^{\alpha - 1}</span>.<br />
+By The Forth Isomorphism Theorem, Let <span class="math inline">P \leq
+G</span> be a subgroup such that <span class="math inline">P / N =
+P&#39;</span>.<br />
+Then, <span class="math inline">|P| = |P / N| \cdot |N| =
+p^{\alpha}</span>, Thus <span class="math inline">P</span> be a Sylow
+<span class="math inline">p</span>-subgroup of <span
+class="math inline">G</span>.<br />
+<em>In case of</em> <span class="math inline">p \nmid
+|Z(G)|</span>.<br />
+Let <span class="math inline">g_1, \dots, g_r</span> be represectatives
+of the distinct conjugacy classes of <span class="math inline">G</span>,
+not contained in <span class="math inline">Z(G)</span>. Then, The Class
+Equation gives <span class="math display">\begin{align*}
+        |G| = |Z(G)| + \sum_{i=1}^{r} |G:C_G(g_i)|
+    
+\end{align*}</span> Since <span class="math inline">p</span> divides
+<span class="math inline">|G|</span>, if for all <span
+class="math inline">i = 1, 2, \dots, r</span>, <span
+class="math inline">p \mid |G:C_G(g_i)|</span> then <span
+class="math inline">p \mid |Z(G)|</span>, this is contradiction.<br />
+Thus, for some <span class="math inline">j</span>, <span
+class="math inline">p \nmid |G:C_G(g_j)|</span>. Put <span
+class="math inline">H = C_G(g_j) &lt; G</span>. Then, <span
+class="math inline">|H|</span> has a factor of <span
+class="math inline">p^\alpha</span>, by <span class="math inline">p
+\nmid |G:C_G(g_j)|</span>. Now, <span
+class="math display">\begin{align*}
+        |H| = p^\alpha m&#39; \quad(m&#39; &lt; m)
+    
+\end{align*}</span> By assumption, <span class="math inline">H</span>
+has a Sylow <span class="math inline">p</span>-group, order of <span
+class="math inline">p^\alpha</span>.<br />
+Consequently, the existence of Sylow <span
+class="math inline">p</span>-subgroup was shown.<br />
+The Second Theorem: Relation of <span
+class="math inline">p</span>-subgroups.<br />
+The First Theorem gives existence of Sylow <span
+class="math inline">p</span>-subgroups. Let <span class="math inline">P
+\in \text{Syl}_p(G)</span>. Denote that: <span
+class="math display">\begin{align*}
+        S \overset{\textnormal{def}}{=}\{gPg^{-1} \mid g \in G\} =
+\{P_1, \ldots, P_r\}
+    
+\end{align*}</span> Let <span class="math inline">Q \leq G</span> be an
+any <span class="math inline">p</span>-subgroup of <span
+class="math inline">G</span>. And, <span class="math inline">Q</span>
+acts by conjucation on <span class="math inline">S</span>. i.e., <span
+class="math display">\begin{align*}
+        \alpha:Q \times S \to S: (q, P_i) \mapsto qP_i q^{-1}
+    
+\end{align*}</span> Write <span class="math inline">S</span> as a
+disjoint union of orbits under this action by <span
+class="math inline">Q</span>: <span class="math display">\begin{align*}
+        S = \mathcal{O}_1 \cup \mathcal{O}_2 \cup \cdots \cup
+\mathcal{O}_s
+    
+\end{align*}</span> where <span class="math inline">r = |\mathcal{O}_1|
++ \cdots + |\mathcal{O}_s|</span>. Rearrange a set <span
+class="math inline">S</span> as: <span class="math inline">P_i \in
+\mathcal{O}_i,\ 1 \leq i \leq s</span>. Now, using Definition, Lemma,
+and above Theorem, <span class="math display">\begin{align*}
+        |\mathcal{O}_i|
+        \overset{\text{Thm}}{=} |Q : N_Q(P_i)|
+        \overset{\text{def}}{=} |Q : N_G(P_i) \cap Q|
+        \overset{\text{lemma}}{=} |Q : P_i \cap Q|
+    
+\end{align*}</span> for each <span class="math inline">1 \leq i \leq
+s</span>. Since <span class="math inline">Q</span> was arbitrary, Let
+<span class="math inline">Q = P_1</span>, so that <span
+class="math inline">|\mathcal{O}_1| = |P_1 : P_1 \cap P_1| = 1</span>.
+And, for each <span class="math inline">i \geq 2</span>, <span
+class="math inline">P_i \cap P_1 &lt; P_1</span>, <span
+class="math display">\begin{align*}
+        |\mathcal{O}_i| = |P_1 : P_i \cap P_1| &gt; 1
+    
+\end{align*}</span> Since <span class="math inline">P_1 \in
+\text{Syl}_p(G)</span>, that is <span class="math inline">|P_1| =
+p^\alpha</span>, <span class="math inline">|P_1 : P_i \cap P_1| =
+|P_1|/|P_i \cap P_1| = p^k</span> where <span class="math inline">1 \leq
+k &lt; \alpha</span>.<br />
+This means for each <span class="math inline">2 \leq i \leq s</span>,
+<span class="math inline">p</span> divides <span
+class="math inline">|\mathcal{O}_i|</span>. Thus, <span
+class="math display">\begin{align*}
+        r = |\mathcal{O}_1| + (|\mathcal{O}_2| + \cdots +
+|\mathcal{O}_s|) \equiv 1 (\bmod p)
+    
+\end{align*}</span> Now, Proof by Contradiction: Let <span
+class="math inline">Q\leq G</span> be a <span
+class="math inline">p</span>-subgroup. Suppose that for any <span
+class="math inline">1 \leq i \leq r</span>, <span class="math inline">Q
+\nleq P_i</span>.<br />
+Then, <span class="math inline">P_i \cap Q &lt; Q</span> for all <span
+class="math inline">i</span>, this means <span
+class="math display">\begin{align*}
+        |\mathcal{O}_i| = |Q : P_i \cap Q| &gt; 1
+    
+\end{align*}</span> Thus for any <span class="math inline">i</span>,
+<span class="math inline">p</span> divides <span
+class="math inline">|\mathcal{O}_i|</span>, this is Contradiction. This
+proved Relation of <span class="math inline">p</span>-subgroups.<br />
+Finally, The Third Theorem:<br />
+Since Second Theorem, this gives that <span class="math inline">S =
+\text{Syl}_p(G)</span>, thus <span class="math inline">n_p(G) =
+r</span>. That is, <span class="math inline">n_p \equiv 1 (\bmod
+p)</span>.<br />
+Since all Sylow <span class="math inline">p</span>-subgroups are
+Conjugate, for any <span class="math inline">P \in
+\text{Syl}_p(G)</span>, <span class="math display">\begin{align*}
+        n_p = r = |\mathcal{O}_1| = |G:N_G(P)|
+    
+\end{align*}</span> Consequently, Completing the Sylow Theorem. ◻</p>
+</div>
+<h1 id="ring-theory">Ring Theory</h1>
+<h2 id="ring-of-fractions">Ring of Fractions</h2>
+<div class="theorem">
+<p>Let <span class="math inline">R</span> be a Commutative Ring, <span
+class="math inline">D \subset R</span> be a subset such that <span
+class="math inline">\begin{cases}
+        \text{no zero, no zero divisors} \\ \text{closed under
+multiplication}
+    \end{cases}</span>.<br />
+Then, there exists a Commutative Ring <span class="math inline">Q</span>
+with identity satisfies:</p>
+<ol>
+<li><p><span class="math inline">R</span> can embed in <span
+class="math inline">Q</span>, and every element of <span
+class="math inline">D</span> becomes unit in <span
+class="math inline">Q</span>. More precisely, <span
+class="math inline">Q = \{r d^{-1} \mid r \in R,\ d \in
+D\}</span>.</p></li>
+<li><p><span class="math inline">Q</span> is the smallest Ring contaning
+<span class="math inline">R</span> with identity such that every element
+of <span class="math inline">D</span> becomes unit in <span
+class="math inline">Q</span>.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\mathcal{F}
+\overset{\textnormal{def}}{=}\{(r,d) \mid r \in R,\ d \in D\}</span> and
+the relation <span class="math inline">\sim</span> on <span
+class="math inline">\mathcal{F}</span> by <span
+class="math inline">(r_1, d_1) \sim (r_2, d_2) \iff r_1d_2 =
+r_2d_1</span>.<br />
+Then, <span class="math inline">\sim</span> is equivalent relation:
+reflexive and symmetirc are clear, and Suppose that <span
+class="math inline">(r_1, d_1) \sim (r_2, d_2)</span> and <span
+class="math inline">(r_2, d_2) \sim (r_3, d_3)</span>. <span
+class="math display">\begin{align*}
+        r_2d_3 = r_3d_2 \implies r_2 d_1 d_3 = r_3 d_1 d_2 \implies r_1
+d_2 d_3 = r_3 d_1 d_2 \implies d_2 ( r_1 d_3 - r_3 d_1) \implies r_1d_3
+= r_3d_1
+    
+\end{align*}</span> Thus transitivity shown. Define <span
+class="math display">\begin{align*}
+        \frac{r}{d} \overset{\textnormal{def}}{=}[(r,d)] = \{(a,b) \mid
+(a,b) \sim (r,d) \},\ Q \overset{\textnormal{def}}{=}\left\{ \frac{r}{d}
+\;\middle|\; r \in R,\ d \in D \right\}
+    
+\end{align*}</span> And define operations <span class="math inline">+,
+\times</span> on <span class="math inline">Q</span>: <span
+class="math display">\begin{align*}
+        \frac{r_1}{d_1} + \frac{r_2}{d_2}
+\overset{\textnormal{def}}{=}\frac{r_1d_2 + r_2d_1}{d_1 d_2}, \quad
+        \frac{r_1}{d_1} \times \frac{r_2}{d_2}
+\overset{\textnormal{def}}{=}\frac{r_1r_2}{d_1d_2}
+    
+\end{align*}</span> Well-Definedness: If <span
+class="math inline">\displaystyle\frac{r_1}{d_1} =
+\frac{r&#39;_1}{d&#39;_1}</span> and <span
+class="math inline">\displaystyle\frac{r_2}{d_2} =
+\frac{r&#39;_2}{d&#39;_2}</span>, <span
+class="math display">\begin{align*}
+        \frac{r_1d_2 + r_2d_1}{d_1 d_2}
+        = \frac{r_1 d_2 d&#39;_1 d&#39;_2 + r_2 d_1 d&#39;_1
+d&#39;_2}{d_1 d_2 d&#39;_1 d&#39;_2}
+        = \frac{(r_1 d&#39;_1) d_2 d&#39;_2 + (r_2 d&#39;_2) d_1
+d&#39;_1 }{d_1 d_2 d&#39;_1 d&#39;_2}
+        = \frac{(r&#39;_1 d_1) d_2 d&#39;_2 + (r&#39;_2 d_2) d_1
+d&#39;_1 }{d_1 d_2 d&#39;_1 d&#39;_2}
+        = \frac{(r&#39;_1d&#39;_2 + r&#39;_2d&#39;_1)d_1d_2}{d_1d_2
+d&#39;_1 d&#39;_2}
+        = \frac{r&#39;_1d&#39;_2 + r&#39;_2d&#39;_1}{d&#39;_1 d&#39;_2}
+    
+\end{align*}</span> <span class="math display">\begin{align*}
+        \frac{r_1r_2}{d_1d_2}
+        = \frac{r_1 r_2 d&#39;_1 d&#39;_2}{d_1d_2d&#39;_1d&#39;_2}
+        = \frac{(r_1 d&#39;_1) (r_2 d&#39;_2)}{d_1d_2d&#39;_1d&#39;_2}
+        = \frac{(r&#39;_1 d_1) (r&#39;_2 d_2)}{d_1d_2d&#39;_1d&#39;_2}
+        = \frac{r&#39;_1 r&#39;_2 d_1 d_2}{d_1d_2d&#39;_1d&#39;_2}
+        = \frac{r&#39;_1 r&#39;_2}{d&#39;_1d&#39;_2}
+    
+\end{align*}</span> Now, <span class="math inline">(Q, +, \times)</span>
+constructs Commutative Ring with identity: for any <span
+class="math inline">d \in D</span>, put <span
+class="math inline">\displaystyle 0_Q
+\overset{\textnormal{def}}{=}\frac{0}{d},\ 1_Q
+\overset{\textnormal{def}}{=}\frac{d}{d}</span>. Then,</p>
+<ol>
+<li><p><span class="math inline">(R, +, \times)</span> closed under the
+operations since <span class="math inline">D</span> is closed under the
+multiplication.</p></li>
+<li><p><span class="math inline">(R, +)</span> has a zero: <span
+class="math inline">\displaystyle\frac{r_1}{d_1} + 0_Q = \frac{r_1}{d_1}
++ \frac{0}{d} = \frac{r_1 d + 0 d_1}{d_1 d} = \frac{r_1 d}{d_1 d} =
+\frac{r_1}{d_1}</span>.</p></li>
+<li><p><span class="math inline">(R, +)</span> has an inverse: <span
+class="math inline">\displaystyle\frac{r_1}{d_1} + \frac{-r_1}{d_1} =
+\frac{r_1d_1 + (-r_1)d_1}{d_1 d_1} = \frac{[(r_1) + (-r_1)]d_1}{d_1 d_1}
+= \frac{0 d_1}{d_1 d_1} = \frac{0}{d_1 d_1} = 0_Q</span>.</p></li>
+<li><p><span class="math inline">(R, +, \times)</span> satisfies
+distributive law:</p>
+<ol>
+<li><p>The left law: <span class="math display">\begin{align*}
+                \frac{r_1}{d_1} \times \left( \frac{r_2}{d_2} +
+\frac{r_3}{d_3} \right)
+            = &amp;\frac{r_1}{d_1} \times \frac{r_2 d_3 + r_3 d_2}{d_2
+d_3}
+            = \frac{r_1 r_2 d_3 + r_1 r_3 d_2}{d_1 d_2 d_3}
+            = \frac{r_1 r_2 d_1 d_3 + r_1 r_3 d_1 d_2}{d_1 d_2 d_1 d_3}
+            = \frac{r_1 r_2}{d_1 d_2} + \frac{r_2 r_3}{d_2 d_3} \\
+            = &amp;\frac{r_1}{d_1} \times \frac{r_2}{d_2} +
+\frac{r_2}{d_2} \times \frac{r_3}{d_3}
+            
+\end{align*}</span></p></li>
+<li><p>The right law: <span class="math display">\begin{align*}
+                \left(\frac{r_1}{d_1} + \frac{r_2}{d_2}\right) \times
+\frac{r_3}{d_3}
+            = &amp;\frac{r_1 d_2 + r_2 d_1}{d_1 d_2} \times
+\frac{r_3}{d_3}
+            = \frac{r_1 r_3 d_2 + r_2 r_3 d_1}{d_1 d_2 d_3}
+            = \frac{r_1 r_3 d_2 d_3 + r_2 r_3 d_1 d_3}{d_1 d_3 d_2 d_3}
+            = \frac{r_1 r_3}{d_1 d_3} + \frac{r_2 r_3}{d_2 d_3} \\
+            = &amp;\frac{r_1}{d_1} \times \frac{r_3}{d_3} +
+\frac{r_2}{d_2} \times \frac{r_3}{d_3}
+            
+\end{align*}</span></p></li>
+</ol></li>
+<li><p><span class="math inline">(R, \times)</span> has an identity:
+<span class="math inline">\displaystyle\frac{r_1}{d_1} \times 1_Q =
+\frac{r_1}{d_1} \times \frac{d}{d} = \frac{r_1d}{d_1d} =
+\frac{r_1}{d_1}</span>.</p></li>
+<li><p>Elements of <span class="math inline">D</span> become unit in
+<span class="math inline">Q</span>: Define <span
+class="math inline">\iota:R \to Q:r \mapsto
+\displaystyle\frac{rp}{p}</span> where <span class="math inline">p \in
+D</span> is any fixed element in <span
+class="math inline">D</span>.<br />
+Then, <span class="math inline">\iota</span> is Ring-Monomorphsim
+because:</p>
+<ol>
+<li><p>Well-Defined and Injective: <span
+class="math inline">\displaystyle\iota (r_1) = \iota (r_2)
+            \iff \frac{r_1 p}{p} = \frac{r_2 f}{f}
+            \iff (r_1 - r_2) pp = 0
+            \iff r_1 = r_2</span></p></li>
+<li><p>For any <span class="math inline">d \in D</span>, <span
+class="math inline">\iota(d)</span> is a unit of <span
+class="math inline">Q</span>: Put <span
+class="math inline">\displaystyle(\iota(d))^{-1}
+\overset{\textnormal{def}}{=}\frac{p}{dp}</span>, then <span
+class="math display">\begin{align*}
+                \iota(d) \times (\iota(d))^{-1} = \frac{dp}{p} \times
+\frac{p}{dp} = \frac{dpp}{dpp} = 1_Q
+            
+\end{align*}</span> That is, <span class="math inline">\iota</span> is
+embedding from <span class="math inline">R</span> into <span
+class="math inline">Q</span> such that <span
+class="math inline">\iota[D]</span> becomes units of <span
+class="math inline">Q</span> except zero.<br />
+Moreover, if <span class="math inline">D = R \setminus \{0\}</span>,
+then <span class="math inline">Q</span> is field.</p></li>
+</ol></li>
+<li><p><span class="math inline">Q</span> is the <em>smallest</em> ring
+containing <span class="math inline">R</span> with identity such that
+every element of <span class="math inline">D</span> becomes units in
+<span class="math inline">Q</span>.<br />
+Let <span class="math inline">S</span> be an any commutative ring with
+identity,<br />
+and assume that <span class="math inline">\varphi:R \to S</span> is a
+Ring-Monomorphism such that for any <span class="math inline">d \in
+D</span>, <span class="math inline">\varphi(d)</span> is unit in <span
+class="math inline">S</span>.<br />
+Define <span class="math inline">\displaystyle\phi:Q \to S:\frac{r}{d}
+\mapsto \varphi(r) \varphi(d)^{-1}</span>. Then, this <span
+class="math inline">\phi</span> is well-defined and injective: <span
+class="math display">\begin{align*}
+            &amp;\phi \left(\frac{r_1}{d_1} \right) = \phi
+\left(\frac{r_2}{d_2} \right)
+            \iff
+            \varphi(r_1) \varphi(d_1)^{-1} = \varphi(r_2)
+\varphi(d_2)^{-1}
+            \iff
+            \varphi(r_1) \varphi(d_2) = \varphi(r_2) \varphi(d_1)\\
+            \overset{\text{homomor.}}{\iff}
+            &amp;\varphi(r_1 d_2) = \varphi(r_2 d_1)
+            \overset{\text{one-to-one}}{\iff}
+            r_1 d_2 = r_2 d_1
+            \iff
+            \frac{r_1}{d_1} = \frac{r_2}{d_2}
+        
+\end{align*}</span> That is, if a commutative ring <span
+class="math inline">S</span> with identity contains a copy of <span
+class="math inline">R</span> such that the denominator set <span
+class="math inline">D</span> of <span class="math inline">R</span>
+becomes unit in <span class="math inline">S</span>, then <span
+class="math inline">S</span> contains ring of fractions <span
+class="math inline">Q</span> of <span class="math inline">R</span>. Thus
+<span class="math inline">S = Q</span> is the smallest ring that
+satisfies these conditions.</p></li>
+</ol>
+<p> ◻</p>
+</div>
+<h1 id="polynomial-ring">Polynomial Ring</h1>
+<h1 id="field-theory">Field Theory</h1>
+<h1 id="galois-theory">Galois Theory</h1>
+<h1 id="category">Category</h1>
+<h1 id="general-topology">General Topology</h1>
+<h2 id="coproduct-space">Coproduct Space</h2>
+<div class="definition">
+<p>Let <span class="math inline">(X_\alpha, \mathcal{T}_\alpha) \
+(\alpha \in \Lambda)</span> are mutually disjoint Topological Space.
+Define a <strong>Coproduct Topology</strong> <span
+class="math inline">(X_\Pi, \mathcal{T}_\Pi)</span>: <span
+class="math display">\begin{align*}
+        X_\Pi \overset{\textnormal{def}}{=}\bigsqcup_{\alpha \in
+\Lambda} X_\alpha,\
+        \mathcal{T}_\Pi
+\overset{\textnormal{def}}{=}\left\{\bigsqcup_{\alpha \in \Lambda}
+\mathcal{U}_\alpha \;\middle|\; \mathcal{U}_\alpha \in
+\mathcal{T}_\alpha \right\}
+    
+\end{align*}</span> This actually be a Topology:<br />
+<strong>1.</strong> <span class="math inline">\emptyset, X_\Pi \in
+\mathcal{T}_\Pi</span> is clear,<br />
+<strong>2.</strong> Closed under union is clear.<br />
+<strong>3.</strong> Closed under finite intersection, not infinite.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Proof of <strong>3.</strong><br />
+Let a finite collection <span class="math display">\begin{align*}
+        \left\{ \bigsqcup_{\alpha \in \Lambda} \mathcal{U}^1_\alpha,
+\bigsqcup_{\alpha \in \Lambda} \mathcal{U}^2_\alpha, \cdots,
+\bigsqcup_{\alpha \in \Lambda} \mathcal{U}^k_\alpha \right\}
+    
+\end{align*}</span> be given. Then, their intersection be: <span
+class="math display">\begin{align*}
+        \bigcap_{j=1}^k \bigsqcup_{\alpha \in \Lambda}
+\mathcal{U}^j_\alpha
+        = \bigsqcup_{\alpha \in \Lambda} \bigcap_{j=1}^k
+\mathcal{U}^j_\alpha \in \mathcal{T}_\Pi
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X_1, X_2, X_3</span> and <span
+class="math inline">Y_1, Y_2, Y_3</span> are mutually disjoint
+Topological Space, and for each <span class="math inline">i =
+1,2,3</span>, <span class="math display">\begin{align*}
+        f_i:X_i \to Y_i:x \mapsto f_i(x)
+    
+\end{align*}</span> Define a function <span
+class="math display">\begin{align*}
+        f = f_1 \amalg f_2 \amalg f_3:\bigsqcup_{i=1}^3 X_i \to
+\bigsqcup_{i=1}^3 Y_i:x \mapsto \begin{cases}
+            f_1(x) \quad x \in X_1 \\
+            f_2(x) \quad x \in X_2 \\
+            f_3(x) \quad x \in X_3
+        \end{cases}
+     
+\end{align*}</span> where both Domain and Codomain are Coproduct Space.
+(Clearly this function is well-defined.)<br />
+Suppose that:</p>
+<ol>
+<li><p><span class="math inline">f_1</span> is Open map, Closed
+map</p></li>
+<li><p><span class="math inline">f_2</span> is Continuous map, Open
+map</p></li>
+<li><p><span class="math inline">f_3</span> is Continuous map, Closed
+map</p></li>
+</ol>
+<p>Then, The Follwings hold:</p>
+<ol>
+<li><p><span class="math inline">f_1</span> is Continuous map <strong>if
+and only if</strong> <span class="math inline">f</span> is Continuous
+map.</p></li>
+<li><p><span class="math inline">f_2</span> is Open map <strong>if and
+only if</strong> <span class="math inline">f</span> is Open
+map.</p></li>
+<li><p><span class="math inline">f_3</span> is Closed map <strong>if and
+only if</strong> <span class="math inline">f</span> is Closed
+map.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em>  <br />
+1. It follows that: For any open on Codomain <span class="math inline">U
+\in \mathcal{T}_{Y_\Pi}</span>, <span
+class="math display">\begin{align*}
+            f^{-1}[U] &amp;= \{x \in X \mid f(x) \in U\}
+            =
+            \{x \in X_1 \mid f_1(x) \in U\} \cup
+            \{x \in X_2 \mid f_2(x) \in U\} \cup
+            \{x \in X_3 \mid f_3(x) \in U\}\\
+            &amp;= f^{-1}_1[U] \cup f^{-1}_2[U] \cup f^{-1}_3[U]
+        
+\end{align*}</span> Thus, If <span class="math inline">f_1</span> is
+Continuous, then <span class="math inline">f</span> is Continuous map
+since <span class="math inline">f^{-1}[U]</span> is the union of open
+sets.<br />
+And, If <span class="math inline">f</span> is Continuous, then <span
+class="math inline">f^{-1}[U] \cap X_1</span> be Open set and it is
+equal that <span class="math inline">(f^{-1}_1[U] \cup f^{-1}_2[U] \cup
+f^{-1}_3[U]) \cap X_1 = f^{-1}_1[U]</span>.<br />
+2. It follows that: For any open on Domain <span class="math inline">U
+\in \mathcal{T}_{X_\Pi}</span>, <span
+class="math display">\begin{align*}
+            f[U] = f_1[U] \cup f_2[U] \cup f_3[U]
+        
+\end{align*}</span> This, if <span class="math inline">f_2</span> is
+Open map, then <span class="math inline">f</span> is Open map since
+<span class="math inline">f[U]</span> is the union of open sets.<br />
+And, If <span class="math inline">f</span> is Open, then <span
+class="math inline">f[U] \cap Y_2</span> be Open set and it is equal
+that <span class="math inline">(f_1[U] \cup f_2[U] \cup f_3[U]) \cap Y_2
+= f_2[U]</span>.<br />
+3. Similar to the above. ◻</p>
+</div>
+<p>For a specific example, Define for each <span class="math inline">i =
+1,2,3</span>, <span class="math display">\begin{align*}
+        X_i \overset{\textnormal{def}}{=}\{a_i, b_i\}, \quad
+        \begin{cases}
+            \mathcal{T}_{i, D} \overset{\textnormal{def}}{=}\{\emptyset,
+X_i, \{a_i\}, \{b_i\}\} \\
+            \mathcal{T}_{i, I} \overset{\textnormal{def}}{=}\{\emptyset,
+X_i\} \\
+            \mathcal{T}_{i, a} \overset{\textnormal{def}}{=}\{\emptyset,
+X_i, \{a_i\}\} \\
+            \mathcal{T}_{i, b} \overset{\textnormal{def}}{=}\{\emptyset,
+X_i, \{b_i\}\}
+        \end{cases}
+    
+\end{align*}</span> And define functions</p>
+<ol>
+<li><p><span class="math inline">f_1: (X_1, \mathcal{T}_{1, I}) \to
+(X_1, \mathcal{T}_{1, D}):x \mapsto x</span> is Not Continuous, Open,
+Closed.</p></li>
+<li><p><span class="math inline">f_2: (X_2, \mathcal{T}_{2, a}) \to
+(X_2, \mathcal{T}_{2, a}):x \mapsto a_2</span> is Continuous, Open, Not
+Closed.</p></li>
+<li><p><span class="math inline">f_3: (X_1, \mathcal{T}_{3, a}) \to
+(X_1, \mathcal{T}_{3, b}):x \mapsto a_3</span> is Continuous, Not Open,
+Closed.</p></li>
+<li><p><span class="math inline">g_i:(X_i, \mathcal{T}_{i, D}) \to (X_i,
+\mathcal{T}_{i, D}):x \mapsto x</span> is Continuous, Open, Closed for
+each <span class="math inline">i = 1,2,3</span>.</p></li>
+</ol>
+<p>Now, from the above discussion,</p>
+<div class="minipage">
+<ol>
+<li><p><span class="math inline">g_1 \amalg g_2 \amalg g_3</span> is
+Continuous, Open, Closed.</p></li>
+<li><p><span class="math inline">f_1 \amalg g_2 \amalg g_3</span> is Not
+Continuous, Open, Closed.</p></li>
+<li><p><span class="math inline">g_1 \amalg f_2 \amalg g_3</span> is
+Continuous, Not Open, Closed.</p></li>
+<li><p><span class="math inline">g_1 \amalg g_2 \amalg f_3</span> is
+Continuous, Open, Not Closed.</p></li>
+<li><p><span class="math inline">f_1 \amalg f_2 \amalg f_3</span> is Not
+Continuous, Not Open, Not Closed.</p></li>
+<li><p><span class="math inline">g_1 \amalg f_2 \amalg f_3</span> is
+Continuous, Not Open, Not Closed.</p></li>
+<li><p><span class="math inline">f_1 \amalg f_2 \amalg g_3</span> is Not
+Continuous, Not Open, Closed.</p></li>
+<li><p><span class="math inline">f_1 \amalg g_2 \amalg f_3</span> is Not
+Continuous, Open, Not Closed.</p></li>
+</ol>
+</div>
+<div class="minipage">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>No.</strong></th>
+<th style="text-align: center;"><strong>Map</strong></th>
+<th style="text-align: center;"><strong>Continuous</strong></th>
+<th style="text-align: center;"><strong>Open</strong></th>
+<th style="text-align: center;"><strong>Closed</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">g_1 \amalg g_2
+\amalg g_3</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">f_1 \amalg g_2
+\amalg g_3</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">g_1 \amalg f_2
+\amalg g_3</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">g_1 \amalg g_2
+\amalg f_3</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="math inline">f_1 \amalg f_2
+\amalg f_3</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><span class="math inline">g_1 \amalg f_2
+\amalg f_3</span></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><span class="math inline">f_1 \amalg f_2
+\amalg g_3</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;"><span class="math inline">f_1 \amalg g_2
+\amalg f_3</span></td>
+<td style="text-align: center;">No</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="compact-space">Compact Space</h2>
+<div class="definition">
+<p>A Topological Space <span class="math inline">X</span> is
+<em>compact</em> if: every open cover contains a finite subcover.
+i.e.,</p>
+<div class="center">
+<p>If <span class="math inline">\displaystyle X = \bigcup_{\alpha \in
+\Lambda} \mathcal{U}_\alpha</span>, <span
+class="math inline">(\mathcal{U}_\alpha \in \mathcal{T})</span>, then
+there is finite subcover such that <span
+class="math inline">\displaystyle X = \bigcup_{i=1}^N
+\mathcal{U}_{\alpha_i}</span></p>
+</div>
+<p>This is equivalent with:</p>
+<div class="center">
+<p>If <span class="math inline">\displaystyle\emptyset = \bigcap_{\alpha
+\in \Lambda} \mathcal{C}_\alpha</span>, <span
+class="math inline">(\mathcal{C}_\alpha \text{ closed})</span>, then
+there is finite subset such that <span
+class="math inline">\displaystyle\emptyset = \bigcap_{i=1}^N
+\mathcal{C}_{\alpha_i}</span></p>
+</div>
+</div>
+<div class="definition">
+<p>Let <span class="math inline">X</span> be a set. <span
+class="math inline">A \subset \mathcal{P}(X)</span> satisfies <em>finite
+intersection property</em> if:</p>
+<div class="center">
+<p>For all finite subset of <span class="math inline">A</span>, <span
+class="math inline">\{A_i \mid i = 1, 2, \dots, n\} \subset A</span>
+satisfies <span class="math inline">\displaystyle\bigcap_{i=1}^n A_i
+\neq \emptyset</span>.</p>
+</div>
+</div>
+<div class="example">
+<p><strong>Example 9.1</strong>. </p>
+<ol>
+<li><p><em><span class="math inline">X = \mathbb{R}</span>, and let
+<span class="math inline">A = \{(n, \infty) \mid n \in
+\mathbb{N}\}</span>. Then, <span class="math display">\begin{align*}
+            \bigcap_{S \in A} S = \emptyset,\ \bigcap_{\substack{S \in F
+\subset A \\ |F| &lt; \infty}}S \neq \emptyset
+        
+\end{align*}</span></em></p></li>
+<li><p><em><span class="math inline">X = \mathbb{R}</span>, and let
+<span class="math inline">A = \{\mathbb{R} \setminus F \mid |F| &lt;
+\aleph_0\}</span>.</em></p></li>
+</ol>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X</span> be a Topological Space, Then,
+TFAE:</p>
+<ol>
+<li><p><span class="math inline">X</span> is Compact Space.</p></li>
+<li><p>If <span class="math inline">A</span> is a collection of closed
+subsets of <span class="math inline">X</span> that satisfies
+<em>FID</em>, then <span
+class="math inline">\displaystyle\bigcap_{\mathcal{C} \in A}
+\mathcal{C}_i \neq \emptyset</span>.</p></li>
+<li><p>If <span class="math inline">A</span> is a collection of subsets
+of <span class="math inline">X</span> that satisfies <em>FID</em>, then
+<span class="math inline">\displaystyle\bigcap_{S \in A} \overline{S}
+\neq \emptyset</span>.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">a) \implies b)</span>.
+Proof by Contradiction:<br />
+Suppose that <span class="math inline">A \subset \mathcal{P}(X)</span>
+be a collection of closed subsets such that <em>FID</em>.<br />
+Assume that <span class="math inline">\displaystyle\bigcap_{\mathcal{C}
+\in A} \mathcal{C} = \emptyset</span>. Since <span
+class="math inline">X</span> is Compact,</p>
+<div class="center">
+<p><span class="math inline">\displaystyle\emptyset =
+\bigcap_{\mathcal{C} \in A} \mathcal{C}</span> <em>if and only if</em>
+<span class="math inline">\displaystyle X = \bigcup_{\mathcal{C} \in A}
+(X \setminus \mathcal{C})</span>, where <span class="math inline">X
+\setminus \mathcal{C}</span> is open.</p>
+</div>
+<p>This implies that there is a finite subcover:</p>
+<div class="center">
+<p><span class="math inline">\displaystyle X = \bigcup_{i=1}^N (X
+\setminus \mathcal{C}_i)</span> <em>if and only if</em> <span
+class="math inline">\displaystyle\emptyset = \bigcap_{i=1}^N
+\mathcal{C}</span></p>
+</div>
+<p>This is Contradiction with <span class="math inline">A</span>
+satisfies <em>FID</em>.<br />
+<span class="math inline">b) \implies a)</span>. Proof by
+Contraposition:<br />
+Suppose that <span class="math inline">X</span> is not Compact. Then,
+there exists an Open Cover <span class="math inline">\mathcal{O}</span>
+with no finite subcover: i.e.,</p>
+<div class="center">
+<p><span class="math inline">\displaystyle X = \bigcup_{\mathcal{U} \in
+\mathcal{O}} \mathcal{U}</span> <em>if and only if</em> <span
+class="math inline">\displaystyle\emptyset = \bigcap_{\mathcal{U} \in
+\mathcal{O}} (X \setminus \mathcal{U})</span></p>
+</div>
+<p>And,</p>
+<div class="center">
+<p>For any finite subset of <span
+class="math inline">\mathcal{O}</span>, <span class="math inline">F =
+\{\mathcal{U}_i \mid i = 1, \ldots, N\}</span> satisfies <span
+class="math inline">\displaystyle X \supsetneq \bigcup_{i=1}^N
+\mathcal{U}_i</span> <em>if and only if</em> <span
+class="math inline">\displaystyle\emptyset \neq \bigcap_{i=1}^N (X
+\setminus \mathcal{U}_i)</span></p>
+</div>
+<p>Thus, <span class="math inline">\mathcal{K} = \{X \setminus
+\mathcal{U} \mid \mathcal{U} \in \mathcal{O}\}</span> satisfies
+<em>FID</em>, but <span class="math inline">\displaystyle\emptyset
+    = \bigcap_{\mathcal{U} \in \mathcal{O}} (X \setminus \mathcal{U})
+    = \bigcap_{\mathcal{C} \in \mathcal{K}} \mathcal{C}</span>. Thus,
+not <span class="math inline">a)</span> implies not <span
+class="math inline">b)</span>. ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X</span> is Compact Space, <span
+class="math inline">Y</span> is Topological Space, and <span
+class="math inline">f:X \to Y</span> is Continuous Map. Then <span
+class="math inline">f[X]</span> is Compact.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\mathcal{O}</span> be
+an open cover of <span class="math inline">f[X]</span>. i.e, <span
+class="math inline">\displaystyle f[X] \subset \bigcup_{\mathcal{U} \in
+\mathcal{O}} \mathcal{U}</span>. Now, <span
+class="math display">\begin{align*}
+        X \subset f^{-1}[f[X]]
+        \subset f^{-1}\left[\bigcup_{\mathcal{U} \in \mathcal{O}}
+\mathcal{U}\right]
+        = \bigcup_{\mathcal{U} \in \mathcal{O}} \underset{\text{open,
+$f$ conti.}}{\underline{f^{-1}\left[\mathcal{U}\right]}}
+    
+\end{align*}</span> Since <span class="math inline">X</span> is compact,
+there is a finite subcover such that <span
+class="math display">\begin{align*}
+        X \subset \bigcup_{i = 1}^N f^{-1}\left[\mathcal{U}_i\right]
+    
+\end{align*}</span> Consequently, <span
+class="math display">\begin{align*}
+        f[X]
+        \subset f \left[\bigcup_{i = 1}^N
+f^{-1}\left[\mathcal{U}_i\right]\right]
+        = \bigcup_{i = 1}^N f \left[
+f^{-1}\left[\mathcal{U}_i\right]\right]
+        \subset \bigcup_{i = 1}^N \mathcal{U}_i
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p>Closed set of compact space is compact.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">X</span> be a compact,
+and <span class="math inline">E \subset X</span> be a closed subset. Let
+<span class="math inline">\mathcal{O}</span> be an open over of <span
+class="math inline">E</span>.<br />
+Then, <span class="math display">\begin{align*}
+        X = E \cup (X \setminus E) \subset \left( \bigcup_{\mathcal{U}
+\in \mathcal{O}} \mathcal{U} \right) \cup (X \setminus E)
+    
+\end{align*}</span> be an open cover of <span
+class="math inline">X</span>. Thus, there is a finite subcover such that
+<span class="math display">\begin{align*}
+        X = \left( \bigcup_{i=1}^N \mathcal{U}_i \right) \cup (X
+\setminus E)
+        \iff
+        E \subset \bigcup_{i=1}^N \mathcal{U}_i
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X</span> be a Topological Space, and
+<span class="math inline">\beta</span> be a basis of <span
+class="math inline">X</span>. Then, TFAE:</p>
+<ol>
+<li><p><span class="math inline">X</span> is Compact Space.</p></li>
+<li><p>Every open cover consisting of basis elements has a finite
+subcover.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">a) \implies b)</span>.
+Clear by definition of Compact.<br />
+<span class="math inline">b) \implies a)</span>. Let <span
+class="math inline">\{\mathcal{U}_\alpha \mid \alpha \in
+\Lambda\}</span> be an Open cover of <span class="math inline">X</span>.
+That is, <span class="math display">\begin{align*}
+        X
+        = \bigcup_{\alpha \in \Lambda} \mathcal{U}_\alpha
+        = \bigcup_{\alpha \in \Lambda} \bigcup_{\gamma \in
+\Gamma_\alpha} B_\alpha^\gamma
+    
+\end{align*}</span> where <span class="math inline">\{B_\alpha^\gamma
+\mid \gamma \in \Gamma_\alpha\}</span> is subset of basis such that
+<span class="math inline">\displaystyle\bigcup_{\gamma \in
+\Gamma_\alpha} B_\alpha^\gamma = \mathcal{U}_\alpha</span>. Now, by
+<span class="math inline">2)</span>, there is finite subcover such that
+<span class="math display">\begin{align*}
+        X
+        = \bigcup_{i=1}^n \bigcup_{j =1}^m B_{\alpha_i}^{\gamma_j}
+        \subset \bigcup_{i=1}^n \mathcal{U}_{\alpha_i}
+    
+\end{align*}</span> Thus, <span
+class="math inline">\{\mathcal{U}_{\alpha_i} \mid i = 1,2,\dots,
+n\}</span> be a finite subcover. ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">X,Y</span> are Topological Space. Then,
+TFAE:</p>
+<ol>
+<li><p><span class="math inline">X \times Y</span> is Compact.</p></li>
+<li><p><span class="math inline">X</span> and <span
+class="math inline">Y</span> both are Compact.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math inline">a) \implies b)</span> is
+clear since projection preserves Compactness.<br />
+<span class="math inline">b) \implies a)</span> Let <span
+class="math inline">\mathcal{O} \overset{\textnormal{def}}{=}\{U \times
+V \mid U \in \mathcal{T}_X, V \in \mathcal{T}_Y\}</span> be an Open
+cover of <span class="math inline">X \times Y</span>.<br />
+Let <span class="math inline">x \in X</span> fix. Then, <span
+class="math inline">\{x\} \times Y</span> be a Compact, being <span
+class="math inline">\{x\} \times Y \cong Y</span> by Homeomorphism given
+by Projection.<br />
+Then, there is a finite subcover of <span
+class="math inline">\mathcal{O}</span> such that <span
+class="math display">\begin{align*}
+        \{x\} \times Y \subset \bigcup_{i=1}^{n_x} (U^x_{i} \times
+V^x_{i})
+    
+\end{align*}</span> Now, for each <span class="math inline">x \in
+X</span>, define <span class="math inline">\displaystyle U^x
+\overset{\textnormal{def}}{=}\bigcap_{i=1}^{n_x} U^x_i</span>. Then,
+<span class="math inline">U^x</span> is an open set containing <span
+class="math inline">x</span>, and for any <span class="math inline">i =
+1,2,\ldots, n_x</span>, <span class="math inline">U^x \subset
+U^x_i</span>.<br />
+Since <span class="math inline">\{U^x \mid x \in X\}</span> be an open
+cover of <span class="math inline">X</span>, there is a finite subcover
+such that <span class="math display">\begin{align*}
+        X = \bigcup_{i=1}^m U^{x_i}
+    
+\end{align*}</span> being <span class="math inline">X</span> is Compact.
+Now, <span class="math display">\begin{align*}
+        X \times Y
+        = \left( \bigcup_{i=1}^m U^{x_i} \right) \times Y
+        = \bigcup_{i=1}^m \left(U^{x_i} \times Y \right)
+        \subset \bigcup_{i=1}^m \bigcup_{j=1}^{n_{x_i}} (U^{x_i}_j
+\times V^{x_i}_j)
+    
+\end{align*}</span> Thus, <span class="math inline">\{U^{x_i}_j \times
+V^{x_i}_j \mid i = 1,2,\dots, m,\ j= 1,2,\dots, n_{x_i}\}</span> be a
+finite subcover. ◻</p>
+</div>
+<div class="tcolorbox">
+<p>Let <span class="math inline">X</span> be a Topological Space, and
+<span class="math inline">Y</span> is Compact Space.<br />
+Then, for product space <span class="math inline">X \times Y</span>, and
+fixed <span class="math inline">x_0 \in X</span>, following statement
+holds:</p>
+<div class="center">
+<p>For any open <span class="math inline">N \subset X \times Y</span>
+with <span class="math inline">\{x_0\} \times Y \subset N</span>, there
+is an open <span class="math inline">W \in \mathcal{T}_X</span> such
+that <span class="math inline">\{x_0\} \times Y \subset W \times Y
+\subset N</span>.<br />
+</p>
+</div>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Clearly, <span class="math inline">\{x_0\} \times
+Y</span> compact, being <span class="math inline">\{x_0\} \times Y
+\simeq Y</span>.<br />
+For any <span class="math inline">y \in Y</span>, <span
+class="math inline">(x_0, y) \in \{x_0\} \times Y \subset N</span>, thus
+there exist opens <span class="math inline">U \in \mathcal{T}_X</span>
+and <span class="math inline">V \in \mathcal{T}_Y</span> such that <span
+class="math inline">(x_0, y) \in U_y \times V_y \subset N</span>.<br />
+Now, Clearly <span class="math inline">\{U_y \times V_y \subset X \times
+Y \mid y \in Y\}</span> be an open cover of <span
+class="math inline">\{x_0\} \times Y</span>, thus there is a finite
+subcover such that <span class="math display">\begin{align*}
+        \{x_0\} \times Y \subset \bigcup_{i=1}^N (U_{y_i} \times
+V_{y_i}) \subset N
+    
+\end{align*}</span> Set <span class="math inline">\displaystyle W =
+\bigcap_{i=1}^N U_{y_i}</span>. Then, clearly <span
+class="math inline">x_0 \in W</span>, and<br />
+Let <span class="math inline">(x,y) \in W \times Y</span>. Then, since
+<span class="math inline">Y = \displaystyle\bigcup_{i=1}^n
+V_{y_i}</span>, there is <span class="math inline">1 \leq k \leq
+n</span> such that <span class="math inline">y \in V_{y_k}</span>.<br />
+Thus, <span class="math inline">(x,y) \in U_{y_k} \times V_{y_k} \subset
+N</span>, this implies <span class="math inline">W \times Y \subset
+N</span>. ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">Y</span> be a Compact Space. Then, the
+following statements are true, but their converses are false:</p>
+<ol>
+<li><p>If <span class="math inline">X</span> be a Lindelöf Space, then
+the product Topology <span class="math inline">X \times Y</span> be a
+Lindel<span class="math inline">\ddot{o}</span>f Space.</p></li>
+<li><p>If <span class="math inline">X</span> be a Countable Compact
+Space, then the product Topology <span class="math inline">X \times
+Y</span> be a Countable Compact Space.</p></li>
+</ol>
+</div>
+<div class="proof">
+<p><em>Proof.</em> 1. Let <span class="math inline">\mathcal{O}</span>
+be an open cover of <span class="math inline">X \times Y</span>.<br />
+For any <span class="math inline">x \in X</span>, <span
+class="math inline">\{x\} \times Y</span> is compact set, being <span
+class="math inline">\{x\} \times Y \simeq Y</span>. Thus, there is a
+finite subcover of <span class="math inline">\mathcal{O}</span> such
+that <span class="math display">\begin{align*}
+        \{x\} \times Y \subset \bigcup_{j=1}^{N_x} U^x_j \quad (U^x_j
+\in \mathcal{O})
+    
+\end{align*}</span> Since Tube Lemma, there is an open <span
+class="math inline">W_x \in \mathcal{T}_X</span> such that <span
+class="math display">\begin{align*}
+        \{x\} \times Y \subset W_x \times Y \subset \bigcup_{j=1}^{N_x}
+U^x_j
+    
+\end{align*}</span> Meanwhile, since <span class="math inline">X</span>
+is Lindel<span class="math inline">\ddot{o}</span>f, therefore for an
+open cover <span class="math inline">\{W_x \mid x \in X\}</span><br />
+there exists a Countable subcover such that <span
+class="math display">\begin{align*}
+        X \subset \bigcup_{i=1}^\infty W_{x_i}
+    
+\end{align*}</span> Consequently, <span
+class="math display">\begin{align*}
+        X \times Y
+        \subset \left( \bigcup_{i=1}^\infty W_{x_i} \right) \times Y
+        \subset \bigcup_{i=1}^\infty \left( W_{x_i} \times Y \right)
+        \subset \bigcup_{i=1}^\infty \bigcup_{j=1}^{N_{x_i}} U^{x_i}_j
+    
+\end{align*}</span> Now, <span class="math inline">\displaystyle\left\{
+U^{x_i}_j \mid i \in \mathbb{N}, 1 \leq j \leq N_{x_i} \right\} \subset
+\mathcal{O}</span> be a Countable Open Cover of <span
+class="math inline">X \times Y</span>. ◻</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> 2. Let <span class="math inline">\{U_n \subset X
+\times Y \mid n \in \mathbb{N}\}</span> be a Countable open cover of
+<span class="math inline">X \times Y</span>. For each finite subset
+<span class="math inline">F \subset \mathbb{N}</span>, define <span
+class="math display">\begin{align*}
+        V_F \overset{\textnormal{def}}{=}\left\{x \in X \;\middle|\;
+\{x\} \times Y \subset \bigcup_{n \in F} U_n \right\}
+    
+\end{align*}</span> Then <span class="math inline">V_F</span>
+satisfies:<br />
+1) <span class="math inline">V_F</span> is open: Let a finite subset
+<span class="math inline">F \subset \mathbb{N}</span> fix. For each
+<span class="math inline">x \in V_F</span>, <span
+class="math inline">\displaystyle\{x\} \times Y \subset \bigcup_{n \in
+F} U_n</span> by definition.<br />
+Then, there is an open <span class="math inline">W_x \in
+\mathcal{T}_X</span> such that <span
+class="math inline">\displaystyle\{x\} \times Y \subset W_x \times Y
+\subset \bigcup_{n \in F} U_n</span> by Tube Lemma.<br />
+Meanwhile, <span class="math inline">W_x \subset V_F</span> because for
+all <span class="math inline">s \in W_x</span>, <span
+class="math inline">\{s\} \times Y \subset W_x \times Y \subset
+\bigcup_{n \in F} U_n</span>, thus <span class="math inline">s \in
+V_F</span>.<br />
+In summary, for any <span class="math inline">x \in V_F</span>, there is
+an open <span class="math inline">W_x \in \mathcal{T}_X</span> such that
+<span class="math inline">x \in W_x \subset V_F</span>. Consequently,
+<span class="math inline">V_F</span> is open of <span
+class="math inline">X</span>.<br />
+2) <span class="math inline">\{V_F \mid F \subset \mathbb{N}, |F| &lt;
+\infty\}</span> is a Countable Open Cover of <span
+class="math inline">X</span>:<br />
+Countability given by above set is collection of subsets of Countable
+set. Meanwhile,<br />
+For any <span class="math inline">x \in X</span>, there is a finite
+subcover of <span class="math inline">\{U_n \mid n \in
+\mathbb{N}\}</span> such that <span
+class="math inline">\displaystyle\{x\} \times Y \subset \bigcup_{n \in
+F} U_n</span> where <span class="math inline">F</span> finite.<br />
+That is, <span class="math inline">x \in V_F</span>. Now, the open cover
+of <span class="math inline">X</span>, <span
+class="math display">\begin{align*}
+        \{V_{F_x} \mid x \in X\} \subset \{V_F \mid F \subset
+\mathbb{N}\}
+    
+\end{align*}</span> at most Countable. Since <span
+class="math inline">X</span> is Countably Compact Space, there is a
+finite subcover such that <span class="math display">\begin{align*}
+        X \subset \bigcup_{i=1}^N V_{F_i}
+    
+\end{align*}</span> Consequently, <span
+class="math display">\begin{align*}
+        X \times Y \subset \left(\bigcup_{i=1}^N V_{F_i}\right) \times Y
+= \bigcup_{i=1}^N (V_{F_i} \times Y) \subset \bigcup_{i=1}^N \bigcup_{n
+\in F_i} U_n
+    
+\end{align*}</span> That is, <span class="math inline">\{U_i \mid i = 1,
+2, \dots, N,\ n \in F_i\}</span> be a finite subcover. ◻</p>
+</div>
+<h3 id="locally-compact">Locally Compact</h3>
+<h3 id="one-point-compactification">One-point Compactification</h3>
+<h2 id="complete-metric-space">Complete Metric Space</h2>
+<div class="definition">
+<p>Let <span class="math inline">(X, d)</span> be a Metric Space, and
+<span class="math inline">\{p_n\}</span> be a Sequence in <span
+class="math inline">X</span>.<br />
+The Sequence <span class="math inline">\{p_n\}</span> is called
+<em>Cauchy Sequence</em> if:</p>
+<div class="center">
+<p>For any <span class="math inline">\epsilon &gt; 0</span>, there
+exists <span class="math inline">N \in \mathbb{N}</span> such that <span
+class="math inline">m,n \geq N \implies d(p_m, p_n) &lt;
+\epsilon</span>.</p>
+</div>
+<p>A Metric Space <span class="math inline">(X,d)</span> is said to be
+<em>Complete</em> if every Cauchy Sequnces Converge.</p>
+</div>
+<div class="lemma">
+<p>Let <span class="math inline">\{E_n\}</span> be a sequence of closed
+bounded non-empty subsets in a Complete Metric Space <span
+class="math inline">X</span> such that<br />
+<span class="math inline">E_n \supset E_{n+1}</span>. If <span
+class="math inline">\displaystyle\lim_{n \to \infty} \text{diam}E_n =
+0</span>, then <span
+class="math inline">\displaystyle\bigcap_{n=1}^\infty E_n = \{p\}</span>
+for some <span class="math inline">p \in X</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> For each <span class="math inline">n \in
+\mathbb{N}</span>, construct <span class="math inline">p_n \in
+E_n</span>.<br />
+Let <span class="math inline">\epsilon &gt; 0</span> be given. Since
+<span class="math inline">\text{diam} E_n \to 0</span>, there is <span
+class="math inline">N \in \mathbb{N}</span> such that <span
+class="math inline">\text{diam}E_n &lt; \epsilon</span>.<br />
+For any <span class="math inline">m,n \geq M</span>, <span
+class="math inline">E_N</span> contains <span class="math inline">p_m,
+p_n</span>. That is, <span class="math inline">d(p_m, p_n) &lt;
+\epsilon</span>. Thus, <span class="math inline">\{p_n\}</span> be a
+Cauchy sequence of <span class="math inline">X</span>.<br />
+Since <span class="math inline">X</span> is complete, there is a unique
+point <span class="math inline">p \in X</span> such taht <span
+class="math inline">p_n \to p</span>. Let <span class="math inline">N
+\in \mathbb{N}</span> be an integer such that <span
+class="math inline">n \geq N \implies |p_n - p| &lt;
+\epsilon</span>.<br />
+Now, for each <span class="math inline">n \geq N</span>, <span
+class="math inline">E_n</span> has a limit point as <span
+class="math inline">p</span>. And for any <span class="math inline">n
+\in \mathbb{N}</span>, <span class="math inline">E_n</span> contains
+<span class="math inline">E_N, E_{N+1}, \ldots</span>, thus for all
+<span class="math inline">n \in \mathbb{N}</span>, <span
+class="math inline">E_n</span> has a limit point as <span
+class="math inline">p</span>. Meanwhile, <span
+class="math inline">E_n</span> closed, <span class="math inline">p \in
+E_n,\ \forall n \in \mathbb{N}</span>.<br />
+Consequently, <span class="math inline">p \in
+\displaystyle\bigcap_{n=1}^\infty E_n</span>. If there is <span
+class="math inline">q \in X</span> such that <span class="math inline">p
+\neq q</span>, <span class="math inline">q \in
+\displaystyle\bigcap_{n=1}^\infty E_n</span>. Then, <span
+class="math inline">\text{diam} E_n \geq d(p,q) &gt; 0,\ \forall n \in
+\mathbb{N}</span>. ◻</p>
+</div>
+<h3 id="baire-category">Baire Category</h3>
+<div class="definition">
+<p>The Topological Space <span class="math inline">X</span> is called
+<em>Baire Space</em> if:</p>
+<div class="center">
+<p>If <span class="math inline">\{G_n \mid n \in \mathbb{N}\}</span> be
+a Countable Collection of dense open sets of <span
+class="math inline">X</span>, then <span
+class="math inline">\displaystyle\overline{\bigcap_{n=1}^\infty G_n} =
+X</span></p>
+</div>
+<p>In brief, every Countable intersection of dense open sets be dense in
+<span class="math inline">X</span>.</p>
+</div>
+<div class="theorem">
+<p>Locally Compact Hausdorff Space is Baire Space.</p>
+</div>
+<div class="theorem">
+<p>Complete Metric Space is Baire Space.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Suppose that <span class="math inline">\{G_n \mid n
+\in \mathbb{N}\}</span> be a Countable Collection of dense open set of
+Complete Metric Space.<br />
+Let an open <span class="math inline">U \in \mathcal{T}</span> be given.
+Since <span class="math inline">G_n</span> is dense in the Space, <span
+class="math inline">U \cap G_1</span> is non-empty open set.<br />
+Thus, there exists a <span class="math inline">p_1 \in U \cap G_1</span>
+such that for some <span class="math inline">r_1 &gt; 0</span>, <span
+class="math inline">B_{r_1}(p_1) \subset U \cap G_1</span>.<br />
+Then, automatically, <span class="math display">\begin{align*}
+        B_{\frac{r_1}{2}}(p_1) \subset \overline{B_{\frac{r_1}{2}}(p_1)}
+\subset B_{r_1}(p_1) \subset U \cap G_1
+    
+\end{align*}</span> Set <span class="math inline">E_1 = U,\ E_2 =
+B_{\frac{r_1}{2}}(p_1)</span>.<br />
+Suppose that <span class="math inline">E_1, \ldots, E_{n-1}</span> are
+chosen. Then, since <span class="math inline">E_{n-1} \cap
+G_{n-1}</span> is open, being intersection of opens.<br />
+Thus there exists a point <span class="math inline">p_{n-1} \in E_{n-1}
+\cap G_{n-1}</span> and exists <span class="math inline">r_{n-1}</span>
+such that <span class="math display">\begin{align*}
+        B_{r_{n-1}}(p_{n-1}) \subset E_{n-1} \cap G_{n-1} \subset
+E_{n-1}
+    
+\end{align*}</span> This implies that <span
+class="math display">\begin{align*}
+        B_{\frac{r_{n-1}}{2}}(p_{n-1})
+        \subset \overline{B_{\frac{r_{n-1}}{2}}(p_{n-1})}
+        \subset B_{r_{n-1}}(p_{n-1})
+        \subset E_{n-1} \cap G_{n-1}
+        \subset E_{n-1}
+    
+\end{align*}</span> Set <span class="math inline">E_n =
+B_{\frac{r_{n-1}}{2}}(p_{n-1})</span>. Since inductively construction of
+<span class="math inline">\{E_n\}</span>, <span
+class="math inline">E_{n+1} \subset E_n</span> and <span
+class="math inline">\overline{E_n} \subset G_n</span> for all <span
+class="math inline">n \in \mathbb{N}</span>. Consequently, <span
+class="math display">\begin{align*}
+        U \cap \left( \bigcap_{n=1}^\infty G_n \right)
+        = \bigcap_{n=1}^\infty \left(  U \cap G_n \right)
+        \supset \bigcap_{n=1}^\infty \left(  U \cap \overline{E_n}
+\right)
+        = U \cap \left( \bigcap_{n=1}^\infty \overline{E_n} \right)
+        = \bigcap_{n=1}^\infty \overline{E_n}
+        \neq \emptyset
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="definition">
+<p>Let <span class="math inline">X</span> be a Topological Space.<br />
+<span class="math inline">A \subset X</span> is said to be <em>nowhere
+dense subset</em> if <span class="math inline">(\overline{A})^\circ =
+\emptyset</span>.</p>
+<ol>
+<li><p><span class="math inline">B \subset X</span> is called <em>first
+category</em> if <span class="math inline">B</span> can be representive
+by union of countable nowhere dense subsets.</p></li>
+<li><p>If the subset is not first category, then it is said to be
+<em>second category</em>.</p></li>
+</ol>
+</div>
+<h3 id="nowhere-differentiable-function">Nowhere Differentiable
+function</h3>
+<h3 id="banach-fixed-point-theorem">Banach Fixed Point Theorem</h3>
+<div class="definition">
+<p>Let <span class="math inline">f:X \to X</span> be any function. A
+point <span class="math inline">x \in X</span> is called a <em>fixed
+point</em> of <span class="math inline">f</span> if <span
+class="math inline">f(x) = x</span>.</p>
+</div>
+<div class="definition">
+<p>Let <span class="math inline">X</span> be a Metric Space. A map <span
+class="math inline">f: X \to X</span> is called <em>Contractive</em>
+with respect to the metric <span class="math inline">d</span> if:</p>
+<div class="center">
+<p>There exsits <span class="math inline">\alpha \in (0,1)</span> such
+that for all <span class="math inline">x,y \in X</span>, <span
+class="math inline">d(f(x), f(y)) \leq \alpha d(x,y)</span>.</p>
+</div>
+</div>
+<div class="theorem">
+<p><em>Banach Fixed point Theorem</em><br />
+Let <span class="math inline">(X,d)</span> be a Complete Metric Space,
+and <span class="math inline">f: X \to X</span> be a Contractive
+map.<br />
+Then, there exists a unique fixed point of <span
+class="math inline">f</span>, <span class="math inline">x^* \in
+X</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Clearly,</p>
+<div class="center">
+<p>Contractive <span class="math inline">\implies</span> Lipschitz
+Condition <span class="math inline">\implies</span> Continuous.</p>
+</div>
+<p>Thus, <span class="math inline">f</span> is Continuous.<br />
+Let <span class="math inline">x_0 \in X</span> be arbitrary, and
+construct a sequence <span class="math inline">\{x_n\}</span>
+recursively as follows: <span class="math display">\begin{align*}
+        x_{n+1} \overset{\textnormal{def}}{=}f(x_n),\ n \geq 0
+    
+\end{align*}</span> Then, for any <span class="math inline">n \geq
+0</span>, <span class="math display">\begin{align*}
+        d(x_{n+1}, x_n)
+        &amp;= d(f(x_n), f(x_{n-1})) \leq \alpha d(x_n , x_{n-1}) \\
+        &amp;= d(f(x_{n-1}), f(x_{n-2})) \leq \alpha^2 d(x_{n-1} ,
+x_{n-2}) \\
+        &amp; \quad \quad \quad \vdots \\
+        &amp;\leq \alpha^n d(x_1, x_0)
+    
+\end{align*}</span> Let <span class="math inline">\epsilon &gt; 0</span>
+be given. Put <span class="math inline">N \in \mathbb{N}</span> such
+that <span class="math inline">\alpha^N \cdot d(x_1, x_0) &lt; \epsilon
+(1 - \alpha)</span>. Then, <span class="math inline">n \geq m \geq
+N</span> implies that <span class="math display">\begin{align*}
+        d(x_n, x_m)
+        &amp;\leq d(x_n, x_{n-1}) + d(x_{n-1}, x_{n-2}) + \cdots +
+d(x_{m+1}, x_{m}) \\
+        &amp;\leq \alpha^n d(x_{1}, x_{0}) + \alpha^{n-1} d(x_{1},
+x_{0}) + \cdots + \alpha^{m+1} d(x_{1}, x_{0}) \\
+        &amp;= \alpha^{m+1} d(x_{1}, x_{0}) \sum_{r=0}^{n-m-1} \alpha^r
+        &lt; \alpha^{N} d(x_{1}, x_{0}) \sum_{r=0}^{\infty} \alpha^r
+        &lt; \epsilon(1 - \alpha) \frac{1}{1 - \alpha} = \epsilon
+    
+\end{align*}</span> Therefore, <span class="math inline">\{x_n\}</span>
+is Cauchy sequence. Since <span class="math inline">X</span> is
+Complete, for some <span class="math inline">x^* \in X</span>, <span
+class="math inline">\displaystyle\lim_{n \to \infty} x_n = x^*</span>.
+Consequently, <span class="math display">\begin{align*}
+        \lim_{n \to \infty} f(x_n) \overset{f \text{ conti.}}{=}
+f\left(\lim_{n \to \infty} x_n \right) = f(x^*) = \lim_{n \to \infty}
+x_{n+1} = x^*
+    
+\end{align*}</span> ◻</p>
+</div>
+<h2 id="urysohn-metrization-theorem">Urysohn Metrization Theorem</h2>
+<h3 id="urysohn-lemma">Urysohn Lemma</h3>
+<p>Recall that:</p>
+<div class="definition">
+<p><span class="math inline">X</span> is <span
+class="math inline">T_4</span> if: For any disjoint closed set <span
+class="math inline">A</span> and <span class="math inline">B</span>,
+there exist disjoint open <span class="math inline">U,V</span> such that
+<span class="math inline">A \subseteq U</span> and <span
+class="math inline">B \subseteq V</span>.</p>
+</div>
+<div class="lemma">
+<p><span class="math inline">X</span> is <span
+class="math inline">T_4</span> Space if and only if For any closed <span
+class="math inline">C</span> and open <span class="math inline">U</span>
+with <span class="math inline">C \subseteq U</span>, there exists open
+<span class="math inline">O</span> such that <span
+class="math display">\begin{align*}
+        \underset{\text{closed}}{C} \subseteq
+        \underset{\text{open}}{O} \subseteq
+        \underset{\text{closed}}{\overline{O}} \subseteq
+        \underset{\text{open}}{U}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Proof of the left direction only.<br />
+Let <span class="math inline">X</span> be a <span
+class="math inline">T_4</span> Space, and <span class="math inline">C
+\subset X</span> be a closed, <span class="math inline">U</span> be a
+open containing <span class="math inline">C</span>. Then, <span
+class="math inline">C \subset U</span> implies <span
+class="math inline">U^c \subset C^c</span>, thus <span
+class="math inline">U^c</span> is a closed set disjoint from <span
+class="math inline">C</span>. By <span class="math inline">T_4</span>
+condition, There exist disjoint opens <span class="math inline">O,
+O&#39;</span> such that <span class="math inline">C \subset O</span> and
+<span class="math inline">U^c \subset O&#39; \iff O&#39;^c \subset
+U</span>.<br />
+Since <span class="math inline">O \cap O&#39; = \emptyset \iff O \subset
+O&#39;^c</span>, <span class="math inline">O</span> contained in <span
+class="math inline">U</span>, this implies that <span
+class="math inline">C \subset O \subset U</span>.<br />
+Since closure is the smallest closed set such that contains it,
+consequently <span class="math inline">C \subset O \subset \overline{O}
+\subset O&#39;^c \subset U</span>. ◻</p>
+</div>
+<div class="definition">
+<p>Let <span class="math inline">X</span> be a Toplogical Space, and
+<span class="math inline">A, B \subset X</span> are disjoint closed
+subset.<br />
+A real-valued Continuous map <span class="math inline">f:X \to
+[a,b]</span> is called <em>Urysohn function</em> for <span
+class="math inline">A</span> and <span class="math inline">B</span> if:
+<span class="math inline">f|_A = a</span> and <span
+class="math inline">f|_B = b</span>.<br />
+In another form, <span class="math display">\begin{align*}
+        f:X \to [a,b]: x \to
+        \begin{cases}
+            a &amp;x \in A \\
+            b &amp;x \in B \\
+            f(x) &amp;x \notin A \cup B
+        \end{cases}
+    
+\end{align*}</span></p>
+</div>
+<div class="lemma">
+<p><em>Urysohn Lemma</em><br />
+<span class="math inline">T_4</span> Space has an Urysohn function for
+any two disjoint closed subsets.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Generalization is the last thing to proven, first of
+all, prove in case of <span class="math inline">[a,b] = [0,1]</span>.
+This proof consists by three Step.<br />
+Let <span class="math inline">X</span> be a <span
+class="math inline">T_4</span> Space, and <span class="math inline">A,B
+\subset X</span> be closed subsets.<br />
+<em>Step 1. Construct a Chain of Open sets with Dyadic Rational
+Indices.</em><br />
+Consider a set of <em>Dyadic Rationals</em> <span class="math inline">D
+\overset{\textnormal{def}}{=}\left\{ \frac{k}{2^n} \;\middle|\; n,k \in
+\mathbb{N},\ k \leq 2^n-1 \right\}</span>. We will show that the
+following statement holds: <span class="math display">\begin{align*}
+        \text{For any $r,s \in D$ with $r &lt; s$, there exist open sets
+$U_r, U_s$ such that $A \subseteq \overline{U}_r \subseteq U_s \subseteq
+X \setminus B$} \tag{$*$} \label{Dyadic}
+    
+\end{align*}</span> For this, Enough to Show that: For any <span
+class="math inline">k \in \mathbb{N}</span>, there exists a Chain as:
+<span class="math display">\begin{align*}
+        A \subseteq U_\frac{1}{2^k} \subseteq \overline{U}_\frac{1}{2^k}
+\subseteq U_\frac{2}{2^k} \subseteq \overline{U}_\frac{2}{2^k} \subseteq
+\cdots \subseteq U_\frac{2^k-1}{2^k} \subseteq
+\overline{U}_\frac{2^k-1}{2^k} \subseteq X \setminus B
+    
+\end{align*}</span> (Note that this opens in the Chain are not necessary
+distinct: For instance, if Ambient Space is Finite, then the Space is
+<em>Noetherian</em>. That is, <span class="math inline">X</span>
+satisfies Ascending Chain Condition for open sets.)<br />
+Let <span class="math inline">k = 1</span>. Then, By <span
+class="math inline">T_4</span> condition gives that: There exists an
+open set <span class="math inline">U_1</span> such that <span
+class="math display">\begin{align*}
+        A \subseteq U_1 \subseteq \overline{U_1} \subseteq X \setminus B
+    
+\end{align*}</span> Now, naming this <span
+class="math inline">U_1</span> as <span
+class="math inline">U_\frac{1}{2}</span>, proved when <span
+class="math inline">k = 1</span>.<br />
+Suppose that for some <span class="math inline">k &gt; 1</span>, the
+Chain exists as: <span class="math display">\begin{align*}
+        \underset{\text{closed}}{A}
+        &amp;\overset{*1}{\subseteq}
+\underset{\text{open}}{U_{\frac{1}{2^k}}}
+        \subseteq \underset{\text{closed}}{\overline{U}_{\frac{1}{2^k}}}
+        \overset{*2}{\subseteq}
+\underset{\text{open}}{U_{\frac{2}{2^k}}}
+        \subseteq \cdots
+        \overset{*2^k -1}{\subseteq}
+\underset{\text{open}}{U_{\frac{2^k-1}{2^k}}}
+        \subseteq
+\underset{\text{closed}}{\overline{U}_{\frac{2^k-1}{2^k}}}
+        \overset{*2^k}{\subseteq} \underset{\text{open}}{X \setminus B}
+    
+\end{align*}</span> By repeatedly applying the <span
+class="math inline">T_4</span> condition <span
+class="math inline">2^k</span> times, as indicated by the indices <span
+class="math inline">*1, *2, \dots, *2^k</span>, we can construct <span
+class="math inline">2^k</span> open sets such that: <span
+class="math display">\begin{align*}
+        &amp; A \subseteq U_{\frac{1}{2^{k+1}}} \subseteq
+\overline{U}_{\frac{1}{2^{k+1}}}
+        \subseteq U_{\frac{1}{2^k}} \subseteq
+\overline{U}_{\frac{1}{2^k}}
+        \subseteq U_{\frac{3}{2^{k+1}}} \subseteq
+\overline{U}_{\frac{3}{2^{k+1}}}
+        \subseteq U_{\frac{2}{2^k}} \subseteq
+\overline{U}_{\frac{2}{2^k}} \
+        &amp; \subseteq \cdots \subseteq
+        U_{\frac{2^k-1}{2^k}} \subseteq \overline{U}_{\frac{2^k-1}{2^k}}
+        \subseteq U_{\frac{2^{k+1}-1}{2^{k+1}}} \subseteq
+\overline{U}_{\frac{2^{k+1}-1}{2^{k+1}}}
+        \subseteq X \setminus B
+    
+\end{align*}</span> Finally, Step 1 proved.<br />
+<em>Step 2. Construct an Urysohn Function.</em><br />
+</p>
+<figure data-latex-placement="h!">
+<div class="minipage">
+<p>Define a map <span class="math inline">f:X \to [0,1]</span> as: <span
+class="math display">\begin{align*}
+                f(x) =
+                \begin{cases}
+                    0 &amp; \displaystyle x \in \bigcap_{t \in D} U_t
+\\[2ex]
+                    \sup\{t \in D \mid x \notin U_t\} &amp;
+\displaystyle x \notin \bigcap_{t \in D} U_t
+                \end{cases}
+            
+\end{align*}</span></p>
+</div>
+<div class="minipage">
+
+</div>
+</figure>
+<p>Then, this map <span class="math inline">f</span> is well-defined by
+<a href="#Dyadic"><span class="math inline">(*)</span></a> and <span
+class="math inline">\sup D \leq 1</span>. And <span
+class="math inline">f</span> satisfies that:</p>
+<ol>
+<li><p><span class="math inline">\forall r \in D,\ x \in A \subset
+U_r</span>. Thus, <span class="math inline">f(x) = 0</span> if <span
+class="math inline">x \in A</span>.</p></li>
+<li><p><span class="math inline">\forall r \in D,\ x \in B \subset X
+\setminus U_r</span>. Thus, <span class="math inline">f(x) = \sup D =
+1</span> if <span class="math inline">x \in B</span>.</p></li>
+<li><p>If <span class="math inline">x \in \overline{U}_r</span>, then
+for every <span class="math inline">s &gt; r</span>, <span
+class="math inline">x \in \overline{U}_r \subset U_s</span>. Thus, <span
+class="math inline">f(x) \leq r</span>. In Contrapositive, <span
+class="math inline">f(x) &gt; r \implies x \notin
+\overline{U}_r</span>.<br />
+(If <span class="math inline">f(x) = \sup\{t \in D \mid x \notin U_t \}
+&gt; r</span>, then there is <span class="math inline">s \in D</span>
+such that <span class="math inline">s&gt;r</span> and <span
+class="math inline">x \notin U_s</span>, Contradiction.)</p></li>
+<li><p>If <span class="math inline">x \notin U_r</span>, then, <span
+class="math inline">f(x) \geq r</span>. In Contrapositive, <span
+class="math inline">f(x) &lt; r \implies x \in U_r</span>.</p></li>
+</ol>
+<p>Now, show that this map <span class="math inline">f</span> is
+Continuous map: Let <span class="math inline">x \in X</span> be fixed
+arbitrarlily, and <span class="math inline">\epsilon &gt; 0</span> be
+given.<br />
+<em>In Case of <span class="math inline">0 &lt; f(x) &lt;
+1</span>.</em><br />
+Since Density of Dyadic Rationals, Choose <span class="math inline">r,s
+\in D</span> such that <span class="math inline">f(x) - \epsilon &lt; r
+&lt; f(x) &lt; s &lt; f(x) + \epsilon</span>.<br />
+Now, we obtain that: <span class="math display">\begin{align*}
+        x
+        \overset{(*)}{\in} U_s \setminus \overline{U}_r
+        \overset{(**)}{\subseteq} f^{-1}[(f(x) - \epsilon, f(x) +
+\epsilon)]
+    
+\end{align*}</span> <span class="math inline">(*)</span> directly given
+by above properties, <span class="math inline">(**)</span> given
+applying the fact that <span class="math inline">x \in U_s \subset
+\overline{U}_s</span> and <span class="math inline">x \notin
+\overline{U}_r</span>.<br />
+<em>In Case of <span class="math inline">f(x) = 0</span>.</em><br />
+Choose <span class="math inline">r \in D</span> such that <span
+class="math inline">f(x) = 0 &lt; r &lt; \epsilon = f(x) +
+\epsilon</span>. Then, <span class="math display">\begin{align*}
+        x \in U_r \subset f^{-1}[(f(x), f(x) + \epsilon)]
+    
+\end{align*}</span> <em>In Case of <span class="math inline">f(x) =
+1</span>.</em><br />
+Choose <span class="math inline">r \in D</span> such that <span
+class="math inline">f(x) - \epsilon = 1 - \epsilon &lt; r &lt; 1 =
+f(x)</span>. Then, <span class="math display">\begin{align*}
+        x \in X \setminus U_r \subset f^{-1}[(f(x) - \epsilon, f(x))]
+    
+\end{align*}</span> Consequently, <span class="math inline">f</span> is
+Continuous map on <span class="math inline">[0,1]</span> such that <span
+class="math inline">f|_A = 0</span> and <span class="math inline">f|_B =
+1</span>.<br />
+<em>Step 3. Generalization.</em><br />
+Since <span class="math inline">[0,1] \cong [a,b]</span> for any <span
+class="math inline">a&lt;b</span>, let <span class="math inline">g:[0,1]
+\to [a,b]:x \mapsto (1-x)a + xb</span> be a Homeomorphism.<br />
+Then, <span class="math inline">h = g \circ f:X \to [a,b]</span> becomes
+a Continuous map such that <span class="math inline">h|_A = a</span> and
+<span class="math inline">h|_B = b</span>. ◻</p>
+</div>
+<h3 id="tietze-extension-theorem">Tietze Extension Theorem</h3>
+<div class="theorem">
+<p><em>Tietze Extension Theroem</em><br />
+Let <span class="math inline">X</span> be a <span
+class="math inline">T_4</span> Space, and <span class="math inline">A
+\subseteq X</span> be a closed subset.<br />
+For any Continuous map <span class="math inline">f:A \to
+\mathbb{R}</span>, there exists a Continuous map: <span
+class="math display">\begin{align*}
+        g:X \to \mathbb{R} \ \text{ s.t. }\ g|_A = f
+    
+\end{align*}</span> This <span class="math inline">g</span> is called
+<em>extension</em> of <span class="math inline">f</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> This proof consists by three steps.<br />
+<em>Step 1.</em> First, we will show that: <span
+class="math display">\begin{align*}
+        \text{For any Continuous map $f:A \to [-r, r]$,
+        there is a Continuous map $h:X \to \mathbb{R}$} \text{ s.t. }
+        \begin{cases}
+            \forall x \in X,\ |h(x)| \leq \frac{1}{3}r \\
+            \forall a \in A,\ |f(a) - h(a)| \leq \frac{2}{3}r
+        \end{cases}
+        \tag{$*$} \label{contimaprr}
+    
+\end{align*}</span> Set <span class="math display">\begin{align*}
+        I_1 \overset{\textnormal{def}}{=}\left[-r,
+-\frac{1}{3}r\right],\
+        I_2 \overset{\textnormal{def}}{=}\left[-\frac{1}{3}r,
+\frac{1}{3}r\right],\
+        I_3 \overset{\textnormal{def}}{=}\left[\frac{1}{3}r, r\right]
+    
+\end{align*}</span> Then, the preimage of continuous map preserves
+closed and <span class="math inline">A</span> is closed subspace of
+<span class="math inline">X</span>, <span
+class="math inline">f^{-1}[I_1]</span> and <span
+class="math inline">f^{-1}[I_3]</span> are closed of <span
+class="math inline">X</span>.<br />
+And, <span class="math inline">I_1</span> and <span
+class="math inline">I_3</span> are disjoint, thus <span
+class="math inline">f^{-1}[I_1 \cap I_3] = f^{-1}[I_1] \cap f^{-1}[I_3]
+= \emptyset</span>.<br />
+Now, apply the <em>Urysohn Lemma</em>: There exists an Urysohn function
+<span class="math inline">h:X \to I_2</span> for <span
+class="math inline">f^{-1}[I_1]</span> and <span
+class="math inline">f^{-1}[I_3]</span>.<br />
+Clearly, this map <span class="math inline">h</span> satisfies the first
+condition in <span class="math inline">(*)</span>. And, for show the
+second condition, let <span class="math inline">a \in A</span> be
+given.<br />
+If <span class="math inline">a \in f^{-1}[I_1]</span>, then <span
+class="math inline">f(a) \in I_1</span> and <span
+class="math inline">h(a) = -\frac{1}{3}r</span>, thus <span
+class="math inline">|f(a) - h(a)| \leq \frac{2}{3}r</span>.<br />
+If <span class="math inline">a \in f^{-1}[I_3]</span>, then <span
+class="math inline">f(a) \in I_3</span> and <span
+class="math inline">h(a) = \frac{1}{3}r</span>, thus <span
+class="math inline">|f(a) - h(a)| \leq \frac{2}{3}r</span>.<br />
+If <span class="math inline">a \notin (f^{-1}[I_1]\cup
+f^{-1}[I_3])</span>, then <span class="math inline">f(a),h(a) \in
+I_2</span>, thus <span class="math inline">|f(a) - h(a)| \leq
+\frac{2}{3}r</span>.<br />
+Therefore, the second condition satisfied.<br />
+<em>Step 2.</em> We will show that: for any <span
+class="math inline">f:A \to [-1,1]</span>, there exists an extension of
+<span class="math inline">f</span>.<br />
+Apply the result in Step 1, there exists a Continuous map: <span
+class="math display">\begin{align*}
+        h_1:X \to \mathbb{R} \text{ s.t. }\begin{cases}
+            \forall x \in X,\ |h_1(x)| \leq \frac{1}{3} \\
+            \forall a \in A,\ |f(a) - h_1(a)| \leq \frac{2}{3}
+        \end{cases}
+    
+\end{align*}</span> Now, the second condition of <span
+class="math inline">h_1</span>, the continuous map <span
+class="math inline">f-h_1:A \to \left[-\frac{2}{3}, \frac{2}{3}\right]:x
+\to f(x) - h_1(x)</span> is well-defined.<br />
+Again, there exists a Continuous map: <span
+class="math display">\begin{align*}
+        h_2:X \to \mathbb{R} \text{ s.t. }
+        \begin{cases}
+            \forall x \in X,\ |h_2(x)| \leq \frac{1}{3} \cdot
+\frac{2}{3}\\
+            \forall a \in A,\ |f(a) - h_1(a) - h_2(a)| \leq
+\left(\frac{2}{3}\right)^2
+        \end{cases}
+    
+\end{align*}</span> Inductively, for any <span class="math inline">n \in
+\mathbb{N}</span>, there exists a Continuous map: <span
+class="math display">\begin{align*}
+        h_n:X \to \mathbb{R} \text{ s.t. }
+        \begin{cases}
+            \forall x \in X,\ |h_n(x)| \leq \frac{1}{3} \cdot
+\left(\frac{2}{3}\right)^{n-1}\\
+            \forall a \in A,\ |f(a) - h_1(a) - h_2(a) - \cdots - h_n(a)|
+\leq \left(\frac{2}{3}\right)^n
+        \end{cases}
+    
+\end{align*}</span> Define a map <span
+class="math display">\begin{align*}
+        g:X \to [-1,1]:x \mapsto \sum_{n=1}^{\infty} h_n(x)
+    
+\end{align*}</span> For any <span class="math inline">x \in X</span>,
+<span class="math display">\begin{align*}
+        |g(x)| = \left| \sum_{n=1}^{\infty} h_n(x) \right| \leq
+\sum_{n=1}^{\infty} |h_n(x)| \leq \sum_{n=1}^{\infty} \frac{1}{3} \cdot
+\left(\frac{2}{3}\right)^{n-1} = \frac{1}{3} \cdot \frac{1}{1 -
+\frac{2}{3}} = 1
+    
+\end{align*}</span> Therefore, this map is well-defined. And,
+<em>Weierstrass M-test</em> gives that <span
+class="math inline">\displaystyle\sum_{n=1}^{\infty} h_n(x)</span>
+converges uniformly.<br />
+Moreover, for any <span class="math inline">a \in A</span>, <span
+class="math display">\begin{align*}
+        \left|f(a) - \sum_{k=1}^{n} h_k(a) \right| \leq
+\left(\frac{2}{3}\right)^n
+        \implies
+        \left|f(a) - \sum_{n=1}^{\infty} h_n(a) \right| = \left|f(a) -
+g(a) \right| = 0
+    
+\end{align*}</span> That is, <span class="math inline">g</span> is
+Continuous on <span class="math inline">X</span> and <span
+class="math inline">g|_A = f</span>. Therefore, <span
+class="math inline">g</span> is extension of <span
+class="math inline">f</span>.<br />
+<em>Step 3.</em> Finally, we generalize the result in Step 2.:<br />
+Let <span class="math inline">f:A \to [a,b]</span> be a Continuous map
+on the closed subspace <span class="math inline">A</span>. And, let
+<span class="math inline">\varphi:[a,b] \to [-1,1]</span> be a
+Homeomorphism.<br />
+Then, <span class="math inline">\varphi \circ f:A \to [-1,1]</span> is
+Continuous map, thus there exists an extension <span
+class="math inline">g:X \to [-1, 1]</span> such that <span
+class="math inline">g|_A = \varphi \circ f</span>.<br />
+Now, <span class="math inline">\varphi^{-1} \circ g:X \to [a, b]</span>
+is Continuous, and <span class="math inline">(\varphi^{-1} \circ g)|_A =
+\varphi^{-1} \circ \varphi \circ f = f</span>, Therefore this <span
+class="math inline">\varphi^{-1} \circ g</span> is the extension of
+<span class="math inline">f</span>.<br />
+Let <span class="math inline">f:A \to \mathbb{R}</span> be a Continuous
+map on the closed subspace <span class="math inline">A</span>.<br />
+And, let <span class="math inline">\varphi:\mathbb{R} \to (-1,1)</span>
+be a Homeomorphism. Then, the map <span
+class="math inline">\phi:\mathbb{R} \to [-1, 1]: x \mapsto
+\varphi(x)</span> is still Continuous.<br />
+Now, The Continuous map <span class="math inline">\phi \circ f:A \to
+[-1,1]</span> has an extension <span class="math inline">g:X \to
+[-1,1]</span> such that <span class="math inline">g|_A = \phi \circ
+f</span>.<br />
+Put <span class="math inline">B = g^{-1}[\{-1, 1\}]</span>. Then <span
+class="math inline">B</span> is Closed on <span
+class="math inline">X</span>, and <span class="math inline">A \cap B =
+\emptyset</span>. Now, apply the Urysohn Lemma to this,<br />
+there exists an Urysohn function for <span class="math inline">A</span>
+and <span class="math inline">B</span>: Continuous map <span
+class="math inline">\gamma:X \to [0,1]</span> such that <span
+class="math inline">\gamma|_A = 1</span> and <span
+class="math inline">\gamma|_B = 0</span>.<br />
+Define a map <span class="math inline">\eta:X \to (-1, 1):x \mapsto g(x)
+\gamma(x)</span>. Then, if <span class="math inline">g(x) = 1</span> or
+<span class="math inline">g(x) = -1</span>, then <span
+class="math inline">x \in B</span>, thus <span class="math inline">g(x)
+\gamma(x) = 0</span>.<br />
+Therfore, <span class="math inline">\eta</span> is well-defined. And,
+for any <span class="math inline">a \in A</span>, <span
+class="math inline">\eta(a) = g(a) \gamma(a) = g(a)</span>, thus <span
+class="math inline">\eta|_A = \phi \circ f</span>.<br />
+Consequently, the map <span class="math inline">\phi^{-1}\circ
+\eta</span> is an extension of <span class="math inline">f</span>, we
+wanted. ◻</p>
+</div>
+<p>Recall that:</p>
+<div class="definition">
+<p><span class="math inline">X</span> is <span
+class="math inline">T_1</span> if: For any distinct <span
+class="math inline">x,y \in X</span>, there exist open sets <span
+class="math inline">U_x, U_y</span> such that <span
+class="math inline">\begin{cases}
+        x \in U_x,\ x \notin U_y \\
+        y \notin U_x,\ y \in U_y \\
+    \end{cases}</span>.</p>
+</div>
+<div class="lemma">
+<p><span class="math inline">X</span> is <span
+class="math inline">T_1</span> if and only if For any <span
+class="math inline">x \in X</span>, a singleton <span
+class="math inline">\{x\}</span> is closed in <span
+class="math inline">X</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> The left direction is clear.<br />
+Let <span class="math inline">x \in X</span>. Then, for any <span
+class="math inline">y \in X</span> with <span class="math inline">y \neq
+x</span>, <span class="math inline">T_1</span> condition gives that
+there is an open set such that <span class="math inline">y \in
+U_y</span> and <span class="math inline">x \notin U_y</span>.<br />
+Now, the union <span class="math display">\begin{align*}
+        \bigcup_{\substack{y \in X \\ y \neq x}} U_y = X \setminus \{x\}
+    
+\end{align*}</span> is open by definition. ◻</p>
+</div>
+<h3 id="urysohn-metrization-theorem-1">Urysohn Metrization Theorem</h3>
+<div class="theorem">
+<p><em>Urysohn Metrization Theroem</em><br />
+If <span class="math inline">X</span> is a Second-Countable Regular
+Space, then <span class="math inline">X</span> is Metrizable.</p>
+</div>
+<h1 id="algebraic-topology">Algebraic Topology</h1>
+<h1 id="basic-analysis">Basic Analysis</h1>
+<h2 id="tests-for-series">Tests for Series</h2>
+<h3 id="integral-test">Integral Test</h3>
+<div class="theorem">
+<p>Let <span class="math inline">f:[1, \infty) \to \mathbb{R}</span> be
+a decreasing function which satisfies <span
+class="math inline">\begin{cases}
+        \displaystyle\lim_{x \to \infty} f(x) = 0 \\
+        f &gt; 0\end{cases}</span>. Then,</p>
+<div class="center">
+<p><span class="math inline">\displaystyle\int_{1}^{\infty} f(x)
+dx</span> converges <em>if and only if</em> <span
+class="math inline">\displaystyle\sum_{k=1}^{\infty} f(k)</span>
+converges.</p>
+</div>
+<p>Futhermore, put <span class="math inline">d_n
+\overset{\textnormal{def}}{=}\displaystyle\sum_{k=1}^{n} f(k) -
+\int_{1}^{n}f(x) dx</span>, then for any <span class="math inline">n \in
+\mathbb{N}</span>, <span class="math inline">0 &lt; f(n+1) \leq d_{n+1}
+\leq d_n \leq f(1)</span>, and<br />
+for any <span class="math inline">k \in \mathbb{N}</span>, <span
+class="math inline">0 \leq d_k - \displaystyle\lim_{n \to \infty} d_n
+\leq f(k)</span>. (Clearly, <span
+class="math inline">\displaystyle\lim_{n \to \infty} d_n</span>
+exists.)</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Since <span class="math display">\begin{align*}
+        &amp;\int_{1}^{n+1} f(x) dx = \sum_{k=1}^{n} \int_{k}^{k+1} f(x)
+        \mathrel{\overset{\mathclap{\substack{\text{decreasing} \\
+\vspace{0.25em} \downarrow}}}{\le}} \sum_{k=1}^{n} \int_{k}^{k+1} f(k) =
+\sum_{k=1}^{n} f(k) \\
+        \implies &amp;f(n+1) = \sum_{k=1}^{n+1} f(k) - \sum_{k=1}^{n}
+f(k) \leq \sum_{k=1}^{n+1} f(k) - \int_{1}^{n+1} f(x) dx = d_{n+1}
+    
+\end{align*}</span> And, <span class="math display">\begin{align*}
+        d_n - d_{n+1} = \int_{n}^{n+1} f(x) dx - f(n+1) \geq
+\int_{n}^{n+1} f(n+1) dx - f(n+1) = 0
+    
+\end{align*}</span> Immediate <span class="math inline">d_n</span>
+converges, being bounded and decreasing. That is, <span
+class="math display">\begin{align*}
+        \lim_{n \to \infty} d_n
+        = \lim_{n \to \infty} \left( \sum_{k=1}^{n} f(k) - \int_{1}^{n}
+f(x) dx \right)
+    
+\end{align*}</span> converges. Meanwhile, since <span
+class="math display">\begin{align*}
+        0 \leq d_n - d_{n+1}
+        = \int_{n}^{n+1} f(x) dx - f(n+1)
+        \leq \int_{n}^{n+1} f(n) dx - f(n+1)
+        = f(n) - f(n+1)
+    
+\end{align*}</span> Now, telescope: <span
+class="math display">\begin{align*}
+        0 \leq d_k - \lim_{n \to \infty} d_n \leq f(k) - \lim_{n \to
+\infty} f(n+1) = f(k)
+    
+\end{align*}</span> ◻</p>
+</div>
+<h3 id="ratio-test">Ratio Test</h3>
+<div class="theorem">
+<p>Let <span class="math inline">\sum a_n</span> be given.<br />
+<span class="math inline">\displaystyle\sum_{n=1}^{\infty} a_n</span>
+converges if: <span class="math inline">\displaystyle\limsup_{n \to
+\infty} \left| \frac{a_{n+1}}{a_n} \right| &lt; 1</span>.<br />
+<span class="math inline">\displaystyle\sum_{n=1}^{\infty} a_n</span>
+diverges if: <span class="math inline">\displaystyle n_0 \in
+\mathbb{N}</span> such that <span class="math inline">\forall n \geq
+n_0</span>, <span class="math inline">\displaystyle\left|
+\frac{a_{n+1}}{a_n} \right| \geq 1</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Choose <span class="math inline">\beta &lt; 1</span>
+such that for some <span class="math inline">N \in \mathbb{N}</span>,
+<span class="math inline">n \geq N \implies \displaystyle\left|
+\frac{a_{n+1}}{a_n} \right| &lt; \beta &lt; 1</span>.<br />
+Then, <span class="math display">\begin{align*}
+        &amp;|a_{N+1}| &lt; \beta |a_N| \\
+        &amp;|a_{N+2}| &lt; \beta |a_{N+1}| &lt; \beta^2 |a_N| \\
+        &amp; \quad \quad \quad \ \vdots \\
+        &amp;|a_{N+p}| &lt; \beta^p |a_N| \quad (p \in \mathbb{N})
+    
+\end{align*}</span> As a result, for all <span class="math inline">n
+\geq N</span>, <span class="math inline">|a_n| &lt; \beta^{n - N}
+|a_N|</span>. And, <span
+class="math inline">\displaystyle\sum_{n=1}^{\infty} |a_n| \leq
+\sum_{n=1}^{\infty} \beta^{n - N} |a_N| &lt; \infty</span>. ◻</p>
+</div>
+<h3 id="root-test">Root Test</h3>
+<div class="theorem">
+<p>Let <span class="math inline">\sum a_n</span> be given.<br />
+<span class="math inline">\displaystyle\sum_{n=1}^{\infty} a_n</span>
+converges if: <span class="math inline">\displaystyle\limsup_{n \to
+\infty} \sqrt[n]{|a_n|} &lt; 1</span>.<br />
+<span class="math inline">\displaystyle\sum_{n=1}^{\infty} a_n</span>
+diverges if: <span class="math inline">\displaystyle\limsup_{n \to
+\infty} \sqrt[n]{|a_n|} &lt; 1</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Put <span class="math inline">\beta \in
+\mathbb{R}</span> such that <span class="math inline">\limsup_{n \to
+\infty} \sqrt[n]{|a_n|} &lt; \beta &lt;1</span>. Then, there is <span
+class="math inline">N \in \mathbb{N}</span> such that <span
+class="math inline">n \geq N \implies \sqrt[n]{|a_n|} &lt;
+\beta</span>.<br />
+Now, <span class="math inline">\displaystyle\sum |a_n| &lt; \sum \beta^n
+&lt; \infty</span>. But if <span class="math inline">\limsup_{n \to
+\infty} \sqrt[n]{|a_n|} &gt; 1</span>, then <span
+class="math inline">a_n \nrightarrow 0</span>. ◻</p>
+</div>
+<h2 id="arithmetic-means">Arithmetic means</h2>
+<p>Let <span class="math inline">\{s_n\}</span> be a Complex numbers
+Sequence. Define the <em>Arithmetic means</em> of <span
+class="math inline">\{s_n\}</span>: <span
+class="math display">\begin{align*}
+    \sigma_n \overset{\textnormal{def}}{=}\frac{s_0 + \cdots + s_n}{n+1}
+= \frac{1}{n+1} \left(\sum_{i=0}^{n} s_i\right)
+\end{align*}</span> Then, the Arithmetic means <span
+class="math inline">\sigma_n</span> has the following properties:<br />
+1). If <span class="math inline">\displaystyle\lim_{n \to \infty} s_n =
+s</span>, then <span class="math inline">\displaystyle\lim_{n \to
+\infty} \sigma_n = s</span>.<br />
+</p>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\epsilon &gt; 0</span>
+be given. Then, there exists <span class="math inline">N \in
+\mathbb{N}</span> such that <span class="math inline">n \geq N</span>
+implies <span class="math inline">|s_n - s| &lt; \epsilon</span>.<br />
+Now, for <span class="math inline">n \geq N</span>, <span
+class="math display">\begin{align*}
+        |\sigma_n - s|
+        &amp;= \left| \frac{s_0 + \cdots + s_n}{n+1} -
+\frac{(n+1)s}{n+1}\right|
+        = \left| \frac{(s_0 - s) + \cdots + (s_n - s)}{n+1}\right| \\
+        &amp;\stackrel{\mathclap{\mbox{{\small tri.ieq \ \ }}}}{\leq}
+\frac{\sum_{k=0}^{N-1}|s_k - s|}{n+1} + \frac{\sum_{k=N}^{n}|s_k -
+s|}{n+1} \\
+        &amp;&lt; \frac{\sum_{k=0}^{N-1}|s_k - s|}{n+1} +
+\frac{n+1-N}{n+1} \cdot \epsilon \\
+        &amp;&lt; \frac{\sum_{k=0}^{N-1}|s_k - s|}{n+1} + \epsilon
+    
+\end{align*}</span> Now, put <span class="math inline">M \in
+\mathbb{N}</span> satisfies <span class="math inline">M \geq N</span>
+and <span class="math inline">n \geq M \implies
+\frac{\sum_{k=0}^{N-1}|s_k - s|}{n+1} &lt; \epsilon</span>, using
+Archimedean property.<br />
+Then, <span class="math inline">n \geq M</span> implies <span
+class="math inline">|\sigma_n - s| &lt; \epsilon</span>, thus <span
+class="math inline">\sigma_n \to s</span>. ◻</p>
+</div>
+<p>). Put <span class="math inline">a_n = s_n - s_{n-1}</span>, for
+<span class="math inline">n \geq 1</span>. If <span
+class="math inline">\displaystyle\lim_{n \to \infty} na_n = 0</span> and
+<span class="math inline">\sigma_n</span> converges, then <span
+class="math inline">s_n</span> converges.</p>
+<div class="proof">
+<p><em>Proof.</em> First, <span class="math display">\begin{align*}
+        s_n - \sigma_n
+        &amp;= s_n - \frac{s_0 + \cdots + s_n}{n+1}
+        = \frac{(n+1) s_n - \sum_{k=0}^{n} s_k}{n+1} \\
+        &amp;= \frac{1}{n+1} ((s_1 - s_0) + (2s_2 - 2s_1) + (3s_3 -
+3s_2) + \cdots + (ns_n - ns_{n-1})) \\
+        &amp;= \frac{1}{n+1} \sum_{k=1}^{n} ka_k
+    
+\end{align*}</span> Now, if <span class="math inline">na_n \to 0</span>
+and <span class="math inline">\sigma_n \to \sigma</span>, <span
+class="math display">\begin{align*}
+        \lim_{n \to \infty} s_n
+        &amp;= \lim_{n \to \infty} \left( \sigma_n + \frac{1}{n+1}
+\sum_{k=1}^{n} ka_k \right) \\
+        &amp;= \lim_{n \to \infty} \sigma_n + \lim_{n \to \infty}
+\frac{1}{n+1} \sum_{k=1}^{n} ka_k
+        \overset{1)}{=} \sigma
+    
+\end{align*}</span> ◻</p>
+</div>
+<p>2) is conditional converse of 1). But, there is more weak version of
+the converse proposition:<br />
+3). The sequence <span class="math inline">\{n a_n\}</span> bounded by
+<span class="math inline">M &lt; \infty</span>, and <span
+class="math inline">\sigma_n \to \sigma</span>. Then, <span
+class="math inline">s_n \to \sigma</span>.</p>
+<div class="proof">
+<p><em>Proof.</em> First, For positive integers <span
+class="math inline">m &lt; n</span>, <span
+class="math display">\begin{align*}
+        s_n - \sigma_n
+        &amp;= s_n - \frac{\sum_{k=0}^{n}s_k}{n+1}
+        = s_n - \frac{m+1}{n-m} \cdot \left(\frac{1}{m+1} -
+\frac{1}{n+1}\right) \sum_{k=0}^{n}s_k\\
+        &amp;= s_n - \frac{m+1}{n-m} \cdot
+        \left( \frac{\sum_{k=0}^{m} s_k + \sum_{k=m+1}^{n} s_k}{m+1} -
+\frac{\sum_{k=0}^{n}s_k}{n+1}\right) \\
+        &amp;= s_n - \frac{m+1}{n-m} \cdot \left( \sigma_m - \sigma_n +
+\frac{\sum_{k = m+1}^{n} s_k}{m+1} \right) \\
+        &amp;= \frac{m+1}{n-m} (\sigma_n - \sigma_m) + \frac{1}{n-m}
+\sum_{k= m+1}^{n} ( s_n - s_k )
+    
+\end{align*}</span> Meanwhile, since for any <span class="math inline">n
+\in \mathbb{N}</span>, <span class="math inline">|na_n| = n|s_n -
+s_{n-1}| &lt; M</span>, for <span class="math inline">k = m+1, \dots,
+n</span>, <span class="math display">\begin{align*}
+        |s_n - s_k|
+        &amp;= |s_n - s_{n-1} + s_{n-1} - s_{n-2} + \cdots + s_{k+1} -
+s_k| \\
+        &amp;\leq |s_n - s_{n-1}| + |s_{n-1} - s_{n-2}| + \cdots +
+|s_{k+1} - s_k| \\
+        &amp;\leq \frac{M}{n} + \frac{M}{n-1} + \cdots + \frac{M}{k+1}
+        \leq \frac{n-k}{k+1} M
+        \leq \frac{n-k}{m+2} M
+        \leq \frac{n-m-1}{m+2} M
+    
+\end{align*}</span> Let <span class="math inline">\epsilon &gt; 0</span>
+be given. For each <span class="math inline">n \in \mathbb{N}</span>,
+put <span class="math inline">m \in \mathbb{N}</span> such that <span
+class="math display">\begin{align*}
+        m \leq \frac{n-\epsilon}{1+\epsilon} &lt; m+1
+    
+\end{align*}</span> Then, <span class="math display">\begin{align*}
+        m(1 + \epsilon) \leq n - \epsilon \implies m + \epsilon(1+m)
+\leq n \implies \frac{m+1}{n-m} \leq \frac{1}{\epsilon}
+    
+\end{align*}</span> and <span class="math display">\begin{align*}
+        n - \epsilon &lt; (m+1)(1+\epsilon) \implies n+1 &lt;
+(m+2)(1+\epsilon) \implies \frac{n+1}{m+2} - 1 &lt; \epsilon \implies
+\frac{n-m-1}{m+2} &lt; \epsilon
+    
+\end{align*}</span> Now, for arbitrary <span class="math inline">n \in
+\mathbb{N}</span>, <span class="math display">\begin{align*}
+        &amp;|s_n - \sigma| \leq |s_n - \sigma| + |\sigma_n - \sigma| \\
+        \implies &amp; \limsup_{n \to \infty} |s_n - \sigma| \leq
+\limsup_{n \to \infty}|s_n - \sigma_n| + \limsup_{n \to \infty}
+|\sigma_n - \sigma|
+    
+\end{align*}</span> And, <span class="math display">\begin{align*}
+        &amp;|s_n - \sigma_n|
+        = \frac{m+1}{n-m} |\sigma_n - \sigma_m| + \frac{1}{n-m}
+\sum_{k=m+1}^{n} |s_n - s_k|
+        &lt; \frac{1}{\epsilon} |\sigma_n - \sigma_m| + M \epsilon \\
+        \implies &amp;\limsup_{n \to \infty} |s_n - \sigma_n|
+        \leq \frac{1}{\epsilon} \limsup_{n \to \infty}|\sigma_n -
+\sigma_m| + M \epsilon = M\epsilon
+    
+\end{align*}</span> Consequently, <span
+class="math inline">\displaystyle\limsup_{n \to \infty} |s_n - \sigma|
+\leq (M+1)\epsilon</span>, thus <span class="math inline">s_n \to
+\sigma</span>. ◻</p>
+</div>
+<p>In brief, the diagram of the above conditions like this:</p>
+<p>Examples and Counterexamples of the Diagram:</p>
+<ol>
+<li><p>Let <span class="math inline">s_n
+\overset{\textnormal{def}}{=}\exp(\frac{i n \pi}{2})</span>. Then,</p>
+<ol>
+<li><p><span class="math inline">s_n</span> diverges.</p></li>
+<li><p><span class="math inline">n a_n</span> diverges.</p></li>
+<li><p><span class="math inline">\sigma_n \to 0</span>.</p></li>
+</ol></li>
+<li><p>Let <span class="math inline">s_n
+\overset{\textnormal{def}}{=}\frac{1}{n},\ s_0 = 0</span>.</p></li>
+<li><p>Let <span class="math inline">s_n
+\overset{\textnormal{def}}{=}\sum_{k=1}^{n} \frac{1}{k}</span>.
+Then,</p>
+<ol>
+<li><p><span class="math inline">s_n</span> diverges.</p></li>
+<li><p><span class="math inline">a_n = \frac{1}{n}</span>, thus <span
+class="math inline">n a_n \to 1</span>, bounded.</p></li>
+<li><p>If <span class="math inline">\sigma_n</span> converges, then the
+diagram implies that <span class="math inline">s_n</span> must converge,
+leading to a contradiction. Therefore, <span
+class="math inline">\sigma_n</span> diverges.</p></li>
+</ol></li>
+<li><p><span class="math inline">s_n = \sum_{k=1}^{n}
+\frac{(-1)^k}{\sqrt{k}},\ s_0 = 0</span>. Then,</p>
+<ol>
+<li><p><span class="math inline">s_n</span> converges, being the
+Alternating series Test.</p></li>
+<li><p><span class="math inline">a_n = \frac{(-1)^n}{\sqrt{n}}</span>,
+thus <span class="math inline">n a_n</span> diverges.</p></li>
+</ol></li>
+</ol>
+<h2 id="taylors-theorem">Taylor’s Theorem</h2>
+<div class="theorem">
+<p><em>Taylor’s Theorem</em><br />
+Let <span class="math inline">f:[a,b] \to \mathbb{R}</span>, and let
+<span class="math inline">n \in \mathbb{N}</span> be fixed. Suppose that
+<span class="math inline">\begin{cases}
+        f^{(n-1)}\text{ is Continuous.} \\
+        f^{(n)}(t)\text{ exists for every $t \in (a,b)$.}
+    \end{cases}</span><br />
+Then, for any <span class="math inline">\alpha, \beta \in [a,b]</span>,
+there exists <span class="math inline">x \in (\alpha, \beta)</span> such
+that <span class="math display">\begin{align*}
+        f(\beta)
+        = \sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!} (\beta - \alpha)^k
++ \frac{f^{(n)}(x)}{n!}(\beta - \alpha)^n
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Put <span class="math display">\begin{align*}
+        \displaystyle M \overset{\textnormal{def}}{=}\frac{1}{(\beta -
+\alpha)^n} \cdot \left(f(\beta) -
+\sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!} (\beta - \alpha)^k\right)
+    
+\end{align*}</span> That is, <span class="math display">\begin{align*}
+        f(\beta)
+        = \sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!} (\beta - \alpha)^k
++ M(\beta - \alpha)^n
+    
+\end{align*}</span> and put <span class="math display">\begin{align*}
+        g(t) \overset{\textnormal{def}}{=}f(t) -
+\sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!} (t - \alpha)^k - M(t -
+\alpha)^n, \quad (a \leq t \leq b)
+    
+\end{align*}</span> If we differentiate the above equation <span
+class="math inline">n</span> times, <span
+class="math display">\begin{align*}
+        g^{(n)}(t) = f^{(n)}(t) - n! M, (a &lt; t &lt; b)
+    
+\end{align*}</span> For each <span class="math inline">k = 0, 1, \ldots,
+n-1</span>, <span class="math display">\begin{align*}
+        \frac{d^r}{{dt}^r} \left( \sum_{k=0}^{n-1}
+\frac{f^{(k)}(\alpha)}{k!} (t - \alpha)^k \right)
+        &amp;= \sum_{k=0}^{n-1} \frac{f^{(k)}(\alpha)}{k!} \cdot
+\frac{d^r}{{dt}^r} \left( (t - \alpha)^k \right) \\
+        &amp;= \sum_{k=r+1}^{n-1} \frac{f^{(k)}(\alpha)}{k!} \cdot
+\frac{k!}{(k-r)!} (t - \alpha)^{k-r} + f^{(r)}(\alpha) \\
+        &amp;= \sum_{k=r+1}^{n-1} \frac{f^{(k)}(\alpha)}{(k-r)!} (t -
+\alpha)^{k-r} + f^{(r)}(\alpha)
+    
+\end{align*}</span> Substituting <span class="math inline">t =
+\alpha</span>, only the <span class="math inline">f^{(r)}(\alpha)</span>
+term remains. Therefore, for <span class="math inline">r = 0, \ldots,
+n-1</span>, <span class="math inline">g(\alpha) = g&#39;(\alpha) =
+\cdots = g^{(n-1)}(\alpha) = 0</span>.<br />
+Since <span class="math inline">g(\beta) = 0</span> by definition, the
+Mean-Value Theorem implies there exists a <span class="math inline">x_1
+\in (\alpha, \beta) \text{ s.t. }g&#39;(x_1) = \frac{g(\beta) -
+g(\alpha)}{\beta - \alpha} = 0</span>.<br />
+And similarly, there is <span class="math inline">x_2 \in (x_1, \beta)
+\text{ s.t. }g&#39;&#39;(x_2) = \frac{g&#39;(x_1) -
+g&#39;(\alpha)}{\beta - \alpha} = 0</span>.<br />
+Inductively, for some <span class="math inline">x_n \in (\alpha,
+\beta)</span>, <span class="math inline">g^{(n)}(x_n) = f^{(n)}(x_n) -
+n! M = 0</span>. That is, <span class="math inline">M =
+\displaystyle\frac{f^{(n)}(x_n)}{n!}</span>.<br />
+Proof Complete by Initial Setting. ◻</p>
+</div>
+<div class="corollary">
+<p>Let <span class="math inline">f:[a,b] \to \mathbb{R}</span> be an
+infinitely differentiable function.<br />
+Suppose that there exists a <span class="math inline">M &gt; 0</span>
+such that for any <span class="math inline">n \in \mathbb{N}</span>,
+<span class="math inline">\displaystyle\sup_{t \in [a,b]} |f^{(n)}(t)|
+\leq M</span>. Then, for any <span class="math inline">x, \alpha \in
+[a,b]</span>, <span class="math display">\begin{align*}
+        f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(x)}{k!} (x - \alpha)^k
+    
+\end{align*}</span></p>
+</div>
+<h2 id="convexity">Convexity</h2>
+<h3 id="definition">Definition</h3>
+<div class="definition">
+<p>Let <span class="math inline">f:(a,b) \to \mathbb{R}</span> be a
+Real-valued function. <span class="math inline">f</span> is said to be
+<em>convex</em> if: For any <span class="math inline">x,y \in (a,b),
+\lambda \in (0,1)</span>, <span class="math display">\begin{align*}
+        f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda)
+f(y)
+    
+\end{align*}</span> Convex function has follwing properties:</p>
+</div>
+<div class="lemma">
+<p>Let <span class="math inline">f:(a,b) \to \mathbb{R}</span> be a
+Convex function, and <span class="math inline">a &lt; x_1 &lt; x_2 &lt;
+x_3 &lt; b</span>. Then, <span class="math display">\begin{align*}
+        \frac{f(x_2) - f(x_1)}{x_2 - x_1}
+        \leq \frac{f(x_3) - f(x_1)}{x_3 - x_1}
+        \leq \frac{f(x_3) - f(x_2)}{x_3 - x_2}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> To show that first inequalty, note that <span
+class="math display">\begin{align*}
+        \frac{x_2 - x_1}{x_3 - x_1} \cdot x_3 + \left( 1 - \frac{x_2 -
+x_1}{x_3 - x_1} \right) \cdot  x_1
+        = \frac{(x_2 - x_1) x_3 + (x_3 - x_2) x_1}{x_3 - x_1}
+        = x_2
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        f(x_2)
+        &amp;= f\left(\frac{x_2 - x_1}{x_3 - x_1} \cdot x_3 + \left( 1 -
+\frac{x_2 - x_1}{x_3 - x_1} \right) \cdot  x_1\right) \\
+        &amp;\leq \frac{x_2 - x_1}{x_3 - x_1} \cdot f\left(x_3 \right)
+        + \left( 1 - \frac{x_2 - x_1}{x_3 - x_1} \right) \cdot
+f\left(  x_1 \right)
+        = \frac{x_2 - x_1}{x_3 - x_1} \cdot f\left(x_3 \right)
+        + f(x_1) - \left(\frac{x_2 - x_1}{x_3 - x_1} \right) \cdot
+f\left(  x_1 \right)
+    
+\end{align*}</span> In brief, <span class="math display">\begin{align*}
+        f(x_2) - f(x_1) \leq \frac{x_2 - x_1}{x_3 - x_1} (f(x_3) -
+f(x_1))
+        \implies \frac{f(x_2) - f(x_1)}{x_2 - x_1} \leq \frac{f(x_3) -
+f(x_1)}{x_3 - x_1}
+    
+\end{align*}</span> And similarly, <span
+class="math display">\begin{align*}
+        \frac{x_3 - x_2}{x_3 - x_1} \cdot x_1 + \left(1 - \frac{x_3 -
+x_2}{x_3 - x_1}\right) x_3 = x_2
+    
+\end{align*}</span> gives the second inequality. ◻</p>
+</div>
+<h3 id="properties">Properties</h3>
+<div class="proposition">
+<p>If <span class="math inline">f:(a,b) \to \mathbb{R}</span> is Convex,
+then <span class="math inline">f</span> is Continuous.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\epsilon &gt; 0</span>
+be given, <span class="math inline">s &lt; t</span> are fixed in <span
+class="math inline">(a,b)</span>. For any <span class="math inline">x,y
+\in (s,t)</span> with <span class="math inline">s &lt; x&lt; y &lt;
+t</span>, <span class="math display">\begin{align*}
+        \frac{f(s) - f(a)}{s - a}
+        \leq \frac{f(x) - f(s)}{x - s}
+        \leq \frac{f(y) - f(x)}{y - x}
+        \leq \frac{f(t) - f(y)}{t - y}
+        \leq \frac{f(b) - f(t)}{b-t}
+    
+\end{align*}</span> Put <span class="math inline">M = \displaystyle\max
+\left\{ \left|\frac{f(s) - f(a)}{s - a}\right|, \left|\frac{f(b) -
+f(t)}{b-t} \right| \right\}</span>. Then, for any <span
+class="math inline">x,y \in (s,t)</span>, <span
+class="math display">\begin{align*}
+        \left|\frac{f(y) - f(x)}{y - x} \right| \leq M
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        |f(y) - f(x)| \leq M |y - x| &lt; \epsilon
+    
+\end{align*}</span> Since <span class="math inline">s,t \in (a,b)</span>
+was arbitrary, <span class="math inline">f</span> is continuous on <span
+class="math inline">(a,b)</span>. ◻</p>
+</div>
+<div class="proposition">
+<p>Let <span class="math inline">f</span> is differentiable on <span
+class="math inline">(a,b)</span>. Then,</p>
+<div class="center">
+<p><span class="math inline">f</span> is Convex <em>if and only if</em>
+<span class="math inline">f&#39;</span> is monotonically increasing on
+<span class="math inline">(a,b)</span>.</p>
+</div>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Prove by showing both directions: right and
+left.<br />
+<em>Right Direction</em> Let <span class="math inline">x_1 &lt;
+x_2</span> in <span class="math inline">(a,b)</span>. Then, <span
+class="math display">\begin{align*}
+        f&#39;(x_1) = \lim_{t \to x_1} \frac{f(t) - f(x_1)}{t - x_1}
+        \leq \frac{f(x_2) - f(x_1)}{x_2 - x_1}
+        \leq \lim_{\tau \to x_2} \frac{f(\tau) - f(x_2)}{\tau - x_2} =
+f&#39;(x_2)
+    
+\end{align*}</span> More rigorously, put <span
+class="math inline">\displaystyle\epsilon = \left| f&#39;(x_1) -
+\frac{f(x_2) - f(x_1)}{x_2 - x_1} \right|</span>. (If <span
+class="math inline">\epsilon = 0</span>, then there is nothing to
+prove.).<br />
+Now, there exists a <span class="math inline">\delta &gt; 0</span> such
+that <span class="math inline">|t - x_1| &lt; \delta</span> implies
+<span class="math display">\begin{align*}
+        \left| f&#39;(x_1) - \frac{f(t) - f(x_1)}{t - x_1} \right| &lt;
+\epsilon
+        \iff
+        -\epsilon + \frac{f(t) - f(x_1)}{t - x_1} &lt; f&#39;(x_1)
+\overset{(*)}{=} \epsilon + \frac{f(t) - f(x_1)}{t - x_1}
+    
+\end{align*}</span> If <span class="math inline">f&#39;(x_1) -
+\displaystyle\frac{f(x_2) - f(x_1)}{x_2 - x_1} &gt; 0</span>, then <span
+class="math inline">(*)</span> gives <span
+class="math display">\begin{align*}
+        f&#39;(x_1) &lt; f&#39;(x_1) + \frac{f(t) - f(x_1)}{t - x_1} -
+\frac{f(x_2) - f(x_1)}{x_2 - x_1}
+        \iff
+        \frac{f(x_2) - f(x_1)}{x_2 - x_1} &lt; \frac{f(t) - f(x_1)}{t -
+x_1}
+        \quad \forall t \text{ s.t. }|t - x_1| &lt; \delta
+    
+\end{align*}</span> If <span class="math inline">|t - x_1| &lt; |x_2 -
+x_1|</span>, then this contradicts to Convexity.<br />
+Consequently, we obtain the first inequality, similarly can prove the
+second inequality.<br />
+<em>Left Direction</em> Let <span class="math inline">x,y \in
+(a,b)</span> and <span class="math inline">\lambda \in (0,1)</span> be
+given. The Mean Value Theorem gives that: <span
+class="math display">\begin{align*}
+        &amp;f(\lambda x + (1 - \lambda) y) - f(x) = f&#39;(z_1)
+(\lambda x + (1 - \lambda) y - x) \text{ for some } z_1 \in (x, \lambda
+x + (1 - \lambda) y) \\
+        &amp;f(y) - f(\lambda x + (1 - \lambda) y)
+        = f&#39;(z_2) (y - \lambda x + (1 - \lambda) y) \text{ for some
+} z_2 \in (\lambda x + (1 - \lambda) y, y)
+    
+\end{align*}</span> Now, Monotonically increasing gives <span
+class="math display">\begin{align*}
+        &amp;\frac{f(\lambda x + (1 - \lambda) y) - f(x)}{\lambda x + (1
+- \lambda) y - x}
+        = f&#39;(z_1) \leq f&#39;(z_2)
+        = \frac{f(y) - f(\lambda x + (1 - \lambda) y)}{y - (\lambda x +
+(1 - \lambda) y)} \\
+        \implies &amp;\frac{f(\lambda x + (1 - \lambda) y) -
+f(x)}{(1-x)(y-x)}
+        \leq \frac{f(y) - f(\lambda x + (1 - \lambda) y)}{\lambda(y-x)}
+\\
+        \implies &amp;\lambda f(\lambda x + (1 - \lambda) y) - \lambda
+f(x)
+        \leq (1-\lambda) f(y) - (1- \lambda)\lambda x + (1 - \lambda) y
+\\
+        \implies &amp;f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) +
+(1 - \lambda) f(y)
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="corollary">
+<p>If <span class="math inline">f:[a,b] \to \mathbb{R}</span> is
+twice-differentiable, then</p>
+<div class="center">
+<p><span class="math inline">f</span> is Convex <em>if and only if</em>
+<span class="math inline">f&#39;&#39;(x) \geq 0</span> for all <span
+class="math inline">x \in (a,b)</span>.</p>
+</div>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">f:[a.b] \to \mathbb{R}</span> be given.
+Then,</p>
+<div class="center">
+<p><span class="math inline">f</span> is Convex if and only if <span
+class="math inline">f</span> is Continuous, and Midpoint Convex.</p>
+</div>
+<p>Midpoint convex is that <span class="math inline">f</span> satisfies
+<span class="math inline">\displaystyle\forall x,y \in (a,b),\
+f\left(\frac{x+y}{2} \right) \leq \frac{f(x) + f(y)}{2}</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> The right direction is clear. To show the left
+direction, we demonstrate that<br />
+<em>Midpoint Convexity implies Dyadic Rational Convexity</em>. Claim:
+For any <span class="math inline">n \in \mathbb{N}</span>, <span
+class="math display">\begin{align*}
+        f \left( \frac{\sum_{k=1}^{2^n} x_k}{2^n} \right) \leq
+\frac{1}{2^n} \sum_{k=1}^{2^n} f(x_k) \tag{$*$}
+    
+\end{align*}</span> Using Induction: If <span
+class="math inline">n=1</span>, it is clear by Midpoint Convexity.<br />
+Assume that for <span class="math inline">n \in \mathbb{N}</span>, <span
+class="math inline">(*)</span> is True. Then, <span
+class="math display">\begin{align*}
+        f \left( \frac{\sum_{k=1}^{2^{n+1}} x_k}{2^{n+1}} \right)
+        &amp;= f \left( \frac{1}{2} \cdot \left[ \frac{\sum_{k=1}^{2^n}
+x_k}{2^n} +  \frac{\sum_{k=2^n + 1}^{2^{n+1}} x_k}{2^n} \right] \right)
+\\
+        &amp;\overset{\text{m.c}}{\leq } \frac{1}{2} \left(
+f\left(\frac{\sum_{k=1}^{2^n} x_k}{2^n}\right) +
+f\left(\frac{\sum_{k=2^n + 1}^{2^{n+1}} x_k}{2^n}\right) \right) \\
+        &amp;\overset{(*)}{\leq} \frac{1}{2}\left( \frac{1}{2^n}
+\sum_{k=1}^{2^n} f(x_k) + \frac{1}{2^n} \sum_{k=2^n + 1}^{2^{n+1}}
+f(x_k) \right) \\
+        &amp;= \frac{1}{2^{n+1}} \sum_{k=1}^{2^{n+1}} f(x_k)
+    
+\end{align*}</span> Consequently, we obtain the claim. Now, let <span
+class="math inline">n \in \mathbb{N}</span>, and <span
+class="math inline">m</span> be an integer such that <span
+class="math inline">1 \leq m \leq 2^n</span>.<br />
+Put <span class="math inline">x_1 = x_2 = \cdots = x_m = x</span> and
+<span class="math inline">x_{m+1} = x_{m+2} = \cdots = x_{2^n} =
+y</span>. Then <span class="math display">\begin{align*}
+        f \left(\frac{m}{2^n} x + \left(1 - \frac{m}{2^n} \right) y
+\right) \leq
+        \frac{m}{2^n} f(x) + \left(1 - \frac{m}{2^n} \right) f(y)
+    
+\end{align*}</span> For complete this discussion, Let <span
+class="math inline">x, y \in (a,b), \lambda \in (0,1)</span> be
+given.<br />
+Since <span class="math inline">\displaystyle\frac{\lfloor 2^n \lambda
+\rfloor}{2^n} \to \lambda</span> as <span class="math inline">n \to
+\infty</span>, for any <span class="math inline">n \in
+\mathbb{N}</span>, <span class="math display">\begin{align*}
+        f \left(\frac{\lfloor 2^n \lambda \rfloor}{2^n} x + \left(1 -
+\frac{\lfloor 2^n \lambda \rfloor}{2^n} \right) y \right) \leq
+        \frac{\lfloor 2^n \lambda \rfloor}{2^n} f(x) + \left(1 -
+\frac{\lfloor 2^n \lambda \rfloor}{2^n} \right) f(y)
+    
+\end{align*}</span> Finally, taking limits then <span
+class="math display">\begin{align*}
+        \lim_{n \to \infty} f \left(\frac{\lfloor 2^n \lambda
+\rfloor}{2^n} x + \left(1 - \frac{\lfloor 2^n \lambda \rfloor}{2^n}
+\right) y \right)
+        \overset{\text{$f$ conti.}}{=}
+        f \left(\lim_{n \to \infty} \left[\frac{\lfloor 2^n \lambda
+\rfloor}{2^n} x + \left(1 - \frac{\lfloor 2^n \lambda \rfloor}{2^n}
+\right) y \right]\right)
+        =f(\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 -
+\lambda) f(y)
+    
+\end{align*}</span> In brief, Midpoint Convexity implies Dyadic Rational
+Convexity, and with Continuous implies Convexity. ◻</p>
+</div>
+<h2 id="lipschitz-condition">Lipschitz Condition</h2>
+<h3 id="definition-1">Definition</h3>
+<div class="definition">
+<p>A real-vauled function <span class="math inline">f:(a,b) \to
+\mathbb{R}</span> is called <em>Lipschitz Continuous</em> if: <span
+class="math display">\begin{align*}
+        \exists L \geq 0 \text{ s.t. }\forall x_1, x_2 \in (a,b),\
+        |f(x_1) - f(x_2)| \leq L \cdot |x_1 - x_2|
+    
+\end{align*}</span> The constant <span class="math inline">L</span> is
+said to be <em>Lipschitz Constant</em> of <span
+class="math inline">f</span>. In particular, the constant <span
+class="math display">\begin{align*}
+        D \overset{\textnormal{def}}{=}\sup_{x_1 \neq x_2} \frac{|f(x_1)
+- f(x_2)|}{|x_1 - x_2|}
+    
+\end{align*}</span> is called <em>dilation</em> of <span
+class="math inline">f</span>. Clearly, <span
+class="math display">\begin{align*}
+        \forall x_1, x_2 \in (a,b),\ |f(x_1) - f(x_2)| \leq D \cdot |x_1
+- x_2|
+    
+\end{align*}</span> and if <span class="math inline">L &gt; 0</span> is
+Lipschitz Constant of <span class="math inline">f</span>, then <span
+class="math inline">D \leq L</span>. That is, <span
+class="math inline">D = \inf \{L &gt; 0 \mid \text{$L$ is Lipschitz
+constant of $f$}\}</span>.</p>
+</div>
+<h3 id="properties-1">Properties</h3>
+<div class="proposition">
+<p>If <span class="math inline">f:(a,b) \to \mathbb{R}</span> is
+Lipschitz Continuous, then <span class="math inline">f</span> is
+uniformly continuous.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">L \geq 0</span> be a
+Lipschitz Constant of <span class="math inline">f</span>. Then, for any
+<span class="math inline">\epsilon &gt; 0</span>, <span
+class="math display">\begin{align*}
+        \forall x,y \in (a,b),\ |x - y| &lt; \frac{\epsilon}{L} \implies
+|f(x) - f(y)| \leq L|x-y| &lt; \epsilon
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="proposition">
+<p>Let <span class="math inline">f:(a,b) \to \mathbb{R}</span> be a
+Differentiable function. Then,</p>
+<div class="center">
+<p><span class="math inline">f</span> is Lipschitz Continuous <em>if and
+only if</em> <span class="math inline">f&#39;</span> is bounded in <span
+class="math inline">(a,b)</span>.</p>
+</div>
+</div>
+<div class="proof">
+<p><em>Proof.</em>  <br />
+<em>Right Direction</em><br />
+Let <span class="math inline">L &gt; 0</span> be a Lipschitz constant of
+<span class="math inline">f</span>, and <span class="math inline">x \in
+(a,b)</span> be given. Since definition of derivative, <span
+class="math display">\begin{align*}
+        f&#39;(x) \overset{\textnormal{def}}{=}\lim_{t \to x} \frac{f(x)
+- f(t)}{x - t}
+    
+\end{align*}</span> Meanwhile, the assumption gives: for any distinct
+<span class="math inline">x,t \in (a,b)</span>, <span
+class="math display">\begin{align*}
+        \frac{|f(x) - f(t)|}{|x - t|} \leq L
+    
+\end{align*}</span> Therefore, <span class="math display">\begin{align*}
+        f&#39;(x) = \lim_{t \to x} \frac{f(x) - f(t)}{x - t} \leq
+\lim_{t \to x} \frac{|f(x) - f(t)|}{|x - t|} \leq \lim_{t \to x} L = L
+    
+\end{align*}</span> <em>Left Direction</em><br />
+Let distinct <span class="math inline">x,y \in (a,b)</span> be given.
+Then, the Mean-Value Theorem gives: There exists a <span
+class="math inline">z \in (x,y)</span> such that <span
+class="math display">\begin{align*}
+        f(x) - f(y) = f&#39;(z)(x - y) \implies f&#39;(z) = \frac{f(x) -
+f(y)}{x-y}
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        \left| \frac{f(x) - f(y)}{x-y} \right| = |f&#39;(z)| \leq L
+\implies |f(x) - f(y)| \leq L \cdot |x - y|
+    
+\end{align*}</span> If <span class="math inline">x = y</span>, then
+there is nothing to prove. ◻</p>
+</div>
+<p>Note that:</p>
+<div class="center">
+<p>Lipschitz Continuous <span class="math inline">\implies</span>
+Uniformly Continuous <span class="math inline">\implies</span>
+Continuous</p>
+</div>
+<h3 id="newton-raphson-method">Newton-Raphson Method</h3>
+<div class="theorem">
+<p><em>Newton-Raphson Method</em><br />
+Let <span class="math inline">f:[a,b] \to \mathbb{R}</span> be a
+twice-differentiable, <span class="math inline">f(a) &lt; 0 &lt;
+f(b)</span>. Suppose that <span class="math inline">f</span> satisfies:
+for all <span class="math inline">x \in [a,b]</span>, <span
+class="math display">\begin{align*}
+        f&#39;(x) \geq \delta &gt; 0 \text{ and } 0 \leq f&#39;&#39;(x)
+\leq M    
+    
+\end{align*}</span> That is, <span class="math inline">f</span> is
+strictly increasing convex function, and Lipschitz Continuous.<br />
+Further, there uniquely exists <span class="math inline">x^* \in
+(a,b)</span> such that <span class="math inline">f(x^*) =
+0</span>.<br />
+Let <span class="math inline">x_1 \in (x^*, b)</span> fixed. Define a
+sequence <span class="math inline">\{x_n\}</span> inductively as
+follows: <span class="math display">\begin{align*}
+        x_{n+1} \overset{\textnormal{def}}{=}x_n -
+\frac{f(x_n)}{f&#39;(x_n)}
+    
+\end{align*}</span> Then, <span class="math inline">\{x_n\}</span>
+satisfies the following three conditions:</p>
+<ol>
+<li><p><span class="math inline">\{x_n\}</span> is decreasing
+sequence.</p></li>
+<li><p><span class="math inline">x_n \to x^*</span> as <span
+class="math inline">n \to \infty</span>.</p></li>
+<li><p>For any <span class="math inline">n \in \mathbb{N}</span>, <span
+class="math inline">0 \leq x_{n+1} - x^* \leq \left[ \frac{M}{2\delta}
+\right]^{2^{n+1} - 1} [x_1 - x^*]^{2^n}</span>.</p></li>
+</ol>
+<p>Condition 3 means that for a suitable initial value <span
+class="math inline">x_1</span>, we can establish an upper bound for the
+error.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> This proof consists by three steps.<br />
+Since <span class="math inline">f&#39;&#39;</span> is non-negative, and
+<span class="math inline">f&#39;</span> is positive, <span
+class="math inline">f</span> is strictly increasing convex
+function.<br />
+And Fundamental Theorem of Calculus gives: for any <span
+class="math inline">x \in (a,b)</span>, <span
+class="math display">\begin{align*}
+        f&#39;(x) \overset{\text{FTA}}{=} \int_{a}^{x} f&#39;&#39;(t) dt
++ f&#39;(a) \leq \int_{a}^{x} M dt + f&#39;(a) = M(x - a) +
+f&#39;(a)  \leq M (b - a) + f&#39;(a)
+    
+\end{align*}</span> Thus, <span class="math inline">f&#39;</span> is
+bounded on <span class="math inline">(a,b)</span>, thus <span
+class="math inline">f</span> is Lipschitz Continuous.<br />
+<em>Step 1. <span class="math inline">f</span> has a unique root <span
+class="math inline">x^*</span></em>.<br />
+The existence of root given directly by Intermidate-Value theroem.<br />
+Suppose that <span class="math inline">x^*, x&#39; \in (a,b)</span> are
+distinct root of <span class="math inline">f</span>. i.e., <span
+class="math inline">f(x^*) = f(x&#39;) = 0</span>. Then, by Mean-value
+theroem, there is <span class="math inline">c \in (a,b)</span> between
+<span class="math inline">x^*</span> and <span
+class="math inline">x&#39;</span> such that <span
+class="math display">\begin{align*}
+        f&#39;(c) (x^* - x&#39;) = f(x^*) - f(x&#39;) = 0
+    
+\end{align*}</span> That is, <span class="math inline">f&#39;(c) =
+0</span>. This is contradiction with <span
+class="math inline">f&#39;</span> is positive.<br />
+<em>Step 2. <span class="math inline">\{x_n\}</span>
+decrease</em>.<br />
+Proof by induction:<br />
+For <span class="math inline">n = 1</span>, <span
+class="math inline">f&#39;(x_1)(x_1 - x_2)
+\overset{\textnormal{def}}{=}f(x_1) &gt; f(x^*) = 0</span>, thus <span
+class="math inline">x_2 &lt; x_1</span>. And, <span
+class="math display">\begin{align*}
+    f(x_2)
+    &amp;\stackrel{\mathclap{\mbox{{\tiny MVT}}}}{=} f(x_1) +
+f&#39;(c_1) (x_2 - x_1) \quad \text{ for some } c_1 \in (x_2, x_1)\\
+    &amp;&gt; f(x_1) + f&#39;(x_1) (x_2 - x_1)
+    = f&#39;(x_1) (x_1 - x_2) + f&#39;(x_1) (x_2 - x_1) = 0
+\end{align*}</span> Now, since <span class="math inline">f(x_2) &gt; 0 =
+f(x^*)</span>, the Mean-Value Theorem implies that <span
+class="math inline">x_2 &gt; x^*</span>.<br />
+To use induction, suppose that for some <span class="math inline">n \geq
+1</span>, <span class="math inline">x^* &lt; x_{n+1} &lt; x_n</span>.
+Then, <span class="math display">\begin{align*}
+    f(x_{n+1}) = f&#39;(x_{n+1}) (x_{n+1} - x_{n+2}) &gt; 0
+\end{align*}</span> Thus <span class="math inline">x_{n+2} &lt;
+x_{n+1}</span> and <span class="math display">\begin{align*}
+    f(x_{n+2})
+    &amp;\stackrel{\mathclap{\mbox{{\tiny MVT}}}}{=} f(x_{n+1}) +
+f&#39;(c_{n+1}) (x_{n+2} - x_{n+1}) \quad \text{ for some } c_{n+1} \in
+(x_{n+2}, x_{n+1})\\
+    &amp;\geq f(x_{n+1}) + f&#39;(x_{n+1}) (x_{n+2} - x_{n+1}) \\
+    &amp;= f(x_{n+1})(x_{n+1} - x_{n+2}) + f&#39;(x_{n+1}) (x_{n+2} -
+x_{n+1}) = 0
+\end{align*}</span> Again, the Mean-Value Theorem implies that <span
+class="math inline">x_{n+2} &gt; x^*</span>. Therefore, induction
+completes.<br />
+Now, <span class="math inline">x_n \to x&#39;</span> as <span
+class="math inline">n \to \infty</span> for some <span
+class="math inline">x&#39; \in [x^*, x_1]</span> since <span
+class="math inline">\{x_n\}</span> is Bounded below and
+Decreasing.<br />
+Still it remains that to show <span class="math inline">x&#39; =
+x^*</span>. By Continuity, <span class="math display">\begin{align*}
+    &amp;f&#39;(x_n)(x_{n+1} - x_n) + f(x_n) = 0 \\
+    \implies &amp; \lim_{n \to \infty} [f&#39;(x_n)(x_{n+1} - x_n) +
+f(x_n)] = f\left( \lim_{n \to \infty} x_n \right) = f(x&#39;) = 0
+\end{align*}</span> Since the root of <span class="math inline">f</span>
+is unique, thus <span class="math inline">x&#39; = x^*</span>.<br />
+<em>Step 3. Establishing the error bound</em>.<br />
+The Taylor’s Theorem implies that <span
+class="math display">\begin{align*}
+    &amp; f(x^*) = f(x_n) + f&#39;(x_n)(x^* - x_n) +
+\frac{f&#39;&#39;(t_n)}{2} (x^* - x_n)^2 \quad \text{ for some } t_n \in
+(x^*, x_n) \\
+    \implies &amp;x_{n+1} - x^* = \frac{f&#39;&#39;(t_n)}{2f&#39;(x_n)}
+(x^* - x_n)^2
+\end{align*}</span> Consequently, <span
+class="math display">\begin{align*}
+    0 \leq x_{n+1} - x^*
+    &amp;= \frac{f&#39;&#39;(t_n)}{2f&#39;(x_n)} (x_n - x^*)^2
+    = \frac{f&#39;&#39;(t_n)}{2f&#39;(x_n)} \cdot
+\left(\frac{f&#39;&#39;(t_{n-1})}{2f&#39;(x_{n-1})} \right)^2 (x_{n-1} -
+x^*)^4 = \cdots \\
+    &amp;= \prod_{i=1}^{n} \left[ \frac{f&#39;&#39;(t_i)}{2f&#39;(x_i)}
+\right]^{2^{(n+1-i)}} [x_1 - x^*]^{2^n}
+    \leq \left[ \frac{M}{2\delta} \right]^{2^{n+1} - 1} [x_1 -
+x^*]^{2^n}
+\end{align*}</span> ◻</p>
+</div>
+<h3 id="gradient-descent">Gradient Descent</h3>
+<div class="theorem">
+<p>Let <span class="math inline">f: \mathbb{R} \to \mathbb{R}</span> be
+a differentiable function that satisfies the following conditions:</p>
+<ol>
+<li><p><span class="math inline">f</span> is <em>Convex
+function</em>.</p></li>
+<li><p><span class="math inline">f&#39;</span> is <em>Lipschitz
+Continuous</em> with Lipschitz constant of <span
+class="math inline">f</span>, <span class="math inline">L &gt; 0</span>.
+In this, <span class="math inline">f</span> is called <span
+class="math inline">L</span>-<em>Smooth</em>.</p></li>
+<li><p><span class="math inline">f</span> has at least one local
+minimizer <span class="math inline">x^*</span>.</p></li>
+</ol>
+<p>Then, <span class="math inline">x^*</span> is a Global minimizer of
+<span class="math inline">\mathbb{R}</span>, and there exists a unique
+closed interval <span class="math inline">M</span> containing <span
+class="math inline">x^*</span> such that <span
+class="math display">\begin{align*}
+        \forall x \in M, t \notin M,\ f(x) = f(x^*) &lt; f(t)
+    
+\end{align*}</span><br />
+And, given initial point <span class="math inline">x_0 \in
+\mathbb{R}</span> and <span class="math inline">0 &lt; \gamma \leq
+\frac{1}{L}</span>, define a sequence <span
+class="math inline">\{x_n\}</span> inductively as follows: <span
+class="math display">\begin{align*}
+        x_{n+1} = x_t - \gamma \cdot f&#39;(x_n)
+    
+\end{align*}</span> Then, for any <span class="math inline">N \in
+\mathbb{N}</span>, <span class="math display">\begin{align*}
+        f(x_N) - f(x^*) \leq \frac{|x_0 - x^*|^2}{2 \gamma N}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">x^* \in
+\mathbb{R}</span> be a local minimizer. That is, there exists a <span
+class="math inline">\delta &gt; 0</span> such that <span
+class="math inline">\forall t \in (x^* - \delta, x^* + \delta)</span>,
+<span class="math inline">f(x^*) \leq f(t)</span>. Then, <span
+class="math display">\begin{align*}
+        0 \leq \lim_{t \to x^* +} \frac{f(x^*) - f(t)}{x^* - t} =
+f&#39;(x^*) = \lim_{t \to x^* -} \frac{f(x^*) - f(t)}{x^* - t} \leq 0
+    
+\end{align*}</span> thus, <span class="math inline">f&#39;(x^*) =
+0</span>. And, by convextiy, <span class="math inline">f&#39;</span> is
+monotonically inceasing. Now, The Fundametal Theorem of Calculus gives:
+<span class="math display">\begin{align*}
+        \forall x \in \mathbb{R},\ f(x) = \int_{x^*}^{x} f&#39;(t) dt +
+f(x^*) \geq f(x^*)       
+    
+\end{align*}</span> Therefore, <span class="math inline">x^*</span> is a
+Global minimizer of <span class="math inline">f</span>.<br />
+Now, establish the closed interval <span class="math inline">M</span>.
+Since <span class="math inline">f&#39;</span> is Lipschitz Continuous,
+thus <span class="math inline">f&#39;</span> is Continuous.<br />
+Let <span class="math inline">D \overset{\textnormal{def}}{=}\{x \in
+\mathbb{R} \mid f&#39;(x) = 0\}</span>. (Note that: <span
+class="math inline">x^* \in D</span>, thus <span
+class="math inline">D</span> is not emtpyset.)<br />
+<span class="math inline">D</span> is closed because: Let <span
+class="math inline">\{x_n\}</span> be a convergent sequence in <span
+class="math inline">D</span>. That is, for all <span
+class="math inline">n \in \mathbb{N}</span>, <span
+class="math inline">f(x_n) = 0</span>. Then, by continuity, <span
+class="math display">\begin{align*}
+        f\left(\lim_{n \to \infty} x_n \right) = \lim_{n \to \infty}
+f(x_n) = 0
+    
+\end{align*}</span> The limit of <span
+class="math inline">\{x_n\}</span> is contained in <span
+class="math inline">D</span>, thus <span class="math inline">D</span> is
+closed.<br />
+And, <span class="math inline">D</span> is interval: i.e, for any <span
+class="math inline">x \in (\inf D, \sup D)</span>, <span
+class="math inline">x \in D</span> because:<br />
+Suppose that there exists <span class="math inline">x \in (\inf D, \sup
+D)</span> such that <span class="math inline">x \notin D</span>. That
+is, <span class="math inline">f&#39;(x) \neq 0</span>. This is
+Contradiction with Monotonicity.<br />
+<br />
+To set error of upper bound, we make inequalities: Let <span
+class="math inline">x, y \in \mathbb{R}</span> be given.<br />
+The Fundamental Theorem of Calculus and <span
+class="math inline">L-</span>Smooth condition gives: <span
+class="math display">\begin{align*}
+            f(y) - f(x)
+            &amp;= \int_{x}^{y} f&#39;(t) dt = \int_{0}^{1} f&#39;(x +
+(y-x)u) (y-x) du = f&#39;(x) (y-x) + \int_{0}^{1} (f&#39;(x + (y-x)u) -
+f&#39;(x)) (y-x) du  \\
+            &amp;\overset{\text{2.}}{\leq} f&#39;(x) (y-x) + L \cdot
+|y-x|^2 \int_{0}^{1} u \ du = f&#39;(x) (y-x) + \frac{L}{2} |y-x|^2
+        
+\end{align*}</span> For any <span class="math inline">\lambda &gt;
+0</span>, Put <span class="math inline">y = x - \lambda
+f&#39;(x)</span>. Then, <span class="math display">\begin{align*}
+        f(x - \lambda f&#39;(x)) \leq f(x) - f&#39;(x)(\lambda
+f&#39;(x)) + \frac{L}{2}|\lambda f&#39;(x)|^2
+        = f(x) + \lambda \left(\frac{L \lambda}{2} - 1
+\right)|f&#39;(x)|^2
+    
+\end{align*}</span> Put <span class="math inline">\lambda =
+\frac{1}{L}</span>, then <span class="math display">\begin{align*}
+        f\left(x - \frac{f&#39;(x)}{L}\right) \leq f(x) -
+\frac{L}{2}|f&#39;(x)|^2
+        \implies
+        \frac{L}{2} |f&#39;(x)|^2 \leq f(x) - f\left(x -
+\frac{f&#39;(x)}{L}\right) \leq f(x) - \inf f
+    
+\end{align*}</span> Meanwhile, the convexity gives: for any <span
+class="math inline">x,y \in \mathbb{R}</span>, <span
+class="math display">\begin{align*}
+        f&#39;(x)(y - x) \leq f(y) - f(x) \leq f&#39;(y)(y - x)
+    
+\end{align*}</span> since derivative of convex function increase
+monotonically. Put <span class="math inline">\displaystyle z = y -
+\frac{1}{L} (f&#39;(y) - f&#39;(x))</span>. Then, <span
+class="math display">\begin{align*}
+        f(x) - f(y) &amp;= f(x) - f(z) + f(z) - f(y)  \\
+        &amp;\leq f&#39;(x)(x - z) + f&#39;(y)(z-y) + \frac{L}{2} |z -
+y|^2 \\
+        &amp;= f&#39;(x)\left(x - y + \frac{1}{L}(f&#39;(y) - f&#39;(x))
+\right) - f&#39;(y) \left(\frac{1}{L} (f&#39;(y) - f&#39;(x)) \right) +
+\frac{L}{2} \left| \frac{1}{L}(f&#39;(y) -f&#39;(x)) \right|^2 \\
+        &amp;= f&#39;(x) (x- y ) - \frac{1}{L} |f&#39;(y) - f&#39;(x)|^2
++ \frac{1}{2L}|f&#39;(y) - f&#39;(x)|^2 \\
+        &amp;= f&#39;(x) (x- y ) - \frac{1}{2L} |f&#39;(y) -
+f&#39;(x)|^2
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        \begin{cases}
+             \frac{1}{2L} |f&#39;(y) - f&#39;(x)|^2 \leq f&#39;(x)(x -
+y) - (f(x) - f(y)) \\
+             \frac{1}{2L} |f&#39;(x) - f&#39;(y)|^2 \leq f&#39;(y)(y -
+x) - (f(y) - f(z))
+        \end{cases}
+        \implies
+        \quad \frac{1}{L} |f&#39;(y) - f&#39;(x)|^2 \leq (f&#39;(y) -
+f&#39;(x))(y - x)
+    
+\end{align*}</span> Since above inequalities, we obtain that <span
+class="math display">\begin{align*}
+        |x_{n+1} - x^*|^2
+        &amp;= |x_n - \gamma \cdot f&#39;(x_n) - x^*|^2 = |(x_n - x^*) -
+\gamma \cdot f&#39;(x_n)|^2 \\
+        &amp;= |x_n - x^*|^2 - 2\gamma |f&#39;(x_n)| \cdot |x_n - x^*| +
+\gamma^2 |f&#39;(x_n)|^2 \\
+        &amp;\leq |x_n - x^*|^2 - 2\gamma \frac{1}{L}|f&#39;(x_n)|^2 +
+\gamma^2 |f&#39;(x_n)|^2 \\
+        &amp;= |x_n - x^*|^2 + \left( \gamma^2 - \frac{2\gamma}{L}
+\right) |f&#39;(x_n)|^2 \leq |x_n - x^*|^2
+    
+\end{align*}</span> Thus, <span class="math inline">|x_n - x^*|</span>
+decrease as <span class="math inline">n \to \infty</span>. That is,
+<span class="math inline">|x_n - x^*| \leq |x_0 - x^*|</span> for all
+<span class="math inline">n \in \mathbb{N}</span>.<br />
+Consider <span class="math inline">x_{n+1}</span> and <span
+class="math inline">x_n</span>. First, we obtain <span
+class="math display">\begin{align*}
+        f(x_{n+1}) &amp;\leq f(x_n) + f&#39;(x_n)(x_{n+1} - x_n) +
+\frac{L}{2} |x_{n+1} - x_n|^2 \\
+        &amp;= f(x_n) - \gamma  |f&#39;(x_n)|^2 + \frac{L}{2} \gamma^2
+|f&#39;(x_n)|^2 \\
+        &amp;= f(x_n) - \left(\gamma - \frac{L}{2} \gamma^2 \right)
+|f&#39;(x_n)|^2
+    
+\end{align*}</span> Subtracting <span class="math inline">f(x^*)</span>
+above, then <span class="math display">\begin{align*}
+        f(x_{n+1}) - f(x^*) \leq f(x_n) - f(x^*) - \left(\gamma -
+\frac{L}{2} \gamma^2 \right) |f&#39;(x_n)|^2
+    
+\end{align*}</span> Meanwhile, Convexity gives <span
+class="math display">\begin{align*}
+        f(x_n) - f(x^*) \leq f&#39;(x_n)(x_n - x^*) \leq |f&#39;(x_n)|
+|x_n - x^*| \leq |f&#39;(x_n)| |x_0 - x^*|
+    
+\end{align*}</span> Combining abvoe two inequalities, <span
+class="math display">\begin{align*}
+        f(x_{n+1}) - f(x^*) \leq f(x_n) - f(x^*) - \left(\gamma -
+\frac{L}{2} \gamma^2 \right) \cdot \frac{|f(x_n) - f(x^*)|^2}{|x_0 -
+x^*|^2}
+    
+\end{align*}</span> Dividing Both Sides by <span
+class="math inline">(f(x_{n+1}) - f(x^*))(f(x_{n}) - f(x^*))</span>,
+<span class="math display">\begin{align*}
+        &amp;\frac{1}{f(x_{n}) - f(x^*)} \leq \frac{1}{f(x_{n+1}) -
+f(x^*)} - \left(\gamma - \frac{L}{2} \gamma^2 \right) \cdot \frac{f(x_n)
+- f(x^*)}{f(x_{n+1}) - f(x^*)} \frac{1}{|x_0 - x^*|^2} \\
+        \implies &amp;\left(\gamma - \frac{L}{2} \gamma^2 \right) \cdot
+\frac{f(x_n) - f(x^*)}{f(x_{n+1}) - f(x^*)} \frac{1}{|x_0 - x^*|^2} \leq
+\frac{1}{f(x_{n+1}) - f(x^*)} - \frac{1}{f(x_{n}) - f(x^*)} \\
+        \implies &amp;\left(\gamma - \frac{L}{2} \gamma^2 \right) \cdot
+\frac{1}{|x_0 - x^*|^2} \leq \frac{1}{f(x_{n+1}) - f(x^*)} -
+\frac{1}{f(x_{n}) - f(x^*)} \\
+        \implies &amp;\sum_{n=0}^{N-1} \left[\left(\gamma - \frac{L}{2}
+\gamma^2 \right) \cdot \frac{1}{|x_0 - x^*|^2} \right]
+        \leq \sum_{n=0}^{N-1} \left[\frac{1}{f(x_{n+1}) - f(x^*)} -
+\frac{1}{f(x_{n}) - f(x^*)}  \right]
+        = \frac{1}{f(x_{N}) - f(x^*)} - \frac{1}{f(x_{0}) - f(x^*)}
+    
+\end{align*}</span> Consequently, <span
+class="math display">\begin{align*}
+        \frac{2 \gamma N}{|x_0 - x^*|^2}
+        \leq N \cdot \left[\left(\gamma - \frac{L}{2} \gamma^2 \right)
+\cdot \frac{1}{|x_0 - x^*|^2} \right] \leq \frac{1}{f(x_{N}) - f(x^*)} -
+\frac{1}{f(x_{0}) - f(x^*)} \leq \frac{1}{f(x_{N}) - f(x^*)}
+    
+\end{align*}</span> Organizing the formula, as result: <span
+class="math display">\begin{align*}
+        f(x_N) - f(x^*) \leq \frac{|x_0 - x^*|^2}{2 \gamma N}
+    
+\end{align*}</span> ◻</p>
+</div>
+<h2 id="integral">Integral</h2>
+<h3 id="inequality-of-riemann-stieltjes-integral">Inequality of
+Riemann-Stieltjes Integral</h3>
+<p>Let <span class="math inline">p,q \geq 1</span> such that <span
+class="math inline">\frac{1}{p} + \frac{1}{q} = 1</span>, and functions
+lying on <span class="math inline">[a,b]</span>.</p>
+<div class="lemma">
+<p>Let <span class="math inline">f,g \in \mathcal{R}(\alpha)</span> with
+<span class="math inline">f, g \geq 0</span>, and <span
+class="math inline">\displaystyle\int_{a}^{b} [f(x)]^p d \alpha =
+\int_{a}^{b} [g(x)]^q d \alpha = 1</span>. Then, <span
+class="math inline">\displaystyle\int_{a}^{b} f(x)g(x) d \alpha \leq
+1</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> For any <span class="math inline">x \in [a,b]</span>,
+the Young’s Inequality gives <span class="math display">\begin{align*}
+        0 \leq f(x) g(x) \leq \frac{[f(x)]^p}{p} + \frac{[g(x)]^q}{q}
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        \int_{a}^{b} f(x) g(x) d \alpha
+        \leq \int_{a}^{b} \frac{[f(x)]^p}{p} + \frac{[g(x)]^q}{q} d
+\alpha
+        = \frac{1}{p} \int_{a}^{b} [f(x)]^p d \alpha + \frac{1}{q}
+\int_{a}^{b} [g(x)]^q d \alpha = \frac{1}{p} + \frac{1}{q} = 1
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="definition">
+<p>Let <span class="math inline">f \in \mathcal{R}(\alpha)</span>.
+Define a <em>Norm</em> of <span class="math inline">f</span>: <span
+class="math display">\begin{align*}
+        \|f\|_p \overset{\textnormal{def}}{=}\left( \int_{a}^{b}
+|f(x)|^p d \alpha \right)^{\frac{1}{p}}
+    
+\end{align*}</span></p>
+</div>
+<p>This becomes actually norm of set of Stieltjes Integrable functions,
+<span class="math inline">\mathcal{F}
+\overset{\textnormal{def}}{=}\{f:[a,b] \to \mathbb{C} \ | \ f \in
+\mathcal{R}(\alpha)\}</span>.</p>
+<div class="lemma">
+<p><em>Hölder’s Inequality</em><br />
+Let <span class="math inline">f, g \in \mathcal{F}</span>. Then, <span
+class="math display">\begin{align*}
+        \left| \int_{a}^{b} f(x)g(x) d \alpha \right|
+        \leq \left[ \int_{a}^{b}|f(x)|^p d\alpha \right]^\frac{1}{p}
+        \cdot \left[ \int_{a}^{b}|g(x)|^q d\alpha \right]^\frac{1}{q}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Use above definition, Rewrite: <span
+class="math display">\begin{align*}
+        \|f\|^p_p = \int_{a}^{b} |f(x)|^p d\alpha,\
+        \|g\|^q_q = \int_{a}^{b} |g(x)|^q d\alpha
+    
+\end{align*}</span> Now, we can make the condition of above lemma, <span
+class="math display">\begin{align*}
+        &amp;\int_{a}^{b} \left[ \frac{|f(x)|}{\|f\|_p} \right]^p
+d\alpha
+        = \frac{1}{\|f\|^p_p} \cdot \int_{a}^{b} |f(x)|^p d\alpha = 1,\
+        \int_{a}^{b} \left[ \frac{|g(x)|}{\|g\|_q} \right]^q d\alpha
+        = \frac{1}{\|g\|^q_q} \cdot \int_{a}^{b} |g(x)|^q d\alpha = 1
+    
+\end{align*}</span> And apply this, <span
+class="math display">\begin{align*}
+        \int_{a}^{b} \frac{|f(x)| \cdot |g(x)|}{\|f\|_p \|g\|_q} d\alpha
+\leq 1
+        \implies \int_{a}^{b} |f(x)| |g(x)| d\alpha \leq \|f\|_p \|g\|_q
+= \left[ \int_{a}^{b}|f(x)|^p d\alpha \right]^\frac{1}{p}
+        \cdot \left[ \int_{a}^{b}|g(x)|^q d\alpha \right]^\frac{1}{q}
+    
+\end{align*}</span> Finally, the general property of integral of product
+gives <span class="math display">\begin{align*}
+        \left| \int_{a}^{b} f(x)g(x) d\alpha \right| \leq \int_{a}^{b}
+|f(x)| |g(x)| d\alpha
+        \leq \|f\|_p \|g\|_q = \left[ \int_{a}^{b}|f(x)|^p d\alpha
+\right]^\frac{1}{p}
+        \cdot \left[ \int_{a}^{b}|g(x)|^q d\alpha \right]^\frac{1}{q}
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><em>Minkowski inequality</em><br />
+Let <span class="math inline">f, g \in \mathcal{F}</span>. Then, for any
+<span class="math inline">p \geq 1</span>, <span class="math inline">\|f
++ g\|_p \leq \|f\|_p + \|g\|_p</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> <span class="math display">\begin{align*}
+        \|f+g\|^p_p
+        &amp;= \int_{a}^{b} |f+g|^p d\alpha = \int_{a}^{b}
+|f+g||f+g|^{p-1} d\alpha \\
+        &amp;\leq \int_{a}^{b}[|f| + |g|] |f+g|^{p-1} d\alpha \\
+        &amp;= \int_{a}^{b} |f| |f+g|^{p-1} d\alpha + \int_{a}^{b} |g|
+|f+g|^{p-1} d\alpha \\
+        &amp;\stackrel{\mathclap{\mbox{{\tiny Hölder \ }}}}{\leq}
+        \left[ \int_{a}^{b} |f|^p d\alpha \right]^{\frac{1}{p}} \left[
+\int_{a}^{b} |f+g|^{(p-1)\frac{p}{p-1}} d\alpha \right]^{\frac{p-1}{p}}
+        + \left[ \int_{a}^{b} |g|^p d\alpha \right]^{\frac{1}{p}} \left[
+\int_{a}^{b} |f+g|^{(p-1)\frac{p}{p-1}} d\alpha \right]^{\frac{p-1}{p}}
+\\
+        &amp;= \left[ \int_{a}^{b} |f+g|^{p} d\alpha
+\right]^{\frac{p-1}{p}} \left( \left[ \int_{a}^{b} |f|^p d\alpha
+\right]^{\frac{1}{p}} + \left[ \int_{a}^{b} |g|^p d\alpha
+\right]^{\frac{1}{p}} \right)
+        = \|f+g\|^{p-1}_p \cdot (\|f\|_p + \|g\|_p)
+    
+\end{align*}</span> Now, <span class="math display">\begin{align*}
+        \|f+g\|^p_p \cdot \|f+g\|^{1-p}_p = \|f + g\|_p \leq \|f\|_p +
+\|g\|_p
+    
+\end{align*}</span> ◻</p>
+</div>
+<h1 id="measure">Measure</h1>
+<h1 id="complex-analysis">Complex Analysis</h1>
+<h1 id="differential-geometry">Differential Geometry</h1>
+<h1 id="differential-equation">Differential Equation</h1>
+<h1 id="spaces">Spaces</h1>
+<h2 id="mathbbrn"><span class="math inline">\mathbb{R}^n</span></h2>
+<h3 id="inner-product-in-mathbbr">Inner Product in <span
+class="math inline">\mathbb{R}</span></h3>
+<h3 id="p-norm-in-mathbbrn"><span class="math inline">p</span>-norm in
+<span class="math inline">\mathbb{R}^n</span></h3>
+<div class="definition">
+<p>Let <span class="math inline">\mathbb{R}^n</span> be given. Define
+<em><span class="math inline">p</span>-norm</em> on <span
+class="math inline">\mathbb{R}^n</span> as: <span
+class="math display">\begin{align*}
+        d_p:\mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}:(\mathbf{x},
+\mathbf{y}) \mapsto \left( \sum_{i=1}^{n} |x_i - y_i|^p
+\right)^{\frac{1}{p}}
+        ,\quad (\mathbf{x} = (x_1, \dots, x_n),\ \mathbf{y} = (y_1,
+\dots, y_n))
+    
+\end{align*}</span> where <span class="math inline">p \in [1,
+\infty]</span>. In particular, <span class="math inline">p</span>-norm
+is a <em>Metric</em>, being <em>Minkowski inequality</em>.</p>
+</div>
+<div class="lemma">
+<p><em>Young’s inequality</em><br />
+Let <span class="math inline">u,v &gt; 0</span>, and <span
+class="math inline">p,q \in [1, \infty]</span> such that <span
+class="math inline">\frac{1}{p} + \frac{1}{q} = 1</span>.<br />
+Then, <span class="math display">\begin{align*}
+        uv \leq \frac{1}{p} u^p + \frac{1}{q} v^q
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Since <span class="math inline">f(x) = \log x</span>
+is concave, we obtain <span class="math display">\begin{align*}
+        \forall \lambda \in [0,1],\ \lambda f(x) (1-\lambda) f(y)
+\leq  f(\lambda x + (1-\lambda)y)
+    
+\end{align*}</span> thus, <span class="math display">\begin{align*}
+        \log\left(\frac{1}{p} u^p + \frac{1}{q} v^q \right) \geq
+\frac{1}{p} \log (u^p) + \frac{1}{q} \log(v^q) = \log(uv)
+    
+\end{align*}</span> Since <span class="math inline">\exp(x)</span>
+increasing, we get <span class="math display">\begin{align*}
+        \exp\left(\log\left(\frac{1}{p} u^p + \frac{1}{q} v^q
+\right)\right) \geq \exp(\log(uv))
+    
+\end{align*}</span> i.e., <span class="math display">\begin{align*}
+        uv \leq \frac{1}{p} u^p + \frac{1}{q} v^q
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="lemma">
+<p><em>Holder’s inequality</em><br />
+Let <span class="math inline">x = (x_1, \dots, x_n)</span> and <span
+class="math inline">y = (y_1, \dots, y_n)</span> be give, and <span
+class="math inline">p,q  \in [1, \infty]</span> such that <span
+class="math inline">\frac{1}{p}+\frac{1}{q}=1</span>. Then, <span
+class="math display">\begin{align*}
+        \sum_{i=1}^{n} |x_i y_i| \leq \left(\sum_{i=1}^{n} |x_i|^p
+\right)^\frac{1}{p} \cdot \left(\sum_{i=1}^{n} |y_i|^q
+\right)^\frac{1}{q}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Denote that <span class="math display">\begin{align*}
+        \|x\|_p \overset{\textnormal{def}}{=}\left(\sum_{i=1}^{n}
+|x_i|^p \right)^\frac{1}{p}
+    
+\end{align*}</span> Then, since young’s inequality, for each <span
+class="math inline">i \in \{1,2, \dots, n\}</span>, <span
+class="math display">\begin{align*}
+        \frac{|x_i|\ }{\|x\|_p} \cdot \frac{|y_i|\ }{\|y\|_p}
+        \leq \frac{1}{p} \cdot \frac{|x_i|^p}{\|x\|_p^p} + \frac{1}{q}
+\cdot \frac{|y_i|^q}{\|y\|_q^q}
+    
+\end{align*}</span> Summing for all <span class="math inline">i =
+1,2,\dots,n</span>: <span class="math display">\begin{align*}
+        \frac{1}{\|x\|_p \|y\|_q} \cdot \sum_{i=1}^{n} |x_i y_i| \leq
+\frac{1}{p} + \frac{1}{q} = 1
+    
+\end{align*}</span> Therefore, <span class="math display">\begin{align*}
+        \sum_{i=1}^{n} |x_i y_i| \leq \left(\sum_{i=1}^{n} |x_i|^p
+\right)^\frac{1}{p} \cdot \left(\sum_{i=1}^{n} |y_i|^q
+\right)^\frac{1}{q}
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><em>Minkowski inequality</em><br />
+Given complex-valued sequences <span
+class="math inline">\{x_i\}_{i=1}^n</span> and <span
+class="math inline">\{y_i\}_{i=1}^n</span>, <span
+class="math display">\begin{align*}
+        \left[ \sum_{i=1}^{n} |x_i + y_i|^p \right]^\frac{1}{p}
+        \leq \left[ \sum_{i=1}^{n} |x_i|^p \right]^\frac{1}{p}
+        + \left[ \sum_{i=1}^{n} |y_i|^p \right]^\frac{1}{p}
+    
+\end{align*}</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Denote <span class="math display">\begin{align*}
+        |x_i + y_i|^p = |x_i + y_i| \cdot |x_i + y_i|^{p-1}
+    
+\end{align*}</span> Then, <span class="math display">\begin{align*}
+        \sum_{i=1}^{n} |x_i + y_i|^p
+        &amp;= \sum_{i=1}^{n} |x_i + y_i| \cdot |x_i + y_i|^{p-1} \\
+        &amp;= \sum_{i=1}^{n} (|x_i| + |y_i|) \cdot |x_i + y_i|^{p-1} \\
+        &amp;= \sum_{i=1}^{n} |x_i| \cdot |x_i + y_i|^{p-1} +
+\sum_{i=1}^{n} |y_i| \cdot |x_i + y_i|^{p-1} \\
+        &amp;\overset{\mathclap{\text{Hölder \ \ }}}{\leq}
+        \left[ \sum_{i=1}^{n} |x_i|^p \right]^\frac{1}{p} \cdot
+\left[\sum_{i=1}^{n} |x_i + y_i|^p \right]^{\frac{p-1}{p}}
+        + \left[ \sum_{i=1}^{n} |y_i|^p \right]^\frac{1}{p} \cdot
+\left[\sum_{i=1}^{n} |x_i + y_i|^p \right]^{\frac{p-1}{p}} \\
+        &amp;= \left[ \left( \sum_{i=1}^{n} |x_i|^p \right)^\frac{1}{p}
++ \left( \sum_{i=1}^{n} |y_i|^p \right)^\frac{1}{p} \right] \cdot
+\left[\sum_{i=1}^{n} |x_i + y_i|^p \right]^{\frac{p-1}{p}} \\
+    
+\end{align*}</span> Now, Divide each side as <span
+class="math inline">\left[\sum_{i=1}^{n} |x_i + y_i|^p
+\right]^{\frac{p-1}{p}}</span>, then we obtain <span
+class="math display">\begin{align*}
+        \left[\sum_{i=1}^{n} |x_i + y_i|^p \right]^{1 - \frac{p-1}{p}}
+        = \left[\sum_{i=1}^{n} |x_i + y_i|^p \right]^{\frac{1}{p}}
+        \leq \left[ \left( \sum_{i=1}^{n} |x_i|^p \right)^\frac{1}{p} +
+\left( \sum_{i=1}^{n} |y_i|^p \right)^\frac{1}{p} \right]
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p>Let <span class="math inline">d_{p_1}, d_{p_2}</span> are <span
+class="math inline">p</span>-norm on <span
+class="math inline">\mathbb{R}^n</span> with <span class="math inline">1
+\leq p_1 &lt; p_2 \leq \infty</span>. Then, <span
+class="math display">\begin{align*}
+        \exists C &gt; 0 \text{ s.t. }\forall x,y \in \mathbb{R}^n,\
+d_{p_2}(x,y) \leq d_{p_1}(x,y) \leq C d_{p_2}(x,y)
+    
+\end{align*}</span> In particular, <span
+class="math inline">\displaystyle C = n^{\frac{1}{p_1} -
+\frac{1}{p_2}}</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">p_1 &lt;
+p_2</span>.<br />
+For show that first-inequality, <span
+class="math display">\begin{align*}
+        1 = \sum_{i=1}^n \left[\frac{|x_i - y_i|}{\left[\sum_{i=1}^{n}
+|x_i - y_i|^{p_2} \right]^{\frac{1}{p_2}}}\right]^{p_2}
+        \leq \sum_{i=1}^n \left[\frac{|x_i - y_i|}{\left[\sum_{i=1}^{n}
+|x_i - y_i|^{p_2} \right]^{\frac{1}{p_2}}}\right]^{p_1}
+        = \frac{\sum_{i=1}^n |x_i - y_i|^{p_1}}{\left[\sum_{i=1}^{n}
+|x_i - y_i|^{p_2} \right]^{\frac{p_1}{p_2}}}
+        = \left[\frac{[\sum_{i=1}^n |x_i -
+y_i|^{p_1}]^\frac{1}{p_1}}{\left[\sum_{i=1}^{n} |x_i - y_i|^{p_2}
+\right]^{\frac{1}{p_2}}} \right]^{p_1}
+    
+\end{align*}</span> Thus, we obtain that: <span
+class="math display">\begin{align*}
+        &amp;1 \leq \left[\frac{[\sum_{i=1}^n |x_i -
+y_i|^{p_1}]^\frac{1}{p_1}}{\left[\sum_{i=1}^{n} |x_i - y_i|^{p_2}
+\right]^{\frac{1}{p_2}}} \right]^{p_1}
+        \iff 1 \leq \frac{[\sum_{i=1}^n |x_i -
+y_i|^{p_1}]^\frac{1}{p_1}}{\left[\sum_{i=1}^{n} |x_i - y_i|^{p_2}
+\right]^{\frac{1}{p_2}}}
+        \iff \left[\sum_{i=1}^n |x_i - y_i|^{p_2}\right]^\frac{1}{p_2}
+\leq \left[\sum_{i=1}^{n} |x_i - y_i|^{p_1} \right]^{\frac{1}{p_1}}
+    
+\end{align*}</span> For show that second-inequality, using Hölder’s
+inequality. <span class="math display">\begin{align*}
+        (d_{p_1}(x,y))^{p_1}
+        &amp;= \sum_{i=1}^{n} |x_i - y_i|^{p_1}
+        = \sum_{i=1}^{n} |x_i - y_i|^{p_1} \cdot 1 \\
+        &amp;\overset{\mathclap{\text{Hölder \ \
+}}}{\leq}  \left[\sum_{i=1}^{n} \left( |x_i - y_i|^{p_1 \cdot
+\frac{p_2}{p_1}} \right)\right]^\frac{p_1}{p_2}
+        \cdot \left[\sum_{i=1}^{n} 1^\frac{p_2}{p_2 - p_1} \right]^{1 -
+\frac{p_1}{p_2}}
+        = \left[\sum_{i=1}^{n} \left( |x_i - y_i|^{p_2}
+\right)\right]^\frac{p_1}{p_2} \cdot n^{1 - \frac{p_1}{p_2}}
+    
+\end{align*}</span> Taking the <span
+class="math inline">\frac{1}{p_1}</span>-th power of both sides, then
+<span class="math display">\begin{align*}
+        d_{p_1}(x,y)\leq \left[\sum_{i=1}^{n} \left( |x_i - y_i|^{p_2}
+\right)\right]^\frac{1}{p_2} \cdot n^{\frac{1}{p_1} - \frac{1}{p_2}} =
+n^{\frac{1}{p_1} - \frac{1}{p_2}} \cdot d_{p_2}(x,y)
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="corollary">
+<p>Let <span class="math inline">\mathbb{R}^n</span> be given as a set,
+and <span class="math inline">d_{p_1}, d_{p_2}: \mathbb{R}^n \times
+\mathbb{R}^n \to \mathbb{R}</span> are <span
+class="math inline">p</span>-norm on <span
+class="math inline">\mathbb{R}^n</span>. Then, <span
+class="math display">\begin{align*}
+            \mathcal{T}_{d_{p_1}} = \mathcal{T}_{d_{p_2}}
+        
+\end{align*}</span></p>
+</div>
+<p>For every <span class="math inline">p \geq 1</span>, the metric space
+<span class="math inline">(\mathbb{R}^n, d_p)</span> induces the same
+topology as the product topology on <span
+class="math inline">\mathbb{R}^n</span>.<br />
+In particular, <span class="math inline">\mathbb{R}^n</span> with the
+product topology coincides with <span
+class="math inline">\mathbb{R}^n</span> endowed with any <span
+class="math inline">p</span>-norm.</p>
+<h3 id="open-and-closed-set-in-mathbbrn">Open and Closed set in <span
+class="math inline">\mathbb{R}^n</span></h3>
+<div class="definition">
+<p>For <span class="math inline">p \in [1, \infty]</span>, define
+<em><span class="math inline">p</span>-Ball</em> in <span
+class="math inline">\mathbb{R}^n</span> as: <span
+class="math display">\begin{align*}
+        B_p(x, r) \overset{\textnormal{def}}{=}\{y \in \mathbb{R}^n :
+\|x - y\|_p &lt; r\}
+    
+\end{align*}</span></p>
+</div>
+<p>Since all <span class="math inline">p</span>-norms are equivalent,
+for any <span class="math inline">p \in [1, \infty]</span>, the
+collection <span class="math display">\begin{align*}
+    \beta_p \overset{\textnormal{def}}{=}\left\{B_p(x,r) \;\middle|\; x
+\in \mathbb{Q}^n,\ r \in \mathbb{Q}^+ \right\}
+    \cup \{\emptyset, \mathbb{R}^n\}
+\end{align*}</span> is Countable basis of <span
+class="math inline">\mathbb{R}^n</span>. Immediately, we obtain:</p>
+<div class="lemma">
+<p>Every open set in <span class="math inline">\mathbb{R}^n</span> is a
+countable union of <span class="math inline">p</span>-Balls.</p>
+</div>
+<p>We call <span class="math inline">2</span>-Ball the <em>Ball</em>,
+and <span class="math inline">\infty</span>-Ball the <em>Cube</em>.</p>
+<div class="theorem">
+<p>Let <span class="math inline">U \subseteq \mathbb{R}^n</span> be an
+open set. Then, <span class="math inline">U</span> is a countable union
+of closed cubes with disjoint interiors.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">U \subseteq
+\mathbb{R}^n</span> be an open set, and define <em>Dyadic Cubes</em> on
+<span class="math inline">\mathbb{R}^n</span> as: for each <span
+class="math inline">k \in \mathbb{N}</span>, <span
+class="math display">\begin{align*}
+        Q_k \overset{\textnormal{def}}{=}\left\{ \prod_{i=1}^{n} \left[
+\frac{q_i}{2^k},\frac{q_i + 1}{2^k} \right] \subset \mathbb{R}^n
+\;\middle|\; q_i \in \mathbb{Z} \right\}
+    
+\end{align*}</span> Each element of <span class="math inline">Q_k</span>
+is product of closed intervals, and its interiors are disjoint.<br />
+ ◻</p>
+</div>
+<h2 id="topological-vector-space">Topological Vector Space</h2>
+<h2 id="hilbert-space">Hilbert Space</h2>
+<div class="definition">
+<p>Complete Inner product Vector Space is called <em>Hilbert
+Space</em>.</p>
+</div>
+<h3 id="hilbert-space-in-mathbbromega">Hilbert Space in <span
+class="math inline">\mathbb{R}^\omega</span></h3>
+<div class="definition">
+<p>Define <span class="math inline">\displaystyle\mathbb{R}^\omega
+\overset{\textnormal{def}}{=}\prod_{i=1}^\infty \mathbb{R}</span> as the
+countable product of Euclidean space <span
+class="math inline">\mathbb{R}</span> with product topology.<br />
+And define <span class="math inline">\displaystyle\mathbb{H}
+\overset{\textnormal{def}}{=}\left\{ {\{x_n \}}_{n=1}^\infty
+\;\middle|\; \sum_{n=1}^{\infty} x^2_n &lt; \infty \right\} \subset
+\mathbb{R}^\omega</span>, <em>Metric</em> on <span
+class="math inline">\mathbb{H}</span> as <span
+class="math inline">\displaystyle\mu:\mathbb{H} \times \mathbb{H} \to
+\mathbb{R}: ( \{x_n\}, \{y_n\}) \mapsto \sqrt{\sum_{i=1}^{\infty} (x_i -
+y_i)^2}</span>.<br />
+The Metric Space <span class="math inline">(\mathbb{H}, \mu)</span> is
+called <em>Hilbert Space</em> or <em><span
+class="math inline">l_2</span> Space</em>.</p>
+</div>
+<p>Define the operations elementwise; then <span
+class="math inline">(\mathbb{H}, +, \times)</span> is a Vector Space
+over <span class="math inline">\mathbb{R}</span>.<br />
+Moreover, <span class="math inline">\mathbb{H}</span> is Complete Metric
+Space and Inner product Vector Space.</p>
+<div class="lemma">
+<p><span class="math inline">\displaystyle\mu:\mathbb{H} \times
+\mathbb{H} \to \mathbb{R}: ( \{x_n\}, \{y_n\}) \mapsto
+\sqrt{\sum_{i=1}^{\infty} (x_i - y_i)^2}</span> is Metric function
+induced by the inner product.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> We know that <span
+class="math inline">\mathbb{R}^\omega</span> is Vector Space. Moreover,
+<span class="math inline">\mathbb{H} \subset \mathbb{R}^\omega</span> is
+Subspace. Using subspace criteria:</p>
+<div class="center">
+<p><span class="math inline">S \subset V</span> is Subspace of Vector
+Space <span class="math inline">V</span> if and only if <span
+class="math inline">0 \in S</span> and For any <span
+class="math inline">x,y \in S</span> and <span class="math inline">a \in
+F</span>, <span class="math inline">ax + y \in S</span>.</p>
+</div>
+<p>Clearly, <span class="math inline">\{0\} \in \mathbb{H}</span>. Let
+<span class="math inline">a \in \mathbb{R}</span> and <span
+class="math inline">\{x_n\}, \{y_n\} \in \mathbb{H}</span> be given.
+Then, <span class="math inline">a \{x_n\} + \{y_n\} = \{ax_n + y_n\} \in
+\mathbb{H}</span> because: <span class="math display">\begin{align*}
+        \sum_{i=1}^{\infty} (a x_i + y_i)^2
+        = \sum_{i=1}^{\infty} \left[a^2 x_i^2 + 2a x_i y_i +
+y_i^2\right]
+        \overset{(*)}{=} a^2 \sum_{i=1}^{\infty} x_i^2 + 2a
+\sum_{i=1}^{\infty} x_i y_i + \sum_{i=1}^{\infty} y_i^2 &lt; \infty
+    
+\end{align*}</span> The <span class="math inline">(*)</span> given by:
+<span class="math display">\begin{align*}
+        \sum_{i=1}^{\infty} |x_i y_i|
+        =\sum_{i=1}^{\infty} |x_i| |y_i|
+        \leq \sum_{i=1}^{\infty} (\max(|x_i|, |y_i|))^2
+        \leq \sum_{i=1}^{\infty} (x_n^2 + y_n^2)
+        = \sum_{i=1}^{\infty} x_n^2 + \sum_{i=1}^{\infty} y_n^2 &lt;
+\infty
+        \tag{$*$}
+    
+\end{align*}</span> Thus <span class="math inline">\mathbb{H}</span> is
+Vector Space over <span class="math inline">\mathbb{R}</span>. Now,
+define <em>inner product</em> on <span
+class="math inline">\mathbb{H}</span> as: <span
+class="math display">\begin{align*}
+        \langle \ \cdot \ , \ \cdot \ \rangle : \mathbb{H} \times
+\mathbb{H} \to \mathbb{R}:
+        \left(\{x_n\}, \{y_n\} \right) \mapsto \sum_{i=1}^{\infty} x_i
+y_i
+    
+\end{align*}</span> This definition is well-defined since <span
+class="math inline">(*)</span>. And, Linearity in first: <span
+class="math display">\begin{align*}
+        \langle a \{x_n\} + \{y_n\} , \{z_n\} \rangle
+        = \langle \{a x_n + y_n\} , \{z_n\} \rangle
+        = \sum_{i=1}^{\infty} (ax_i + y_i) z_i
+        = a \sum_{i=1}^{\infty} x_i z_i + \sum_{i=1}^{\infty} y_i z_i
+        = a \langle \{x_n\}, \{z_n\} \rangle + \langle \{y_n\} , \{z_n\}
+\rangle
+    
+\end{align*}</span> The other conditions are clear. Thus, <span
+class="math inline">(\mathbb{H}, \langle \cdot , \cdot \rangle)</span>
+is <em>inner product space</em>.<br />
+Using <em>ineer product</em>, define the <em>Norm</em> on <span
+class="math inline">\mathbb{H}</span> as: <span
+class="math display">\begin{align*}
+        \| \cdot \| : \mathbb{H} \to \mathbb{R} : \{x_n\} \mapsto
+\sqrt{\langle \{x_n\}, \{x_n\} \rangle}
+    
+\end{align*}</span> Finally, define <em>Metric</em> on <span
+class="math inline">\mathbb{H}</span> as: <span
+class="math display">\begin{align*}
+        \mu:\mathbb{H} \times \mathbb{H} \to \mathbb{R}: ( \{x_n\},
+\{y_n\}) \mapsto \| \{x_n\} - \{y_n\} \| = \sqrt{\sum_{i=1}^{\infty}
+(x_i - y_i)^2}
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><em>Hilbert Space</em> is Separable.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> For each <span class="math inline">n \in
+\mathbb{N}</span>, define <span class="math inline">D_n
+\overset{\textnormal{def}}{=}\{\{p_n\} \mid p_i \in \mathbb{Q},\ p_{n+1}
+= p_{n+1} = \cdots = 0 \}</span> and <span
+class="math inline">\displaystyle D
+\overset{\textnormal{def}}{=}\bigcup_{n \in \mathbb{N}}
+D_n</span>.<br />
+Then, <span class="math inline">D</span> is countable set. We will show
+that <span class="math inline">\overline{D} = \mathbb{H}</span>.<br />
+Let <span class="math inline">\epsilon &gt; 0</span> and <span
+class="math inline">\{x_n\} \in \mathbb{H}</span> be given. Since
+convergence, there exists <span class="math inline">N \in
+\mathbb{N}</span> such that <span class="math display">\begin{align*}
+        \sum_{i=N+1}^{\infty} x^2_i = \sum_{i=1}^{\infty} x^2_i -
+\sum_{i=1}^{N} x^2_i &lt; \frac{\epsilon^2}{2}
+    
+\end{align*}</span> Since density of Rationals, put each <span
+class="math inline">i = 1, 2 , \ldots, N</span>, <span
+class="math inline">p_i \in \mathbb{Q}</span> <span
+class="math inline">\displaystyle|x_i - p_i| &lt;
+\frac{\epsilon}{\sqrt{2N}}</span> and <span class="math inline">p_i =
+0</span> for <span class="math inline">i \geq N+1</span>.<br />
+Then, <span class="math inline">\{p_n\} \in D_n \subset D</span> and
+<span class="math display">\begin{align*}
+        \mu\left( \{x_n\}, \{p_n\} \right)
+        = \sqrt{\sum_{i=1}^{N} (x_i - p_i)^2 + \sum_{i=N+1}^{\infty}
+(x_i - p_i)^2}
+        = \sqrt{\sum_{i=1}^{N} (x_i - p_i)^2 + \sum_{i=N+1}^{\infty}
+x_i^2}
+        &lt; \sqrt{N \cdot \frac{\epsilon^2}{2N} + \frac{\epsilon^2}{2}}
+        = \epsilon
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="corollary">
+<p><em>Hilbert Space</em> is Second-Countable.</p>
+</div>
+<div class="theorem">
+<p><em>Hilbert Space</em> is Complete.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">\{ \{x_{n,i}
+\}_{i=1}^\infty \}_{n=1}^\infty</span> be a Cauchy sequence in <span
+class="math inline">\mathbb{H}</span>. For any fixed <span
+class="math inline">n,m \in \mathbb{N}</span> and for each <span
+class="math inline">j \in \mathbb{N}</span>, <span
+class="math display">\begin{align*}
+        |x_{n,j} - x_{m,j}| &lt; \mu(\{x_{n,i}\}, \{x_{m,i}\})
+        = \sqrt{\sum_{i=1}^{\infty} (x_{n,i} - x_{m,i})^2}
+    
+\end{align*}</span> That is, for each <span class="math inline">j \in
+\mathbb{N}</span>, <span class="math inline">\{x_{n,j}\}</span> is
+Cauchy sequence in <span class="math inline">\mathbb{R}</span>. Since
+<span class="math inline">\mathbb{R}</span> is Complete, put <span
+class="math inline">\displaystyle y_j
+\overset{\textnormal{def}}{=}\lim_{n \to \infty} x_{n,j}</span>, each
+<span class="math inline">j \in \mathbb{N}</span>.<br />
+Let <span class="math inline">\epsilon &gt; 0</span> be given. Then,
+there exists <span class="math inline">N \in \mathbb{N}</span> such that
+<span class="math inline">n,m \geq N \implies
+\displaystyle\mu(\{x_{n,i}\}, \{x_{m,i}\}) &lt;
+\frac{\epsilon}{2}</span>.<br />
+Meanwhile, for each <span class="math inline">k \in \mathbb{N}</span>,
+<span class="math display">\begin{align*}
+        \sum_{i=1}^{k} (x_{n,i} - x_{m,i})^2 \leq \sum_{i=1}^{\infty}
+(x_{n,i} - x_{m,i})^2 = \left[\mu(\{x_{n,i}\}, \{x_{m,i}\})\right]^2
+    
+\end{align*}</span> Thus, <span class="math inline">n,m \geq N \implies
+\displaystyle\sum_{i=1}^{k} (x_{n,i} - x_{m,i})^2 &lt; \left(
+\frac{\epsilon}{2} \right)^2</span>, for each <span
+class="math inline">k \in \mathbb{N}</span>.<br />
+Taking limit to <span class="math inline">m</span>, then <span
+class="math inline">n \geq N \implies \displaystyle\lim_{m \to \infty}
+\left(\sum_{i=1}^{k} (x_{n,i} - x_{m,i})^2 \right) = \sum_{i=1}^{k}
+\left(x_{n,i} - \lim_{m \to \infty} x_{m,i}\right)^2 = \sum_{i=1}^{k}
+(x_{n,i} - y_i)^2 &lt; \left(\frac{\epsilon}{2}\right)^2</span>.<br />
+And, for all <span class="math inline">k \in \mathbb{N}</span>, <span
+class="math display">\begin{align*}
+        \sum_{i=1}^{k} y_i^2 = \sum_{i=1}^{k} (2(x_{n,i}^2 + (x_{n,i} -
+y_i)^2)) \leq 2\|\{x_{n,i}\}_{i=1}^\infty \|^2 +
+\left(\frac{\epsilon}{2}\right)^2
+    
+\end{align*}</span> Thus <span class="math inline">\{y_i\} \in
+\mathbb{H}</span>. As a result, <span
+class="math display">\begin{align*}
+        n \geq N \implies \mu(\{x_n\}, \{y_n\})
+        = \sqrt{\sum_{i=1}^{\infty} (x_{n,i} - y_i)^2}
+        = \sqrt{\lim_{k \to \infty} \sum_{i=1}^{k} (x_{n,i} - y_i)^2}
+        &lt; \frac{\epsilon}{2}
+    
+\end{align*}</span> ◻</p>
+</div>
+<div class="theorem">
+<p><span class="math inline">\mathbb{H} \subset \mathbb{R}^\omega</span>
+with subbspace topology is Metrizable.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> We will use two Lemmas:</p>
+<div class="lemma">
+<p>Countable Product of Metric Space is Metrizable.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Let <span class="math inline">(X_i, d_i)</span> be a
+metric Space, for each <span class="math inline">i \in
+\mathbb{N}</span>.<br />
+If <span class="math inline">d:X \times X \to \mathbb{R}</span> is a
+Metric, then <span class="math inline">\displaystyle\frac{d}{1+d}</span>
+is also Metric, because <span class="math display">\begin{align*}
+            \frac{d(x,z)}{1 + d(x,z)}
+            \mathrel{\underset{\mathclap{\substack{\uparrow\\
+\frac{x}{1+x}\ \text{increasing}}}}{\le}}
+            \frac{d(x,y) + d(y,z)}{1 + d(x,y) + d(y,z)}
+            \mathrel{\underset{\mathclap{\substack{\uparrow\\ d \ge
+0}}}{\le}}
+            \frac{d(x,y)}{1 + d(x,y)} + \frac{d(y,z)}{1 + d(y,z)}
+\tag{$*$}
+        
+\end{align*}</span> Using this fact, define <span
+class="math display">\begin{align*}
+            d_{\Pi}: \prod X_i \times \prod X_i \to \mathbb{R}:\left(
+\{x_n\}_{n=1}^\infty, \{y_n\}_{n=1}^\infty \right) \mapsto
+\sum_{i=1}^{\infty} \left[\frac{1}{2^i} \cdot \frac{d_i(x_i, y_i)}{1 +
+d_i(x_i, y_i)} \right]
+        
+\end{align*}</span> Then <span class="math inline">d_\Pi</span> is a
+Metric because: <span class="math display">\begin{align*}
+            d_\Pi\left( \{x_n\}_{n=1}^\infty, \{z_n\}_{n=1}^\infty
+\right)
+            &amp;= \sum_{i=1}^{\infty} \left[\frac{1}{2^i} \cdot
+\frac{d_i(x_i, z_i)}{1 + d_i(x_i, z_i)} \right] \\
+            &amp;\overset{(*)}{\leq} \sum_{i=1}^{\infty}
+\left[\frac{1}{2^i} \cdot \left( \frac{d_i(x_i, y_i)}{1 + d_i(x_i, y_i)}
++ \frac{d_i(y_i, z_i)}{1 + d_i(y_i, z_i)} \right)\right] \\
+            &amp;= \sum_{i=1}^{\infty} \left[\frac{1}{2^i} \cdot
+\frac{d_i(x_i, y_i)}{1 + d_i(x_i, y_i)} \right] +  \sum_{i=1}^{\infty}
+\left[\frac{1}{2^i} \cdot \frac{d_i(y_i, z_i)}{1 + d_i(y_i, z_i)}
+\right] \\
+            &amp;= d_\Pi\left( \{x_n\}_{n=1}^\infty,
+\{y_n\}_{n=1}^\infty \right) + d_\Pi\left( \{y_n\}_{n=1}^\infty,
+\{z_n\}_{n=1}^\infty \right)
+        
+\end{align*}</span> Reflexity and symmetry are clear. ◻</p>
+</div>
+<div class="lemma">
+<p>Metrizable is Hereditary.</p>
+</div>
+<p>Proof omitted.<br />
+Consequently, since <span class="math inline">\mathbb{H} \subset
+\mathbb{R}^\omega</span> is a subspace of a metric space, it is
+metrizable. ◻</p>
+</div>
+<h2 id="banach-space">Banach Space</h2>
+<h2 id="l_p-space"><span class="math inline">L_p</span> Space</h2>
+<h2 id="l_p-space-1"><span class="math inline">l_p</span> Space</h2>
+<p><span class="citation" data-cites="athreya2019cantor"></span> <span
+class="citation" data-cites="croom2002principles"></span> <span
+class="citation" data-cites="Dummit_Foote_2004"></span></p>
+
+<!-- Comment dialog containing the Giscus widget -->
+<dialog id="comment-dialog">
+  <div id="comment-target" data-thread=""></div>
+  <button id="comment-close">닫기</button>
+
+  <!-- Giscus widget (GitHub Discussions). Replace placeholders below. -->
+  <script src="https://giscus.app/client.js"
+          data-repo="YOUR_GITHUB_USERNAME/YOUR_REPO_NAME"
+          data-repo-id="YOUR_REPO_ID"
+          data-category="General"
+          data-category-id="YOUR_CATEGORY_ID"
+          data-mapping="specific"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="ko"
+          crossorigin="anonymous"
+          async>
+  </script>
+</dialog>
+
+<!-- Ensure the comment button injector runs -->
+<script src="comment.js"></script>
+</body>
+</html>

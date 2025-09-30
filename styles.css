@@ -1,0 +1,43 @@
+
+/* Minimal page tweaks and comment button styling */
+html, body { margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.6; padding: 1rem; max-width: 960px; margin: auto; }
+main, article { width: 100%; }
+h1[id], h2[id], h3[id], h4[id], .theorem[id], .definition[id], .proof[id], .equation[id] {
+  position: relative;
+}
+.comment-btn {
+  margin-left: .5rem;
+  font-size: .875rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: .1rem .6rem;
+  background: #fafafa;
+  cursor: pointer;
+}
+.comment-btn:hover { background: #f0f0f0; }
+dialog#comment-dialog {
+  width: min(900px, 96vw);
+  height: min(80vh, 720px);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0;
+}
+#comment-dialog::backdrop { background: rgba(0,0,0,.3); }
+#comment-dialog > div {
+  height: calc(100% - 48px);
+  overflow: hidden;
+}
+#comment-close {
+  position: absolute;
+  right: 12px; bottom: 10px;
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+/* Keep KaTeX/MathJax equations from overflowing */
+.katex-display { overflow-x: auto; overflow-y: hidden; }
+pre { overflow: auto; background: #f7f7f7; padding: .75rem; border-radius: 8px; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
