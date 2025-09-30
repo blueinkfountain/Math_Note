@@ -1,7 +1,43 @@
-<!doctype html><html><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Spaces.pdf</title>
-<style>html,body{margin:0;height:100%}iframe{border:0;width:100%;height:100vh}</style>
+<title>${PDF}</title>
+<style>
+  html,body{margin:0;height:100%}
+  .bar{position:fixed;inset:0 auto auto 0;height:48px;display:flex;gap:8px;align-items:center;padding:0 12px;background:#111;color:#fff;font:14px system-ui;z-index:10}
+  .bar button{border:0;padding:6px 10px;border-radius:6px;cursor:pointer}
+  .bar .primary{background:#4f46e5;color:#fff}
+  .bar .ghost{background:#222;color:#ddd}
+  .wrap{position:absolute;top:48px;left:0;right:0;bottom:0}
+  iframe{border:0;width:100%;height:100%}
+</style>
 </head><body>
-<iframe src="Spaces.pdf?v=21b40b3#page=1&zoom=page-width"></iframe>
+  <div class="bar">
+    <span><b>${PDF}</b></span>
+    <button id="btnDirect"  class="ghost">🔎 보기</button>
+    <button id="btnAnnot"   class="primary">📝 주석 모드</button>
+  </div>
+  <div class="wrap">
+    <iframe id="viewer" src="${PDF}?v=${SRC_SHA}#page=2&zoom=page-width" allow="clipboard-write"></iframe>
+  </div>
+<script>
+  const sha = ${JSON.stringify("${SRC_SHA}")};
+  const pdf = ${JSON.stringify("${PDF}")};
+  // 기본 보기 URL
+  const directUrl = `${pdf}?v=${sha}#page=2&zoom=page-width`;
+  // Hypothesis 프록시를 통해 같은 PDF 로드(주석 가능)
+  const annotUrl  = `https://via.hypothes.is/${location.origin}${location.pathname}${pdf.startsWith('/')?'':'/'}${pdf}?v=${sha}#page=2&zoom=page-width`;
+
+  const iframe = document.getElementById('viewer');
+  const btnDirect = document.getElementById('btnDirect');
+  const btnAnnot  = document.getElementById('btnAnnot');
+
+  function setDirect(){ iframe.src = directUrl;  btnDirect.className='primary'; btnAnnot.className='ghost'; }
+  function setAnnot() { iframe.src = annotUrl;   btnDirect.className='ghost';   btnAnnot.className='primary'; }
+
+  btnDirect.addEventListener('click', setDirect);
+  btnAnnot .addEventListener('click', setAnnot);
+
+  // 기본을 '주석 모드'로 열고 싶으면 아래 주석 해제
+  // setAnnot();
+</script>
 </body></html>
