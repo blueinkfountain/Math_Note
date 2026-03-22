@@ -1,0 +1,15 @@
+
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+
+.DS_Store
+
+*.pdf
+!Spaces.pdf
